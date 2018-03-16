@@ -9,7 +9,7 @@ CREATE TABLE Book (
 bid VARCHAR(20) NOT NULL,
 title VARCHAR(60) NOT NULL,
 price INT NOT NULL,
-category ENUM('Science','Fiction','Engineering') NOT NULL,
+category VARCHAR(32) CONSTRAINT category_ck CHECK (category IN ('Science','Fiction','Engineering'))  NOT NULL,
 PRIMARY KEY(bid)
 );/*
 #
@@ -23,9 +23,9 @@ INSERT INTO Book (bid, title, price, category) VALUES ('b003','Mechanics' ,100,'
 * id: address id
 *
 */
-DROP TABLE if exists Address;
+DROP TABLE Address;
 CREATE TABLE Address (
-id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 street VARCHAR(100) NOT NULL,
 province VARCHAR(20) NOT NULL,
 country VARCHAR(20) NOT NULL,
@@ -36,11 +36,11 @@ PRIMARY KEY(id)
 /*
 # Inserting data for table 'address'
 #*/
-INSERT INTO Address (id, street, province, country, zip, phone) VALUES (1, '123 Yonge St', 'ON',
+INSERT INTO Address (street, province, country, zip, phone) VALUES ('123 Yonge St', 'ON',
 'Canada', 'K1E 6T5' ,'647-123-4567');
-INSERT INTO Address (id, street, province, country, zip, phone) VALUES (2, '445 Avenue rd', 'ON',
+INSERT INTO Address (street, province, country, zip, phone) VALUES ('445 Avenue rd', 'ON',
 'Canada', 'M1C 6K5' ,'416-123-8569');
-INSERT INTO Address (id, street, province, country, zip, phone) VALUES (3, '789 Keele St.', 'ON',
+INSERT INTO Address (street, province, country, zip, phone) VALUES ('789 Keele St.', 'ON',
 'Canada', 'K3C 9T5' ,'416-123-9568');
 
 
@@ -50,23 +50,23 @@ INSERT INTO Address (id, street, province, country, zip, phone) VALUES (3, '789 
 * id: purchase order id
 * status:status of purchase
 */
-DROP TABLE if exists PO;
+DROP TABLE PO;
 CREATE TABLE PO (
-id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 lname VARCHAR(20) NOT NULL,
 fname VARCHAR(20) NOT NULL,
-status ENUM('ORDERED','PROCESSED','DENIED') NOT NULL,
-address INT UNSIGNED NOT NULL,
+status VARCHAR(32) CONSTRAINT status_ck CHECK (status IN ('ORDERED','PROCESSED','DENIED')) NOT NULL,
+address INT NOT NULL,
 PRIMARY KEY(id),
-INDEX (address),
+/*INDEX (address),*/
 FOREIGN KEY (address) REFERENCES Address (id) ON DELETE CASCADE
 );/*
 #
 # Inserting data for table 'PO'
 #*/
-INSERT INTO PO (id, lname, fname, status, address) VALUES (1, 'John', 'White', 'PROCESSED', '1');
-INSERT INTO PO (id, lname, fname, status, address) VALUES (2, 'Peter', 'Black', 'DENIED', '2');
-INSERT INTO PO (id, lname, fname, status, address) VALUES (3, 'Andy', 'Green', 'ORDERED', '3');
+INSERT INTO PO (lname, fname, status, address) VALUES ('John', 'White', 'PROCESSED', 1);
+INSERT INTO PO (lname, fname, status, address) VALUES ('Peter', 'Black', 'DENIED', 2);
+INSERT INTO PO (lname, fname, status, address) VALUES ('Andy', 'Green', 'ORDERED', 3);
 
 
 /* Items on order
@@ -74,23 +74,23 @@ INSERT INTO PO (id, lname, fname, status, address) VALUES (3, 'Andy', 'Green', '
 * bid: unique identifier of Book
 * price: unit price
 */
-DROP TABLE if exists POItem;
+DROP TABLE POItem;
 CREATE TABLE POItem (
-id INT UNSIGNED NOT NULL,
+id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 bid VARCHAR(20) NOT NULL,
-price INT UNSIGNED NOT NULL,
+price INT NOT NULL,
 PRIMARY KEY(id,bid),
-INDEX (id),
+/*INDEX (id),*/
 FOREIGN KEY(id) REFERENCES PO(id) ON DELETE CASCADE,
-INDEX (bid),
+/*INDEX (bid),*/
 FOREIGN KEY(bid) REFERENCES Book(bid) ON DELETE CASCADE
 );
 /*
 # Inserting data for table 'POitem'
 */
-INSERT INTO POItem (id, bid, price) VALUES (1, 'b001', '20');
-INSERT INTO POItem (id, bid, price) VALUES (2, 'b002', '201');
-INSERT INTO POItem (id, bid, price) VALUES (3, 'b003', '100');
+INSERT INTO POItem (bid, price) VALUES ('b001', 20);
+INSERT INTO POItem (bid, price) VALUES ('b002', 201);
+INSERT INTO POItem (bid, price) VALUES ('b003', 100);
 
 
 /* visit to website
@@ -98,11 +98,11 @@ INSERT INTO POItem (id, bid, price) VALUES (3, 'b003', '100');
 * bid: unique identifier of Book
 * eventtype: status of purchase
 */
-Inserting TABLE if exists VisitEvent;
+DROP TABLE VisitEvent;
 CREATE TABLE VisitEvent (
 day varchar(8) NOT NULL,
-bid varchar(20) not null REFERENCES Book.bid,
-eventtype ENUM('VIEW','CART','PURCHASE') NOT NULL,
+bid varchar(20) not null, /*REFERENCES Book.bid,*/
+eventtype VARCHAR(32) CONSTRAINT eventtype_ck CHECK (eventtype IN ('VIEW','CART','PURCHASE')) NOT NULL,
 FOREIGN KEY(bid) REFERENCES Book(bid)
 );
 

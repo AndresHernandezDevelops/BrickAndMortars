@@ -53,9 +53,16 @@ public class Start extends HttpServlet {
     }
     
     private void queryTables(HttpServletRequest request) { 	
-    	this.category = request.getParameter("namePrefix");
+    	this.category = request.getParameter("category");
 		this.bID = request.getParameter("bID");
 		this.title = request.getParameter("title");
+//		System.out.println(this.category);
+//		Enumeration<String> tmp = request.getParameterNames();
+//		while (tmp.hasMoreElements())
+//		{
+//			String tmp1 = tmp.nextElement();
+//			System.out.println(tmp1 + "=" + request.getParameter(tmp1));
+//		}
 		//future implementation; fetch any other parameters offered by the request object.
 		
 		try{

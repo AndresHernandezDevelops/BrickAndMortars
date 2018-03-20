@@ -1,0 +1,21 @@
+one-time set up instructions:
+
+1. go to your preferred workspace directory for this project and once inside type: 
+      git clone https://github.com/mymsong/BrickAndMortars
+2. enter your credentials since it is a private repository. this command will initialize a git repository locally and download all the files from our master BrickAndMortars.
+
+every time you are done working on code and want to merge it together with the master (https://github.com/mymsong/BrickAndMortars is the master) you will do the following:
+
+1. on your linux terminal type
+      git pull
+   this command 
+2. type 
+      git add -A
+  there is 3 stages locally, this command adds all the files you have edditted from stage 1 to stage 2, if you want to check this worked  you can type "git status" and these files will appear in green color instead of red
+3. type 
+      git commit -m "message telling your teammates what code functionality you implemented"
+  this command adds all files from stage 2 to 3 (3 is your local master) 
+4. type
+      git push
+  BECAREFUL, this command pushes all the changed from stage 3 to the master repository online, make sure your code compiles. 
+ 

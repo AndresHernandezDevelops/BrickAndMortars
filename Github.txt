@@ -8,7 +8,7 @@ every time you are done working on code and want to merge it together with the m
 
 1. on your linux terminal type
       git pull
-   this command 
+   this command pulls the newest version of the online master to your local machine. credentials might be needed.
 2. type 
       git add -A
   there is 3 stages locally, this command adds all the files you have edditted from stage 1 to stage 2, if you want to check this worked  you can type "git status" and these files will appear in green color instead of red

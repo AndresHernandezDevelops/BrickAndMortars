@@ -8,6 +8,12 @@ public class BookBean {
 	private String category;
 	private int price;
 	
+	//default constructor needed for webservices
+	public BookBean()
+	{
+		this("","","",0);
+	}
+	
 	//constructor
 	public BookBean(String bID, String title, String category, int price)
 	{

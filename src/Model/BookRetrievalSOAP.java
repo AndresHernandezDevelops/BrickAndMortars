@@ -3,9 +3,12 @@ package Model;
 import java.sql.SQLException;
 import java.util.HashMap;
 
+import javax.ws.rs.Path;
+
 import Bean.BookBean;
 import DAO.BookDAO;
 
+@Path("brs")
 public class BookRetrievalSOAP {
 
 	//data from database

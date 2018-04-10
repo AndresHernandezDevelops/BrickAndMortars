@@ -1,0 +1,37 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from BookRetrievalSOAPService WSDL service -->
+
+  <service name="BookRetrievalSOAP" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://Model"/>
+      <parameter name="wsdlServiceElement" value="BookRetrievalSOAPService"/>
+      <parameter name="schemaQualified" value="http://Model,http://Bean"/>
+      <parameter name="wsdlServicePort" value="BookRetrievalSOAP"/>
+      <parameter name="className" value="Model.BookRetrievalSOAPSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="BookRetrievalSOAP"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getProductInfo" qname="operNS:getProductInfo" xmlns:operNS="http://Model" returnQName="retNS:getProductInfoReturn" xmlns:retNS="http://Model" returnType="rtns:BookBean" xmlns:rtns="http://Bean" soapAction="" >
+        <parameter qname="pns:productID" xmlns:pns="http://Model" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getProductInfo"/>
+
+      <typeMapping
+        xmlns:ns="http://Bean"
+        qname="ns:BookBean"
+        type="java:Bean.BookBean"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

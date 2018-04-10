@@ -26,7 +26,7 @@ public class BookDAO {
 	
 	//retrieves all the books which belong to a certain category from the actual database
 	public Map<String, BookBean> searchByCategory(String category) throws SQLException{
-		String query = String.format("select * from BOOK where category = '%s'", category);
+		String query = String.format("select * from BOOK where category like '%%%s%%'", category);
 		
 		Map<String, BookBean> rv = new HashMap<String, BookBean>();
 		Connection con = this.ds.getConnection();

@@ -1,6 +1,20 @@
 package Model;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+
+import javax.xml.XMLConstants;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
 
 import DAO.*;
 import Bean.*;
@@ -28,5 +42,47 @@ public class BookStore {
 		}
 	}
 	
+	//will call this in the export to report the books sold in the past month
+	public Map<String, BookBean> searchLastMonth(String currentMonth) throws Exception
+	{
+		try{
+			return books.searchByCategory(currentMonth);
+		}
+		catch (Exception e)
+		{
+			throw new Exception();
+		}
+	}
+	
+	public void export(String currentMonth, String filename, String f) throws Exception{
+		List<BookBean> list = new ArrayList<BookBean>();
+		Collection<BookBean> sbean = this.searchLastMonth(currentMonth).values();
+		Iterator<BookBean> item = sbean.iterator();
+		while(item.hasNext())
+		{
+			list.add(item.next());
+		}
+		ListWrapper lw = new ListWrapper(currentMonth, list);
+		
+		JAXBContext jc = JAXBContext.newInstance(lw.getClass());
+		Marshaller marshaller = jc.createMarshaller();
+		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+		marshaller.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
+		StringWriter sw = new StringWriter();
+		sw.write("\n");
+		
+		//debugging the xsd
+		/*SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+		Schema schema = sf.newSchema(new File(f+"/export/SIS.xsd"));
+		marshaller.setSchema(schema);*/
+		
+		
+		marshaller.marshal(lw, new StreamResult(sw));
+
+		System.out.println(sw.toString()); // for debugging
+		FileWriter fw = new FileWriter(filename);
+		fw.write(sw.toString());
+		fw.close();
+	}
 	
 }

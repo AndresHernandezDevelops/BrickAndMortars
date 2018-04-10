@@ -20,10 +20,15 @@
 		<legend>Main Page</legend>
 		
 		<LABEL for="category">category (at the moment can only type Fiction or Science or Engineering)</LABEL>
-		<input type="text" name="category" id="category"></input><br/>
+		<input type="text" name="category" id="category"></input><br/>	
 		
-		<button name="searchByCategory" id="searchByCategory" value="true" onclick="doAjax('/BrickAndMortars/Start');return false;">
+		<button name="searchByCategory" id="searchByCategory" value="true" onclick="doAjax('${pageContext.request.contextPath}/Start');return false;">
  				Search By Category
+		</button>
+		
+		<!-- this button is for testing --> 
+		<button name="monthlyReport" id="monthlyReport" value="true" type="submit">
+ 				Report monthly sales
 		</button>
 		
 	</fieldset>

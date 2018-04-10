@@ -27,10 +27,10 @@ public class Start extends HttpServlet {
 	//bookstore object to access the various functions of a bookstore
 	private BookStore bookStore;
 	
-	//maps to hold the list of results
+	//maps to hold the list of results after calling queryTables method
 	Map<String, BookBean> bookBeanList;
 	
-	//rpivate variables to hold search keys from the jspx
+	//private variables to hold search keys from the jspx
 	private String bID;
 	private String title;
 	private String category;
@@ -56,6 +56,8 @@ public class Start extends HttpServlet {
     	this.category = request.getParameter("category");
 		this.bID = request.getParameter("bID");
 		this.title = request.getParameter("title");
+		
+		//sample code to debug parameters, dont delete this
 //		System.out.println(this.category);
 //		Enumeration<String> tmp = request.getParameterNames();
 //		while (tmp.hasMoreElements())
@@ -80,17 +82,19 @@ public class Start extends HttpServlet {
 		if (searchByCategoryParameter != null && searchByCategoryParameter.equals("true")) {
 			//System.out.println("Just hit the Search by category button");//debugging
 			
+			request.setAttribute("categoryResultList", bookBeanList);
+			
+			//server-side population of results, will get rid of it once narbeh we figure out the json alterntive
 			PrintWriter rw = response.getWriter();
 			try {
 				Collection<BookBean> bbean = bookBeanList.values();
 				Iterator<BookBean> bookIterator = bbean.iterator();
 				rw.println("<table border='1'>");
 				rw.println("<tr>");
-				rw.println("<td>Id</td>");
-				rw.println("<td>Name</td>");
-				rw.println("<td>Credits taken</td>");
-				rw.println("<td>Credits to graduate</td>");
-				rw.println("<td>Credits end of term</td>");
+				rw.println("<td>book ID</td>");
+				rw.println("<td>title</td>");
+				rw.println("<td>category</td>");
+				rw.println("<td>price</td>");
 				rw.println("</tr>");
 				while (bookIterator.hasNext())
 				{
@@ -112,6 +116,23 @@ public class Start extends HttpServlet {
 			}
 		}
     }
+    
+    private void export(HttpServletRequest request, HttpServletResponse response){
+    	String f = "export/" + request.getSession().getId() + ".xml";
+		String fileName = this.getServletContext().getRealPath("/" + f);
+		request.setAttribute("fileName", f);
+		String target = "/Done.jspx";
+		//storing the filename in the context level variable for later use
+		//this.getServletContext().setAttribute(FILENAME, fileName);
+		try{
+			bookStore.export("", fileName, this.getServletContext().getRealPath("/"));
+//			<a href="${pageScope.request.contextPath}${requestScope['fileName']}">${requestScope['fileName']}</a>
+			request.getRequestDispatcher(target).forward(request, response);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -126,8 +147,14 @@ public class Start extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		queryTables(request);
-		serveJSP(request, response);;
+		String monthlyReportParameter = request.getParameter("monthlyReport");
+		if (monthlyReportParameter != null && monthlyReportParameter.equals("true")) {
+			export(request, response);
+		}
+		else{
+			queryTables(request);
+			serveJSP(request, response);
+		}
 	}
 
 }

@@ -24,6 +24,28 @@ public class BookDAO {
 		}
 	}
 	
+	public HashMap<String, BookBean> retrieveall () throws SQLException
+	{
+String query = String.format("select * from BOOK");
+		
+		HashMap<String, BookBean> rv = new HashMap<String, BookBean>();
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		while(r.next())
+		{
+			String bID = r.getString("BID");
+			String title = r.getString("TITLE");
+			int price = r.getInt("PRICE");
+			String category = r.getString("CATEGORY");
+			rv.put(bID,new BookBean(bID, title, category, price));
+		}
+		r.close();
+		p.close();
+		con.close();
+		return rv;
+	}
+	
 	//retrieves all the books which belong to a certain category from the actual database
 	public Map<String, BookBean> searchByCategory(String category) throws SQLException{
 		String query = String.format("select * from BOOK where category like '%%%s%%'", category);

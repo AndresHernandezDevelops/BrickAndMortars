@@ -36,8 +36,8 @@ public class BookBean {
 		return title;
 	}
 
-	public void setBookName(String bookName) {
-		this.title = bookName;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getCategory() {

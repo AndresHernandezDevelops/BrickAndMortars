@@ -24,7 +24,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <complexType name="BookBean">
     <sequence>
      <element name="bID" nillable="true" type="xsd:string"/>
-     <element name="bookName" nillable="true" type="xsd:string"/>
      <element name="category" nillable="true" type="xsd:string"/>
      <element name="price" type="xsd:int"/>
      <element name="title" nillable="true" type="xsd:string"/>

@@ -24,7 +24,7 @@ public class BookRetrievalSOAP {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		data.put("test1", new BookBean("test1", "test2", "test3", 12));
+		//data.put("test1", new BookBean("test1", "test2", "test3", 12));
 	}
 	
 	//gets book info from book id (required by project)

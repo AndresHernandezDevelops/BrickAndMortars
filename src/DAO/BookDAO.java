@@ -26,7 +26,7 @@ public class BookDAO {
 	
 	public HashMap<String, BookBean> retrieveall () throws SQLException
 	{
-String query = String.format("select * from BOOK");
+		String query = String.format("select * from BOOK");
 		
 		HashMap<String, BookBean> rv = new HashMap<String, BookBean>();
 		Connection con = this.ds.getConnection();

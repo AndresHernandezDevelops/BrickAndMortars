@@ -8,33 +8,49 @@
 		omit-xml-declaration="true" />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Insert title here</title>
+	<link rel="stylesheet" href="res/register.css" type="test/css"/>
+	<script type="text/javascript" src="res/login.js">;</script>
+<title>Register</title>
 </head>
 <body>
 	<tr>
 		<td><label for="user">Enter Username: </label></td>
+		<div></div>
 		<td><input id='user' name='user'/></td>
+		<div></div>
 	</tr>
 	<tr>
 		<td><label for="pw">Enter Password: </label></td>
+		<div></div>
 		<td><input id='pw' name='pw'/></td>
+		<div></div>
 		<!-- require letters and numbers for security maybe? -->
 	</tr>
 	<tr>
 		<td><label for="pwconf">Confirm Password: </label></td>
+		<div></div>
 		<td><input id='pwconf' name='pwconf'/></td>
+		<div></div>
 		<!-- todo: check pw == pwconf -->
 	</tr>
 	<tr>
 		<td><label for="email">Enter Email: </label></td>
+		<div></div>
 		<td><input id='email' name='email'/></td>
+		<div></div>
 		<!-- have some sort of check here too @___ is valid -->
 	</tr>
 	<tr>
 		<td><label for="cc">Enter Credit Card Number: </label></td>
+		<div></div>
 		<td><input id='cc' type="number" name='cc'/></td>
+		<div></div>
 		<!-- todo: check for 16 chars -->
 	</tr>
+	
+	<tr>
+		<td><input name="Register" id='register' type="submit" value="Register"/></td>
+		</tr>
 	
 </body>
 </html>

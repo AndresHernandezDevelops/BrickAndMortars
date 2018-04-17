@@ -24,7 +24,7 @@ public class BookDAO {
 		}
 	}
 	
-	public HashMap<String, BookBean> retrieveall () throws SQLException
+	public HashMap<String, BookBean> retrieval () throws SQLException
 	{
 		String query = String.format("select * from BOOK");
 		
@@ -60,6 +60,31 @@ public class BookDAO {
 			String title = r.getString("TITLE");
 			int price = r.getInt("PRICE");
 			rv.put(bID,new BookBean(bID, title, category, price));
+		}
+		r.close();
+		p.close();
+		con.close();
+		return rv;
+		
+	}
+	
+	//this method needs to return a different type of value for the map, not a student bean. will fix later
+	public Map<String, BookBean> searchLastMonth(String lastMonth) throws SQLException{
+		String query = String.format("select B.TITLE, B.CATEGORY, count(E.BID) AS UNITS_SOLD "
+				+ "from VISITEVENT E, BOOK B "
+				+ "where E.BID=B.BID and E.DAY >= '%%%s%%' and E.EVENTTYPE = 'PURCHASE' "
+				+ "group by b.title, b.category;", lastMonth);
+		
+		Map<String, BookBean> rv = new HashMap<String, BookBean>();
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		while(r.next())
+		{
+			String bID = r.getString("BID");
+			String title = r.getString("TITLE");
+			int price = r.getInt("PRICE");
+			rv.put(bID,new BookBean(bID, title, lastMonth, price));
 		}
 		r.close();
 		p.close();

@@ -3,8 +3,12 @@ package Model;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.StringWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -43,10 +47,15 @@ public class BookStore {
 	}
 	
 	//will call this in the export to report the books sold in the past month
-	public Map<String, BookBean> searchLastMonth(String currentMonth) throws Exception
+	public Map<String, BookBean> searchLastMonth() throws Exception
 	{
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.MONTH, -1);
+		Date result = cal.getTime();
+		DateFormat dateFormat = new SimpleDateFormat("MMddyyyy");
+		String lastMonth = dateFormat.format(result).toString();
 		try{
-			return books.searchByCategory(currentMonth);
+			return books.searchLastMonth(lastMonth);
 		}
 		catch (Exception e)
 		{
@@ -54,15 +63,16 @@ public class BookStore {
 		}
 	}
 	
-	public void export(String currentMonth, String filename, String f) throws Exception{
+	
+	public void export(String lastMonth, String filename, String f) throws Exception{
 		List<BookBean> list = new ArrayList<BookBean>();
-		Collection<BookBean> sbean = this.searchLastMonth(currentMonth).values();
+		Collection<BookBean> sbean = this.searchLastMonth().values();
 		Iterator<BookBean> item = sbean.iterator();
 		while(item.hasNext())
 		{
 			list.add(item.next());
 		}
-		ListWrapper lw = new ListWrapper(currentMonth, list);
+		ListWrapper lw = new ListWrapper(lastMonth, list);
 		
 		JAXBContext jc = JAXBContext.newInstance(lw.getClass());
 		Marshaller marshaller = jc.createMarshaller();

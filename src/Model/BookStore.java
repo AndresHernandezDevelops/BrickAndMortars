@@ -61,6 +61,7 @@ public class BookStore {
 		}
 		catch (Exception e)
 		{
+			//e.printStackTrace(Syste);
 			throw new Exception();
 		}
 	}
@@ -92,6 +93,7 @@ public class BookStore {
 		marshaller.marshal(lw, new StreamResult(sw));
 
 		System.out.println(sw.toString()); // for debugging
+		System.out.println(filename);
 		FileWriter fw = new FileWriter(filename);
 		fw.write(sw.toString());
 		fw.close();

@@ -8,20 +8,25 @@
 		omit-xml-declaration="true" />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<script type="text/javascript" src="res/administrator.js">;</script>
+
+
 <title>Administrator's Page</title>
 </head>
 <body>
-	<FORM action=""  method="POST" >
+	<FORM action="" method="POST" >
 	<fieldset>
 		<legend>Administrative tools</legend>
 
-		<button name="monthlyReport" id="monthlyReport" value="true" type="submit">
+		<button name="monthlyReport" id="monthlyReport" value="true" onclick="doSimpleAjax('${pageContext.request.contextPath}/Administrator');return false;">
  				Report monthly sales
 		</button>
 				
 	</fieldset>
 </FORM>
+<div id="result"></div>
 <div>
+<!-- I need to fix the query so that it gets the proper date and fix the filepath so that the filepath "/eecs/home/mymsong/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/BrickAndMortars/export/09BAB1AC198B492F47B260B9E196EE60.xml"gets called from jjava code -->
 	need to implement the top 10 books using listeners
 </div>
 </body>

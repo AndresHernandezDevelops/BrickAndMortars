@@ -1,6 +1,8 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,13 +40,14 @@ public class Analytics extends HttpServlet {
     	String f = "export/" + request.getSession().getId() + ".xml";
 		String fileName = this.getServletContext().getRealPath("/" + f);
 		request.setAttribute("fileName", f);
-		String target = "/Done.jspx";
 		//storing the filename in the context level variable for later use
 		//this.getServletContext().setAttribute(FILENAME, fileName);
 		try{
+			PrintWriter responseWriter = response.getWriter();
 			bookStore.export("", fileName, this.getServletContext().getRealPath("/"));
+			responseWriter.println("The exported XML can be found at: "
+					+ "<a href=\"${pageScope.request.contextPath}${requestScope['fileName']}\">${requestScope['fileName']}</a>");
 //			<a href="${pageScope.request.contextPath}${requestScope['fileName']}">${requestScope['fileName']}</a>
-			request.getRequestDispatcher(target).forward(request, response);
 		}
 		catch (Exception e){
 			e.printStackTrace();

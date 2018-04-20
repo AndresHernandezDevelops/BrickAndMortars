@@ -26,16 +26,19 @@ public class eventTypeDAO {
 
 	//this method needs to return a different type of value for the map, not a student bean. will fix later
 	public Map<String, PurchaseBean> searchLastMonth(String lastMonth) throws SQLException{
-		String query = String.format("select * from eventtype where day >= '%%%s%%' and eventtype='PURCHASE'", lastMonth);
+		String query = String.format("select * from visitevent where day>='%s' and eventtype='PURCHASE'", lastMonth);
 				/*("select B.TITLE, B.CATEGORY, count(E.BID) AS UNITS_SOLD "
 				+ "from VISITEVENT E, BOOK B "
 				+ "where E.BID=B.BID and E.DAY >= '%%%s%%' and E.EVENTTYPE = 'PURCHASE' "
 				+ "group by b.title, b.category;", lastMonth);*/
-		
+		System.out.println(query);
 		Map<String, PurchaseBean> rv = new HashMap<String, PurchaseBean>();
 		Connection con = this.ds.getConnection();
+		//System.out.println("hit");
 		PreparedStatement p = con.prepareStatement(query);
+		//System.out.println("hit1");
 		ResultSet r = p.executeQuery();
+		//System.out.println("hit2");
 		while(r.next())
 		{
 			String day = r.getString("DAY");

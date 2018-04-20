@@ -26,12 +26,6 @@
  				Search By Category
 		</button>
 		
-		<!-- this button is for testing --> 
-		
-		<button name="monthlyReport" id="monthlyReport" value="true" type="submit">
- 				Report monthly sales
-		</button>
-		
 	</fieldset>
 	</FORM>
 	<div id="result"></div>

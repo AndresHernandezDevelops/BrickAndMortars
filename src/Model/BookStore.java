@@ -27,11 +27,13 @@ public class BookStore {
 
 	//private DAO object used for accessing the database
 	private BookDAO books;
+	private eventTypeDAO events;
 	
 	//constructor
 	public BookStore() throws ClassNotFoundException
 	{
-		books = new BookDAO();	
+		books = new BookDAO();
+		events = new eventTypeDAO();
 	}
 	
 	//a method used to retrieve the books by category from the DAO object.
@@ -47,7 +49,7 @@ public class BookStore {
 	}
 	
 	//will call this in the export to report the books sold in the past month
-	public Map<String, BookBean> searchLastMonth() throws Exception
+	public Map<String, PurchaseBean> searchLastMonth() throws Exception
 	{
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.MONTH, -1);
@@ -55,7 +57,7 @@ public class BookStore {
 		DateFormat dateFormat = new SimpleDateFormat("MMddyyyy");
 		String lastMonth = dateFormat.format(result).toString();
 		try{
-			return books.searchLastMonth(lastMonth);
+			return events.searchLastMonth(lastMonth);
 		}
 		catch (Exception e)
 		{
@@ -65,14 +67,14 @@ public class BookStore {
 	
 	
 	public void export(String lastMonth, String filename, String f) throws Exception{
-		List<BookBean> list = new ArrayList<BookBean>();
-		Collection<BookBean> sbean = this.searchLastMonth().values();
-		Iterator<BookBean> item = sbean.iterator();
+		List<PurchaseBean> list = new ArrayList<PurchaseBean>();
+		Collection<PurchaseBean> sbean = this.searchLastMonth().values();
+		Iterator<PurchaseBean> item = sbean.iterator();
 		while(item.hasNext())
 		{
 			list.add(item.next());
 		}
-		ListWrapper lw = new ListWrapper(lastMonth, list);
+		PurchaseListWrapper lw = new PurchaseListWrapper(list);
 		
 		JAXBContext jc = JAXBContext.newInstance(lw.getClass());
 		Marshaller marshaller = jc.createMarshaller();

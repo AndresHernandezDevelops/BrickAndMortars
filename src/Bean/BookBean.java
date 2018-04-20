@@ -1,5 +1,6 @@
 package Bean;
 
+
 public class BookBean {
 	
 	//declaring private variables which will hold values of the book's properties.

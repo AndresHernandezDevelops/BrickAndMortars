@@ -16,7 +16,7 @@ public class BookRetrievalSOAP {
 	{
 		data = new HashMap<String, BookBean>();
 		try {
-			data = new BookDAO().retrieveall();
+			data = new BookDAO().retrieveAll();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

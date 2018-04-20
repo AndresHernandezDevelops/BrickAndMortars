@@ -116,29 +116,28 @@ public class Start extends HttpServlet {
 			}
 		}
     }
-    
-    private void export(HttpServletRequest request, HttpServletResponse response){
-    	String f = "export/" + request.getSession().getId() + ".xml";
-		String fileName = this.getServletContext().getRealPath("/" + f);
-		request.setAttribute("fileName", f);
-		String target = "/Done.jspx";
-		//storing the filename in the context level variable for later use
-		//this.getServletContext().setAttribute(FILENAME, fileName);
-		try{
-			bookStore.export("", fileName, this.getServletContext().getRealPath("/"));
-//			<a href="${pageScope.request.contextPath}${requestScope['fileName']}">${requestScope['fileName']}</a>
-			request.getRequestDispatcher(target).forward(request, response);
-		}
-		catch (Exception e){
-			e.printStackTrace();
-		}
-    }
+//    
+//    private void export(HttpServletRequest request, HttpServletResponse response){
+//    	String f = "export/" + request.getSession().getId() + ".xml";
+//		String fileName = this.getServletContext().getRealPath("/" + f);
+//		request.setAttribute("fileName", f);
+//		String target = "/Done.jspx";
+//		//storing the filename in the context level variable for later use
+//		//this.getServletContext().setAttribute(FILENAME, fileName);
+//		try{
+//			bookStore.export("", fileName, this.getServletContext().getRealPath("/"));
+////			<a href="${pageScope.request.contextPath}${requestScope['fileName']}">${requestScope['fileName']}</a>
+//			request.getRequestDispatcher(target).forward(request, response);
+//		}
+//		catch (Exception e){
+//			e.printStackTrace();
+//		}
+//    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String target = "/MainPage.jspx";
 		request.getRequestDispatcher(target).forward(request, response);
 	}
@@ -147,14 +146,14 @@ public class Start extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String monthlyReportParameter = request.getParameter("monthlyReport");
-		if (monthlyReportParameter != null && monthlyReportParameter.equals("true")) {
-			export(request, response);
-		}
-		else{
+		
+//		if (monthlyReportParameter != null && monthlyReportParameter.equals("true")) {
+//			
+//		}
+		//else{
 			queryTables(request);
 			serveJSP(request, response);
-		}
+		//}
 	}
 
 }

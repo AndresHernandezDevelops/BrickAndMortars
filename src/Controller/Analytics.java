@@ -40,13 +40,19 @@ public class Analytics extends HttpServlet {
     	String f = "export/" + request.getSession().getId() + ".xml";
 		String fileName = this.getServletContext().getRealPath("/" + f);
 		request.setAttribute("fileName", f);
+		System.out.println(fileName);
+		System.out.println(f);
+		System.out.println("the request URL is " + request.getRequestURL());
+		System.out.println("the request context path  is " + request.getContextPath());
+		System.out.println("the servlet context path  is " + request.);
 		//storing the filename in the context level variable for later use
 		//this.getServletContext().setAttribute(FILENAME, fileName);
 		try{
 			PrintWriter responseWriter = response.getWriter();
 			bookStore.export("", fileName, this.getServletContext().getRealPath("/"));
-			responseWriter.println("The exported XML can be found at: "
-					+ "<a href=\"${pageScope.request.contextPath}${requestScope['fileName']}\">${requestScope['fileName']}</a>");
+			responseWriter.println("The exported XML can be found at: " 
+					 + "<a href= " + fileName + ">"+ f +"</a>");
+					//+ "<a href=/"${pageScope.request.contextPath}${requestScope['fileName']}"">${requestScope['fileName']}</a>");
 //			<a href="${pageScope.request.contextPath}${requestScope['fileName']}">${requestScope['fileName']}</a>
 		}
 		catch (Exception e){

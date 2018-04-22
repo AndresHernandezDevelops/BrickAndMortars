@@ -111,3 +111,10 @@ FOREIGN KEY(bid) REFERENCES Book(bid)
 INSERT INTO VisitEvent (day, bid, eventtype) VALUES ('12202015', 'b001', 'VIEW');
 INSERT INTO VisitEvent (day, bid, eventtype) VALUES ('12242015', 'b001', 'CART');
 INSERT INTO VisitEvent (day, bid, eventtype) VALUES ('12252015', 'b001', 'PURCHASE');
+
+
+update visitevent set day = '20150120' where day = '01202015';
+update visitevent set day = '20151220' where day = '12242015';
+update visitevent set day = '20151221' where day = '12252015';
+update visitevent set day = '20151222' where day = '12232015';
+update visitevent set day = '20151225' where day = '12202015';

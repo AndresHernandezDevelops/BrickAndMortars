@@ -41,7 +41,6 @@ public class Analytics extends HttpServlet {
 		String fileName = this.getServletContext().getRealPath("/" + f);
 		request.setAttribute("fileName", f);
 		String requestURL = request.getRequestURL().toString();
-		System.out.println("5********* " + requestURL.substring(0, 38) + f);
 		String xmlLink = requestURL.substring(0, 38) + f;
 		try{
 			PrintWriter responseWriter = response.getWriter();

@@ -1,7 +1,9 @@
 package listener;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -20,8 +22,8 @@ import Model.BookStore;
 public class top10Books implements HttpSessionAttributeListener {
 
 	
-	private TreeMap <String, Integer> bookIndices = new TreeMap<String, Integer>();
-	private TreeMap <Integer, String> bookFrequencies = new TreeMap<Integer, String>();
+	private TreeMap <String, Integer> unitsSold = new TreeMap<String, Integer>();
+	private TreeMap <Integer, ArrayList<String>> bookFrequencies = new TreeMap<Integer, ArrayList<String>>();
 	
 	private BookStore bookStore;
     /**
@@ -30,17 +32,26 @@ public class top10Books implements HttpSessionAttributeListener {
     public top10Books() throws ServletException{
     	try {
 			this.bookStore = new BookStore();
-			TreeMap <String, Integer> unitsSold = this.bookStore.unitsSold();
+			unitsSold = this.bookStore.unitsSold();//comes sorted by units sold as per the query in the DAO
+			ArrayList <String> bookList = new ArrayList<String>();
 			Collection <String> keys = unitsSold.keySet();
 			Collection <Integer> values = unitsSold.values();
 			Iterator<String> keysIt = keys.iterator();
 			Iterator<Integer> valuesIt = values.iterator();
-			Integer index = 0;
+			int currentFreq;
+			int lastFreq=0;
+			String bID;
 			while(keysIt.hasNext()){
-				String bID = keysIt.next();
-				bookFrequencies.put(valuesIt.next(), bID);
-				bookIndices.put(bID, index);
-				index++;
+				bID = keysIt.next();
+				currentFreq = valuesIt.next();
+				if(currentFreq==lastFreq)
+					bookList.add(bID);
+				else{
+					bookFrequencies.put(lastFreq, bookList);//first round it will add the empty keyset < 0 , empty arraylist>
+					bookList.clear();//nuke the booklist
+					lastFreq = currentFreq;//overwrite the last val
+					bookList.add(bID);
+				}
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

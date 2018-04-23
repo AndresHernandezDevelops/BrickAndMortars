@@ -12,7 +12,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
@@ -62,6 +61,7 @@ public class BookStore {
 		}
 		catch (Exception e)
 		{
+			//e.printStackTrace(Syste);
 			throw new Exception();
 		}
 	}
@@ -97,18 +97,6 @@ public class BookStore {
 		FileWriter fw = new FileWriter(filename);
 		fw.write(sw.toString());
 		fw.close();
-	}
-	
-	
-	public TreeMap<String, Integer> unitsSold() throws Exception
-	{
-		try{
-			return events.unitsSold();
-		}
-		catch (Exception e)
-		{
-			throw new Exception();
-		}
 	}
 	
 }

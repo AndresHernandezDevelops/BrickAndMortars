@@ -1,9 +1,9 @@
 package Bean;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name="PurchaseOrderItem")
+//@XmlRootElement(name="PurchaseOrderItem")
+@XmlType(propOrder={"bid", "id", "price"})
 public class PurchaseOrderItemBean {
 
 	/* Items on order
@@ -28,7 +28,7 @@ public class PurchaseOrderItemBean {
 		this(0, "", 0);
 	}
 	
-	@XmlElement(name="id")
+	//@XmlElement(name="id")
 	public int getId() {
 		return id;
 	}
@@ -37,7 +37,7 @@ public class PurchaseOrderItemBean {
 		this.id = id;
 	}
 
-	@XmlElement(name="bid")
+	//@XmlElement(name="bid")
 	public String getBid() {
 		return bid;
 	}
@@ -46,7 +46,7 @@ public class PurchaseOrderItemBean {
 		this.bid = bid;
 	}
 
-	@XmlElement(name="price")
+	//@XmlElement(name="price")
 	public int getPrice() {
 		return price;
 	}

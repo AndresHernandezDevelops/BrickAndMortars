@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:element name="PurchaseOrderItemReport" type="PurchaseOrderItemReportType"/>
+  <xsd:complexType name="PurchaseOrderItemReportType">
+  	<xsd:sequence>
+  		<xsd:element name="PurchaseOrderItemList" minOccurs="0" maxOccurs="unbounded" type="PurchaseOrderItemListType"/>
+  	</xsd:sequence>
+  	<xsd:attribute name="partNumber" type="xsd:integer"/>
+  </xsd:complexType>
+  
+  <xsd:complexType name="PurchaseOrderItemListType">
+  	<xsd:sequence>
+  		<xsd:element name="bid" type="xsd:string"/>
+  		<xsd:element name="id">
+  			<xsd:simpleType>
+		        <xsd:restriction base="xsd:integer">
+		           <xsd:minInclusive value="0"/>
+		        </xsd:restriction>
+	        </xsd:simpleType>
+  		</xsd:element>
+  		<xsd:element name="price">
+  			<xsd:simpleType>
+		        <xsd:restriction base="xsd:integer">
+		           <xsd:minInclusive value="0"/>
+		        </xsd:restriction>
+	        </xsd:simpleType>
+  		</xsd:element>
+  	</xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

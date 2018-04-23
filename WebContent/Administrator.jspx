@@ -27,7 +27,7 @@
 <div id="result"></div>
 <div>
 <!-- I need to fix the query so that it gets the proper date and fix the filepath so that the filepath "/eecs/home/mymsong/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/BrickAndMortars/export/09BAB1AC198B492F47B260B9E196EE60.xml"gets called from jjava code -->
-	need to implement the top 10 books using listeners
+	<!--  need to implement the top 10 books using listeners-->
 </div>
 </body>
 </html>

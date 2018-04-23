@@ -10,9 +10,16 @@
 <head>
 	<link rel="stylesheet" href="" type="text/css"/>
 	<title>Login</title>
+	<style>
+	table{border: 2px solid blue;
+    padding: 30px;
+	}</style>
 </head>
 <body>
 	<FIELDSET>
+	<center>
+		<h1>Login</h1>
+		<form action="" method="post">
 	<TABLE>
 		<tr>
 			<td><label for="username">Username: </label></td>
@@ -20,6 +27,7 @@
 				<td><input id='username' name='username' /></td>
 			</div>
 		</tr>
+		
 		<tr>
 			<td><label for="password">Password: </label></td>
 			<div>
@@ -32,9 +40,12 @@
 		</tr>
 		
 		<tr>
-		<div>Not registered? Click here.</div><!--  have this redirect to registry page -->
+			<form action="http://localhost:8080/BrickAndMortars/Register.jspx">
+			<input type="submit" value="New here? Click to register"/></form>
 		</tr>
 	</TABLE>
+	</form>
+	</center>
 	</FIELDSET>
 </body>
 </html>

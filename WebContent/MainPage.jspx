@@ -12,19 +12,42 @@
 <link rel="StyleSheet" href="res/mainPage.css" type="text/css" title="eecs4413" media="screen, print"/>
 <script type="text/javascript" src="res/mainPage.js">;</script>
 
-<title>Main Page</title>
+
+
+<title>Brick and Mortars</title>
 </head>
 <body>
 	<FORM action=""  method="POST" >
 	<fieldset>
-		<legend>Main Page</legend>
+	<center>	<h1 style="color:white;">Brick And Mortars</h1></center>
+
+
+		<select name="category">
+			<option>Choose Category</option>
+			<option>Science</option>
+			<option>Fiction</option>
+			<option>Tech</option>
+			<option>Lifestyle</option>
+			<option>Children's</option>
+			<option>Law</option>
+			<option>Non-Fiction</option>
+		</select>
+		<BR />
+		<div>
+		<img src="https://images-na.ssl-images-amazon.com/images/I/81vmMaXU8gL._SL500_SR107,160_.jpg" alt="idgaf"
+		></img>
+			</div>
 		
-		<LABEL for="category">category (at the moment can only type Fiction or Science or Engineering)</LABEL>
-		<input type="text" name="category" id="category"></input><br/>	
-		  
+		<BR />
+		<div>
+		<img src="https://images-na.ssl-images-amazon.com/images/I/617m43n-HWL._SL500_SR107,160_.jpg" alt="Stephen Hawking"></img>
+		</div>
+		<BR />
+		
 		<button name="searchByCategory" id="searchByCategory" value="true" onclick="doAjax('${pageContext.request.contextPath}/Start');return false;">
  				Search By Category
 		</button>
+		
 		
 	</fieldset>
 	</FORM>

@@ -57,7 +57,7 @@ public class Start extends HttpServlet {
 		this.bID = request.getParameter("bID");
 		this.title = request.getParameter("title");
 		
-		//sample code to debug parameters, dont delete this
+		//sample code to debug parameters, **************DONT DELETE THISSSSSSSSSSSSSSSSS
 //		System.out.println(this.category);
 //		Enumeration<String> tmp = request.getParameterNames();
 //		while (tmp.hasMoreElements())
@@ -116,23 +116,6 @@ public class Start extends HttpServlet {
 			}
 		}
     }
-//    
-//    private void export(HttpServletRequest request, HttpServletResponse response){
-//    	String f = "export/" + request.getSession().getId() + ".xml";
-//		String fileName = this.getServletContext().getRealPath("/" + f);
-//		request.setAttribute("fileName", f);
-//		String target = "/Done.jspx";
-//		//storing the filename in the context level variable for later use
-//		//this.getServletContext().setAttribute(FILENAME, fileName);
-//		try{
-//			bookStore.export("", fileName, this.getServletContext().getRealPath("/"));
-////			<a href="${pageScope.request.contextPath}${requestScope['fileName']}">${requestScope['fileName']}</a>
-//			request.getRequestDispatcher(target).forward(request, response);
-//		}
-//		catch (Exception e){
-//			e.printStackTrace();
-//		}
-//    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

@@ -55,7 +55,7 @@ public class BookStore {
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.MONTH, -1);
 		Date result = cal.getTime();
-		DateFormat dateFormat = new SimpleDateFormat("MMddyyyy");
+		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 		String lastMonth = dateFormat.format(result).toString();
 		try{
 			return events.searchLastMonth(lastMonth);

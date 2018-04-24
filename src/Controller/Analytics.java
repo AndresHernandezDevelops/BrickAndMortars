@@ -60,8 +60,7 @@ public class Analytics extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String target = "/Administrator.jspx";
-		request.getRequestDispatcher(target).forward(request, response);
-		
+		request.getRequestDispatcher(target).forward(request, response);		
 	}
 
 	/**
@@ -73,5 +72,4 @@ public class Analytics extends HttpServlet {
 			export(request, response);
 		}
 	}
-
 }

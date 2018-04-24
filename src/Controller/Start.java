@@ -80,7 +80,6 @@ public class Start extends HttpServlet {
 		String searchByCategoryParameter = request.getParameter("searchByCategory");
 		
 		if (searchByCategoryParameter != null && searchByCategoryParameter.equals("true")) {
-			//System.out.println("Just hit the Search by category button");//debugging
 			
 			request.setAttribute("categoryResultList", bookBeanList);
 			

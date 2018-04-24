@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Model.BookStore;
+import listener.Top10Books;
 
 /**
  * Servlet implementation class Analytics
@@ -20,6 +21,7 @@ public class Analytics extends HttpServlet {
        
 	
 	private BookStore bookStore;
+	private Top10Books top10Books;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -31,6 +33,8 @@ public class Analytics extends HttpServlet {
 	public void init() throws ServletException{
 		try {
 			this.bookStore = new BookStore();
+			this.top10Books = new Top10Books();
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -60,7 +64,8 @@ public class Analytics extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String target = "/Administrator.jspx";
-		request.getRequestDispatcher(target).forward(request, response);		
+		request.getRequestDispatcher(target).forward(request, response);
+		
 	}
 
 	/**
@@ -69,6 +74,7 @@ public class Analytics extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String monthlyReportParameter = request.getParameter("monthlyReport");
 		if (monthlyReportParameter != null && monthlyReportParameter.equals("true")) {
+			request.setAttribute("bID", "bID");
 			export(request, response);
 		}
 	}

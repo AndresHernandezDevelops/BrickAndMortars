@@ -28,7 +28,6 @@ public class eventTypeDAO {
 
 	public Map<String, PurchaseBean> searchLastMonth(String lastMonth) throws SQLException{
 		String query = String.format("select * from visitevent where day>='%s' and eventtype='PURCHASE'", lastMonth);
-		System.out.println(query);
 		Map<String, PurchaseBean> rv = new HashMap<String, PurchaseBean>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
@@ -48,7 +47,6 @@ public class eventTypeDAO {
 	
 	public TreeMap<String, Integer> unitsSold() throws SQLException{
 		String query = String.format("select bID, count(eventtype) as unitsSold from visitevent where eventtype='PURCHASE' group by bid order by unitsSold");
-		System.out.println(query);
 		TreeMap<String, Integer> rv = new TreeMap<String, Integer>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);

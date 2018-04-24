@@ -10,7 +10,7 @@ function validate() {
 	var errorMessage = "";
 	var ok = true;
 	var category = document.getElementById("category").value;
-	if(namePrefix.trim() == "")
+	if(category.trim() == "")
 	{
 		errorMessage = "invalid category!";
 		ok = false;

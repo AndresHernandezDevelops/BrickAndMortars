@@ -22,7 +22,7 @@
 	<center>	<h1 style="color:white;">Brick And Mortars</h1></center>
 
 
-		<select name="category">
+		<select name="category" id="category">
 			<option>Choose Category</option>
 			<option>Science</option>
 			<option>Fiction</option>

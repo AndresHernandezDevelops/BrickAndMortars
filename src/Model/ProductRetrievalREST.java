@@ -3,6 +3,7 @@ package Model;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -52,5 +53,31 @@ public class ProductRetrievalREST {
 		}
 		
 		return outList;
+	}
+	
+	@POST
+	@Path("/orders/addEntry/")
+	@Consumes("text/plain")
+	public String addEntry(@FormParam("id") String sid, @FormParam("bid") String bid, @FormParam("price") String sprice)
+	{
+		System.out.println(sid);
+		System.out.println(bid);
+		System.out.println(sprice);
+		int id = Integer.parseInt(sid);
+		int price = Integer.parseInt(sprice);
+		PurchaseOrderItemBean tmp = new PurchaseOrderItemBean(id, bid, price);
+		if (data.containsKey(id))
+		{
+			List<PurchaseOrderItemBean> val = data.get(id);
+			val.add(tmp);
+		}
+		else
+		{
+			LinkedList<PurchaseOrderItemBean> tlist = new LinkedList<PurchaseOrderItemBean>();
+			tlist.add(tmp);
+			data.put(id, tlist);
+		}
+		System.out.println(data.containsKey(id));
+		return id + "," + id + " " + bid + " " + price;
 	}
 }

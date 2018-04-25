@@ -38,7 +38,6 @@ public class Top10Books implements ServletRequestAttributeListener {
     	try {
     		unitsSold = new TreeMap<String, Integer>();
     		bookFrequencies = new TreeMap<Integer, List<String>>();
-    		System.out.println("hit the constructor");
 			this.bookStore = new BookStore();
 			unitsSold = this.bookStore.unitsSold();//comes sorted by units sold as per the query in the DAO
 			
@@ -61,22 +60,8 @@ public class Top10Books implements ServletRequestAttributeListener {
 					LinkedList<String> list = new LinkedList<String>();
 					list.add(bID);
 					bookFrequencies.put(freq, list);
-				}
-				/*
-				currentFreq = unitsSold.get(bID);
-				if(currentFreq==lastFreq) {
-					bookList.add(bID);
-				}
-				else {
-					bookFrequencies.put(lastFreq, bookList);//first round it will add the empty keyset < 0 , empty arraylist>
-					bookList.clear();//nuke the booklist
-					lastFreq = currentFreq;//overwrite the last val
-					bookList.add(bID);
-				}*/
+				}	
 			}
-			/*//in the loop we dealt with the values at the previous iteration, now we add the last remaining list (current values)
-			bookFrequencies.put(lastFreq, bookList);*/
-			System.out.println(this.bookFrequencies.toString());
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -89,21 +74,16 @@ public class Top10Books implements ServletRequestAttributeListener {
      * @see ServletRequestAttributeListener#attributeRemoved(ServletRequestAttributeEvent)
      */
     public void attributeRemoved(ServletRequestAttributeEvent arg0)  { 
-    	System.out.println("hit the removed");
-         // TODO Auto-generated method stub
     }
 
 	/**
      * @see ServletRequestAttributeListener#attributeAdded(ServletRequestAttributeEvent)
      */
     public void attributeAdded(ServletRequestAttributeEvent arg0)  {
-    	System.out.println("hit the added: "  + arg0.getName() + " " + arg0.getValue());
+    	//System.out.println("hit the added: "  + arg0.getName() + " " + arg0.getValue());
          if(arg0.getName().equals("bID")) {
         	 String bID = arg0.getValue().toString();
-        	 System.out.println(bID);
-        	 //bookFrequencies.get(unitsSold.get(bID)).remove(bID); 
         	 int previousFreq = unitsSold.get(bID);
-        	 System.out.println(previousFreq);
         	 unitsSold.put(bID, previousFreq + 1);
         	 if(bookFrequencies.containsKey(previousFreq + 1)) {//when the prev freq was already the highest frequency
         		 List<String> list = bookFrequencies.get(previousFreq + 1);
@@ -116,9 +96,9 @@ public class Top10Books implements ServletRequestAttributeListener {
         	 }
     		 List<String> list = bookFrequencies.get(previousFreq);
     		 int index = list.indexOf(bID);
-    		 System.out.println(previousFreq + 1);
+    		 //System.out.println(previousFreq + 1);
     		 list.remove(index);
-    		 System.out.println(bookFrequencies.get(previousFreq + 1).toString());
+    		 //System.out.println(bookFrequencies.get(previousFreq + 1).toString());
          }
     }
 
@@ -126,7 +106,7 @@ public class Top10Books implements ServletRequestAttributeListener {
      * @see ServletRequestAttributeListener#attributeReplaced(ServletRequestAttributeEvent)
      */
     public void attributeReplaced(ServletRequestAttributeEvent arg0)  {
-    	System.out.println("hit the replaced: "  + arg0.getName() + " " + arg0.getValue());
+    	//System.out.println("hit the replaced: "  + arg0.getName() + " " + arg0.getValue());
     	 if(arg0.getName().equals("bID")) {
 	       	 String bID = (String) arg0.getServletRequest().getAttribute("bID");
 	       	 //bookFrequencies.get(unitsSold.get(bID)).remove(bID); 
@@ -143,18 +123,16 @@ public class Top10Books implements ServletRequestAttributeListener {
 		   	 }
 			 List<String> list = bookFrequencies.get(previousFreq);
 			 int index = list.indexOf(bID);
-			 System.out.println(previousFreq + 1);
+			 //System.out.println(previousFreq + 1);
 			 list.remove(index);
-			 System.out.println(bookFrequencies.get(previousFreq + 1).toString());
+			 //System.out.println(bookFrequencies.get(previousFreq + 1).toString());
     	 }
     	 
     }
     
     public LinkedList<String> getTop10(){
-    	System.out.println("hit getop10");
     	LinkedList<String> top10 = new LinkedList<String>();
     	TreeMap <Integer, List<String>> top10Frequencies = (TreeMap<Integer, List<String>>) this.bookFrequencies.clone();
-    	System.out.println(top10Frequencies.toString());
     	int j = 0;
     	for(int i = 0; i < 10;) {
     		Map.Entry<Integer, List<String>> topKey =  top10Frequencies.pollLastEntry();
@@ -169,7 +147,7 @@ public class Top10Books implements ServletRequestAttributeListener {
     				break;
     		}
     	}
-    	System.out.println(top10.toString());
+    	//System.out.println(top10.toString());
     	return top10;
     }
 	

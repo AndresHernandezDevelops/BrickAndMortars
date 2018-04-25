@@ -75,7 +75,14 @@ public class Analytics extends HttpServlet {
 		String monthlyReportParameter = request.getParameter("monthlyReport");
 		if (monthlyReportParameter != null && monthlyReportParameter.equals("true")) {
 			export(request, response);
-			request.setAttribute("bID", "bID");
+			top10Books.getTop10();
+			request.setAttribute("bID", "b004");
+			request.setAttribute("bID", "b004");
+			request.setAttribute("bID", "b004");
+			request.setAttribute("bID", "b004");
+			request.setAttribute("bID", "b004");
+			top10Books.getTop10();
+			
 		}
 	}
 }

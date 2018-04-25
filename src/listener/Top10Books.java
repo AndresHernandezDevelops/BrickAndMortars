@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebListener;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -26,8 +27,8 @@ import Model.BookStore;
 @WebListener
 public class Top10Books implements ServletRequestAttributeListener {
 	
-	private TreeMap <String, Integer> unitsSold = new TreeMap<String, Integer>();
-	private TreeMap <Integer, ArrayList<String>> bookFrequencies = new TreeMap<Integer, ArrayList<String>>();
+	private static TreeMap <String, Integer> unitsSold;
+	private static TreeMap <Integer, List<String>> bookFrequencies;
 	
 	private BookStore bookStore;
     /**
@@ -35,20 +36,34 @@ public class Top10Books implements ServletRequestAttributeListener {
      */
 	public Top10Books() throws ServletException{
     	try {
+    		unitsSold = new TreeMap<String, Integer>();
+    		bookFrequencies = new TreeMap<Integer, List<String>>();
     		System.out.println("hit the constructor");
 			this.bookStore = new BookStore();
 			unitsSold = this.bookStore.unitsSold();//comes sorted by units sold as per the query in the DAO
-			ArrayList <String> bookList = new ArrayList<String>();
+			
+			//ArrayList <String> bookList = new ArrayList<String>();
 			Collection <String> keys = unitsSold.keySet();
-			Collection <Integer> values = unitsSold.values();
 			Iterator<String> keysIt = keys.iterator();
-			Iterator<Integer> valuesIt = values.iterator();
 			int currentFreq;
 			int lastFreq=0;
 			String bID;
 			while(keysIt.hasNext()){
 				bID = keysIt.next();
-				currentFreq = valuesIt.next();
+				int freq = unitsSold.get(bID);
+				if (bookFrequencies.containsKey(freq))
+				{
+					List<String> list = bookFrequencies.get(freq);
+					list.add(bID);
+				}
+				else
+				{
+					LinkedList<String> list = new LinkedList<String>();
+					list.add(bID);
+					bookFrequencies.put(freq, list);
+				}
+				/*
+				currentFreq = unitsSold.get(bID);
 				if(currentFreq==lastFreq) {
 					bookList.add(bID);
 				}
@@ -57,10 +72,11 @@ public class Top10Books implements ServletRequestAttributeListener {
 					bookList.clear();//nuke the booklist
 					lastFreq = currentFreq;//overwrite the last val
 					bookList.add(bID);
-				}
+				}*/
 			}
-			//in the loop we dealt with the values at the previous iteration, now we add the last remaining list (current values)
-			bookFrequencies.put(lastFreq, bookList);
+			/*//in the loop we dealt with the values at the previous iteration, now we add the last remaining list (current values)
+			bookFrequencies.put(lastFreq, bookList);*/
+			System.out.println(this.bookFrequencies.toString());
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -81,18 +97,28 @@ public class Top10Books implements ServletRequestAttributeListener {
      * @see ServletRequestAttributeListener#attributeAdded(ServletRequestAttributeEvent)
      */
     public void attributeAdded(ServletRequestAttributeEvent arg0)  {
-    	System.out.println("hit the added");
-         if(arg0.getName().equals("bkID")) {
+    	System.out.println("hit the added: "  + arg0.getName() + " " + arg0.getValue());
+         if(arg0.getName().equals("bID")) {
         	 String bID = arg0.getValue().toString();
-        	 bookFrequencies.get(unitsSold.get(bID)).remove(bID); 
+        	 System.out.println(bID);
+        	 //bookFrequencies.get(unitsSold.get(bID)).remove(bID); 
         	 int previousFreq = unitsSold.get(bID);
+        	 System.out.println(previousFreq);
         	 unitsSold.put(bID, previousFreq + 1);
         	 if(bookFrequencies.containsKey(previousFreq + 1)) {//when the prev freq was already the highest frequency
-        		 ArrayList <String> bookList = new ArrayList<String>();
-        		 bookList.add(bID);
-        		 bookFrequencies.put(previousFreq + 1, bookList);
+        		 List<String> list = bookFrequencies.get(previousFreq + 1);
+        		 list.add(bID);
         	 }else 
-        		 bookFrequencies.get(previousFreq + 1).add(bID);       	 
+        	 {   
+	        	 ArrayList <String> bookList = new ArrayList<String>();
+	    		 bookList.add(bID);
+	    		 bookFrequencies.put(previousFreq + 1, bookList);
+        	 }
+    		 List<String> list = bookFrequencies.get(previousFreq);
+    		 int index = list.indexOf(bID);
+    		 System.out.println(previousFreq + 1);
+    		 list.remove(index);
+    		 System.out.println(bookFrequencies.get(previousFreq + 1).toString());
          }
     }
 
@@ -100,27 +126,38 @@ public class Top10Books implements ServletRequestAttributeListener {
      * @see ServletRequestAttributeListener#attributeReplaced(ServletRequestAttributeEvent)
      */
     public void attributeReplaced(ServletRequestAttributeEvent arg0)  {
-    	System.out.println("hit the replaced");
-    	 if(arg0.getName().equals("bkID")) {
-       	 String bID = arg0.getValue().toString();
-       	 bookFrequencies.get(unitsSold.get(bID)).remove(bID); 
-       	 int previousFreq = unitsSold.get(bID);
-       	 unitsSold.put(bID, previousFreq + 1);
-       	 if(bookFrequencies.containsKey(previousFreq + 1)) {//when the prev freq was already the hgihest frequency
-       		 ArrayList <String> bookList = new ArrayList<String>();
-       		 bookList.add(bID);
-       		 bookFrequencies.put(previousFreq + 1, bookList);
-       	 }else 
-       		 bookFrequencies.get(previousFreq + 1).add(bID);
-        }
+    	System.out.println("hit the replaced: "  + arg0.getName() + " " + arg0.getValue());
+    	 if(arg0.getName().equals("bID")) {
+	       	 String bID = (String) arg0.getServletRequest().getAttribute("bID");
+	       	 //bookFrequencies.get(unitsSold.get(bID)).remove(bID); 
+	       	 int previousFreq = unitsSold.get(bID);
+	       	 unitsSold.put(bID, previousFreq + 1);
+		       	if(bookFrequencies.containsKey(previousFreq + 1)) {//when the prev freq was already the highest frequency
+		   		 List<String> list = bookFrequencies.get(previousFreq + 1);
+		   		 list.add(bID);
+		   	 }else 
+		   	 {   
+		       	 ArrayList <String> bookList = new ArrayList<String>();
+		   		 bookList.add(bID);
+		   		 bookFrequencies.put(previousFreq + 1, bookList);
+		   	 }
+			 List<String> list = bookFrequencies.get(previousFreq);
+			 int index = list.indexOf(bID);
+			 System.out.println(previousFreq + 1);
+			 list.remove(index);
+			 System.out.println(bookFrequencies.get(previousFreq + 1).toString());
+    	 }
+    	 
     }
     
-    public ArrayList<String> getTop10(){
-    	ArrayList<String> top10 = new ArrayList<String>();
-    	TreeMap <Integer, ArrayList<String>> top10Frequencies = (TreeMap<Integer, ArrayList<String>>) this.bookFrequencies.clone();
+    public LinkedList<String> getTop10(){
+    	System.out.println("hit getop10");
+    	LinkedList<String> top10 = new LinkedList<String>();
+    	TreeMap <Integer, List<String>> top10Frequencies = (TreeMap<Integer, List<String>>) this.bookFrequencies.clone();
+    	System.out.println(top10Frequencies.toString());
     	int j = 0;
     	for(int i = 0; i < 10;) {
-    		Map.Entry<Integer, ArrayList<String>> topKey =  top10Frequencies.pollLastEntry();
+    		Map.Entry<Integer, List<String>> topKey =  top10Frequencies.pollLastEntry();
     		if(topKey.getValue().size() == 0 || j >= 10)
     			break;
     		i = i + topKey.getValue().size();
@@ -132,6 +169,7 @@ public class Top10Books implements ServletRequestAttributeListener {
     				break;
     		}
     	}
+    	System.out.println(top10.toString());
     	return top10;
     }
 	

@@ -46,7 +46,7 @@ public class eventTypeDAO {
 	}
 	
 	public TreeMap<String, Integer> unitsSold() throws SQLException{
-		String query = String.format("select bID, count(eventtype) as unitsSold from visitevent where eventtype='PURCHASE' group by bid order by unitsSold");
+		String query = String.format("select bID, count(eventtype) as unitsSold from visitevent where eventtype='PURCHASE' group by bid order by unitsSold desc");
 		TreeMap<String, Integer> rv = new TreeMap<String, Integer>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);

@@ -35,6 +35,7 @@ public class Top10Books implements ServletRequestAttributeListener {
      */
 	public Top10Books() throws ServletException{
     	try {
+    		System.out.println("hit the constructor");
 			this.bookStore = new BookStore();
 			unitsSold = this.bookStore.unitsSold();//comes sorted by units sold as per the query in the DAO
 			ArrayList <String> bookList = new ArrayList<String>();
@@ -72,13 +73,15 @@ public class Top10Books implements ServletRequestAttributeListener {
      * @see ServletRequestAttributeListener#attributeRemoved(ServletRequestAttributeEvent)
      */
     public void attributeRemoved(ServletRequestAttributeEvent arg0)  { 
+    	System.out.println("hit the removed");
          // TODO Auto-generated method stub
     }
 
 	/**
      * @see ServletRequestAttributeListener#attributeAdded(ServletRequestAttributeEvent)
      */
-    public void attributeAdded(ServletRequestAttributeEvent arg0)  { 
+    public void attributeAdded(ServletRequestAttributeEvent arg0)  {
+    	System.out.println("hit the added");
          if(arg0.getName().equals("bkID")) {
         	 String bID = arg0.getValue().toString();
         	 bookFrequencies.get(unitsSold.get(bID)).remove(bID); 
@@ -96,7 +99,8 @@ public class Top10Books implements ServletRequestAttributeListener {
 	/**
      * @see ServletRequestAttributeListener#attributeReplaced(ServletRequestAttributeEvent)
      */
-    public void attributeReplaced(ServletRequestAttributeEvent arg0)  { 
+    public void attributeReplaced(ServletRequestAttributeEvent arg0)  {
+    	System.out.println("hit the replaced");
     	 if(arg0.getName().equals("bkID")) {
        	 String bID = arg0.getValue().toString();
        	 bookFrequencies.get(unitsSold.get(bID)).remove(bID); 

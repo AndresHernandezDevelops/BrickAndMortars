@@ -74,8 +74,8 @@ public class Analytics extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String monthlyReportParameter = request.getParameter("monthlyReport");
 		if (monthlyReportParameter != null && monthlyReportParameter.equals("true")) {
-			request.setAttribute("bID", "bID");
 			export(request, response);
+			request.setAttribute("bID", "bID");
 		}
 	}
 }

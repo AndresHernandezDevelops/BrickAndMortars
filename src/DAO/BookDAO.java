@@ -38,7 +38,8 @@ public class BookDAO {
 			String title = r.getString("TITLE");
 			int price = r.getInt("PRICE");
 			String category = r.getString("CATEGORY");
-			rv.put(bID,new BookBean(bID, title, category, price));
+			String thumbnail = r.getString("THUMBNAIL");
+			rv.put(bID,new BookBean(bID, title, category, price, thumbnail));
 		}
 		r.close();
 		p.close();
@@ -59,7 +60,8 @@ public class BookDAO {
 			String bID = r.getString("BID");
 			String title = r.getString("TITLE");
 			int price = r.getInt("PRICE");
-			rv.put(bID,new BookBean(bID, title, category, price));
+			String thumbnail = r.getString("THUMBNAIL");
+			rv.put(bID,new BookBean(bID, title, category, price, thumbnail));
 		}
 		r.close();
 		p.close();

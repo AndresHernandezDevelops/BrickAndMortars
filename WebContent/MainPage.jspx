@@ -28,20 +28,12 @@
 			<option>Fiction</option>
 			<option>Tech</option>
 			<option>Lifestyle</option>
-			<option>Children's</option>
+			<option>Childrens</option>
 			<option>Law</option>
 			<option>Non-Fiction</option>
 		</select>
 		<BR />
-		<div>
-		<img src="https://images-na.ssl-images-amazon.com/images/I/81vmMaXU8gL._SL500_SR107,160_.jpg" alt="idgaf"
-		></img>
-			</div>
-		
-		<BR />
-		<div>
-		<img src="https://images-na.ssl-images-amazon.com/images/I/617m43n-HWL._SL500_SR107,160_.jpg" alt="Stephen Hawking"></img>
-		</div>
+			
 		<BR />
 		
 		<button name="searchByCategory" id="searchByCategory" value="true" onclick="doAjax('${pageContext.request.contextPath}/Start');return false;">
@@ -51,6 +43,7 @@
 		
 	</fieldset>
 	</FORM>
+	<img src="'${kitty}'"></img>
 	<div id="result"></div>
 </body>
 </html>

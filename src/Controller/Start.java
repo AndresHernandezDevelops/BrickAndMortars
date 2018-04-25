@@ -88,6 +88,8 @@ public class Start extends HttpServlet {
 			try {
 				Collection<BookBean> bbean = bookBeanList.values();
 				Iterator<BookBean> bookIterator = bbean.iterator();
+				request.setAttribute("kitty", bookIterator.next().getThumbnail());
+				
 				rw.println("<table border='1'>");
 				rw.println("<tr>");
 				rw.println("<td>book ID</td>");
@@ -98,6 +100,7 @@ public class Start extends HttpServlet {
 				while (bookIterator.hasNext())
 				{
 					BookBean item = bookIterator.next();
+					System.out.println(item.getThumbnail());
 					String bID = item.getbID();
 					String title = item.getTitle();
 					String category = item.getCategory();

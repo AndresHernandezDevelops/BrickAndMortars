@@ -7,21 +7,23 @@ public class BookBean {
 	private String bID;
 	private String title;
 	private String category;
+	private String thumbnail;
 	private int price;
 	
 	//default constructor needed for webservices
 	public BookBean()
 	{
-		this("","","",0);
+		this("","","",0,"");
 	}
 	
 	//constructor
-	public BookBean(String bID, String title, String category, int price)
+	public BookBean(String bID, String title, String category, int price, String thumbnail)
 	{
 		this.bID = bID;
 		this.title = title;
 		this.category = category;
 		this.price = price;
+		this.thumbnail = thumbnail;
 	}
 	
 	//getters and setters
@@ -56,4 +58,14 @@ public class BookBean {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+	
+	
 }

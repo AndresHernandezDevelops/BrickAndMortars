@@ -34,7 +34,6 @@ public class Start extends HttpServlet {
 	private String bID;
 	private String title;
 	private String category;
-	//private int price;
 	
 	public void init() throws ServletException{
 		try {
@@ -79,15 +78,14 @@ public class Start extends HttpServlet {
     		}
     	}
 		
-		//sample code to debug parameters, dont delete this
-		System.out.println(this.category);
-		Enumeration<String> tmp = request.getParameterNames();
-		while (tmp.hasMoreElements())
-		{
-			String tmp1 = tmp.nextElement();
-			System.out.println(tmp1 + "=" + request.getParameter(tmp1));
-		}
-		//future implementation; fetch any other parameters offered by the request object.
+		//sample code to debug parameters, DONT DELETE this
+//		System.out.println(this.category);
+//		Enumeration<String> tmp = request.getParameterNames();
+//		while (tmp.hasMoreElements())
+//		{
+//			String tmp1 = tmp.nextElement();
+//			System.out.println(tmp1 + "=" + request.getParameter(tmp1));
+//		}
 		
 		
     }
@@ -95,13 +93,9 @@ public class Start extends HttpServlet {
     //prints out to the jspx using ajax 
     private void serveJSP(HttpServletRequest request, HttpServletResponse response)
     		throws ServletException, IOException {
-		String searchByCategoryParameter = request.getParameter("searchByCategory");
-		String searchByTextParameter = request.getParameter("searchByTextButton");
-		if (searchByCategoryParameter != null && searchByCategoryParameter.equals("true")) {
+		
+			request.setAttribute("resultList", bookBeanList);
 			
-			request.setAttribute("categoryResultList", bookBeanList);
-			
-			//server-side population of results, will get rid of it once narbeh we figure out the json alterntive
 			PrintWriter rw = response.getWriter();
 			try {
 				Collection<BookBean> bbean = bookBeanList.values();
@@ -134,62 +128,7 @@ public class Start extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		else if(searchByTextParameter != null && searchByTextParameter.equals("true")){
-			request.setAttribute("categoryResultList", bookBeanList);
-			
-			//server-side population of results, will get rid of it once narbeh we figure out the json alterntive
-			PrintWriter rw = response.getWriter();
-			try {
-				Collection<BookBean> bbean = bookBeanList.values();
-				Iterator<BookBean> bookIterator = bbean.iterator();
-				//request.setAttribute("kitty", bookIterator.next().getThumbnail());
-				
-				rw.println("<table border='1'>");
-				rw.println("<tr>");
-				rw.println("<td>book ID</td>");
-				rw.println("<td>title</td>");
-				rw.println("<td>category</td>");
-				rw.println("<td>price</td>");
-				rw.println("</tr>");
-				while (bookIterator.hasNext())
-				{
-					BookBean item = bookIterator.next();
-					System.out.println(item.getThumbnail());
-					String bID = item.getbID();
-					String title = item.getTitle();
-					String category = item.getCategory();
-					int price = item.getPrice();
-					rw.println("<tr>");
-					rw.print("<td>" + bID + "</td>");
-					rw.print("<td>" + title + "</td>");
-					rw.print("<td>" + category + "</td>");
-					rw.print("<td>" + price + "</td>");
-					rw.println("</tr>");
-				}
-				rw.println("</table");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
     }
-//    
-//    private void export(HttpServletRequest request, HttpServletResponse response){
-//    	String f = "export/" + request.getSession().getId() + ".xml";
-//		String fileName = this.getServletContext().getRealPath("/" + f);
-//		request.setAttribute("fileName", f);
-//		String target = "/Done.jspx";
-//		//storing the filename in the context level variable for later use
-//		//this.getServletContext().setAttribute(FILENAME, fileName);
-//		try{
-//			bookStore.export("", fileName, this.getServletContext().getRealPath("/"));
-////			<a href="${pageScope.request.contextPath}${requestScope['fileName']}">${requestScope['fileName']}</a>
-//			request.getRequestDispatcher(target).forward(request, response);
-//		}
-//		catch (Exception e){
-//			e.printStackTrace();
-//		}
-//    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -203,8 +142,20 @@ public class Start extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		queryTables(request);
-		serveJSP(request, response);
+		//testing the shopping cart
+//		Enumeration<String> tmp = request.getParameterNames();
+//		while (tmp.hasMoreElements())
+//		{
+//			String tmp1 = tmp.nextElement();
+//			System.out.println(tmp1 + "=" + request.getParameter(tmp1));
+//		}
+		if(request.getParameter("cart").equals("true")){
+			request.getRequestDispatcher("ShoppingCart").forward(request, response);
+		}
+		else{
+			queryTables(request);
+			serveJSP(request, response);
+		}
 	}
 
 }

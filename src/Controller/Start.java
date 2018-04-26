@@ -52,33 +52,51 @@ public class Start extends HttpServlet {
         
     }
     
-    private void queryTables(HttpServletRequest request) { 	
-    	this.category = request.getParameter("category");
-		this.bID = request.getParameter("bID");
-		this.title = request.getParameter("title");
+    private void queryTables(HttpServletRequest request) {
+    	String searchByCategoryParameter = request.getParameter("searchByCategory");
+    	String searchByTextParameter = request.getParameter("searchByTextButton");
+    	String category = request.getParameter("category");
+    	if (searchByCategoryParameter != null && searchByCategoryParameter.equals("true"))
+    	{
+    		System.out.println("1");
+    		this.category = category;
+    		this.bID = request.getParameter("bID");
+    		this.title = request.getParameter("title");
+    		try{
+    			bookBeanList = bookStore.searchByCategory(this.category);
+    		}catch (Exception e){
+    			e.printStackTrace();
+    		}
+    	}
+    	else if (searchByTextParameter != null && searchByTextParameter.equals("true"))
+    	{
+    		System.out.println("2");
+    		this.title = request.getParameter("searchByText");
+    		try{
+    			bookBeanList = bookStore.searchByTitle(this.title);
+    		}catch (Exception e){
+    			e.printStackTrace();
+    		}
+    	}
 		
 		//sample code to debug parameters, dont delete this
-//		System.out.println(this.category);
-//		Enumeration<String> tmp = request.getParameterNames();
-//		while (tmp.hasMoreElements())
-//		{
-//			String tmp1 = tmp.nextElement();
-//			System.out.println(tmp1 + "=" + request.getParameter(tmp1));
-//		}
+		System.out.println(this.category);
+		Enumeration<String> tmp = request.getParameterNames();
+		while (tmp.hasMoreElements())
+		{
+			String tmp1 = tmp.nextElement();
+			System.out.println(tmp1 + "=" + request.getParameter(tmp1));
+		}
 		//future implementation; fetch any other parameters offered by the request object.
 		
-		try{
-			bookBeanList = bookStore.searchByCategory(this.category);
-		}catch (Exception e){
-			e.printStackTrace();
-		}
+		
     }
 
     //prints out to the jspx using ajax 
     private void serveJSP(HttpServletRequest request, HttpServletResponse response)
     		throws ServletException, IOException {
 		String searchByCategoryParameter = request.getParameter("searchByCategory");
-		
+		String searchByTextParameter = request.getParameter("searchByTextButton");
 		if (searchByCategoryParameter != null && searchByCategoryParameter.equals("true")) {
 			
 			request.setAttribute("categoryResultList", bookBeanList);
@@ -88,7 +106,44 @@ public class Start extends HttpServlet {
 			try {
 				Collection<BookBean> bbean = bookBeanList.values();
 				Iterator<BookBean> bookIterator = bbean.iterator();
-				request.setAttribute("kitty", bookIterator.next().getThumbnail());
+				//request.setAttribute("kitty", bookIterator.next().getThumbnail());
+				
+				rw.println("<table border='1'>");
+				rw.println("<tr>");
+				rw.println("<td>book ID</td>");
+				rw.println("<td>title</td>");
+				rw.println("<td>category</td>");
+				rw.println("<td>price</td>");
+				rw.println("</tr>");
+				while (bookIterator.hasNext())
+				{
+					BookBean item = bookIterator.next();
+					System.out.println(item.getThumbnail());
+					String bID = item.getbID();
+					String title = item.getTitle();
+					String category = item.getCategory();
+					int price = item.getPrice();
+					rw.println("<tr>");
+					rw.print("<td>" + bID + "</td>");
+					rw.print("<td>" + title + "</td>");
+					rw.print("<td>" + category + "</td>");
+					rw.print("<td>" + price + "</td>");
+					rw.println("</tr>");
+				}
+				rw.println("</table");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(searchByTextParameter != null && searchByTextParameter.equals("true")){
+			request.setAttribute("categoryResultList", bookBeanList);
+			
+			//server-side population of results, will get rid of it once narbeh we figure out the json alterntive
+			PrintWriter rw = response.getWriter();
+			try {
+				Collection<BookBean> bbean = bookBeanList.values();
+				Iterator<BookBean> bookIterator = bbean.iterator();
+				//request.setAttribute("kitty", bookIterator.next().getThumbnail());
 				
 				rw.println("<table border='1'>");
 				rw.println("<tr>");
@@ -148,14 +203,8 @@ public class Start extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-//		if (monthlyReportParameter != null && monthlyReportParameter.equals("true")) {
-//			
-//		}
-		//else{
-			queryTables(request);
-			serveJSP(request, response);
-		//}
+		queryTables(request);
+		serveJSP(request, response);
 	}
 
 }

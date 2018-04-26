@@ -66,8 +66,29 @@ public class BookDAO {
 		r.close();
 		p.close();
 		con.close();
-		return rv;
+		return rv;	
+	}
+	
+	public Map<String, BookBean> searchByTitle(String title) throws SQLException{
+		String query = String.format("select * from BOOK where title like '%%%s%%'", title);
 		
+		Map<String, BookBean> rv = new HashMap<String, BookBean>();
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		while(r.next())
+		{
+			String bID = r.getString("BID");
+			String category = r.getString("CATEGORY");
+			String titleDB = r.getString("TITLE");
+			int price = r.getInt("PRICE");
+			String thumbnail = r.getString("THUMBNAIL");
+			rv.put(bID,new BookBean(bID, titleDB, category, price, thumbnail));
+		}
+		r.close();
+		p.close();
+		con.close();
+		return rv;	
 	}
 	
 }

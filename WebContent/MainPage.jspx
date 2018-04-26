@@ -9,7 +9,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="StyleSheet" href="res/mainPage.css" type="text/css" title="eecs4413" media="screen, print"/>
 <script type="text/javascript" src="res/mainPage.js">;</script>
 
@@ -18,26 +17,30 @@
 <title>Brick and Mortars</title>
 </head>
 
-<body>
-<!-- 	<form class="example" action="action_page.php"> -->
-<!-- 			  <input type="text" placeholder="Search.." name="search"> -->
-<!-- 			  <button type="submit"><i class="fa fa-search"></i></button> -->
-<!-- 	</form> -->
+<body> 
+	
 	<FORM action=""  method="POST" >
 	<fieldset>
-	<center>	<h1 style="color:white;">Brick And Mortars</h1></center>
-
-		
-
+		<div class="topnav">
+			  <a class="active" href="#home">Home</a>
+			  <a href="#about">About</a>
+			  <a href="#contact">Contact</a>
+			  <input type="text" id="searchByText" name="searchByText" placeholder="Search.."/>
+			  <button name="searchByTextButton" id="searchByTextButton" value="true" onclick="searchByTextAjax('${pageContext.request.contextPath}/Start');return false;">
+	 				Search
+			</button>
+		</div>
+	
+		<center>	<h1 style="color:white;">Brick And Mortars</h1></center>
 		<select name="category" id="category">
-			<option>Choose Category</option>
-			<option>Science</option>
-			<option>Fiction</option>
-			<option>Tech</option>
-			<option>Lifestyle</option>
-			<option>Childrens</option>
-			<option>Law</option>
-			<option>Non-Fiction</option>
+			<option selected="selected" disabled="disabled" hidden="true">Choose Category</option>
+			<option value="Science">Science</option>
+			<option value="Fiction">Fiction</option>
+			<option value="Tech">Tech</option>
+			<option value="Lifestyle">Lifestyle</option>
+			<option value="Childrens">Childrens</option>
+			<option value="Law">Law</option>
+			<option value="Non-Fiction">Non-Fiction</option>
 		</select>
 		<BR />
 			

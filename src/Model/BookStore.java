@@ -49,6 +49,17 @@ public class BookStore {
 		}
 	}
 	
+	public Map<String, BookBean> searchByTitle(String title) throws Exception
+	{
+		try{
+			return books.searchByTitle(title);
+		}
+		catch (Exception e)
+		{
+			throw new Exception();
+		}
+	}
+	
 	//will call this in the export to report the books sold in the past month
 	public Map<String, PurchaseBean> searchLastMonth() throws Exception
 	{

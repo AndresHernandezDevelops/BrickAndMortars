@@ -11,9 +11,7 @@
 
 <link rel="StyleSheet" href="res/mainPage.css" type="text/css" title="eecs4413" media="screen, print"/>
 <script type="text/javascript" src="res/mainPage.js">;</script>
-
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 <title>Brick and Mortars</title>
 </head>
 
@@ -21,17 +19,50 @@
 	
 	<FORM action=""  method="POST" >
 	<fieldset>
+		<div id="mySidenav" class="sidenav">
+  			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&amp;times</a>
+  			<a href="#">Science</a>
+ 			<a href="#">Fiction</a>
+  			<a href="#">Tech</a>
+  			<a href="#">Lifestyle</a>
+  			<a href="#">Childrens</a>
+  			<a href="#">Law</a>
+  			<a href="#">Non-Fiction</a>
+		</div>
+		
+		<script>function openNav() {
+		    document.getElementById("mySidenav").style.width = "250px";
+		    document.getElementById("main").style.marginLeft = "250px";
+		    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+		}
+
+		/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+		function closeNav() {
+		    document.getElementById("mySidenav").style.width = "0";
+		    document.getElementById("main").style.marginLeft = "0";
+		    document.body.style.backgroundColor = "white";
+		}
+		</script>
+		
+		<!-- Add all page content inside this div if you want the side nav to 
+		push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+	<div id="main">
 		<div class="topnav">
 			  <a class="active" href="#home">Home</a>
 			  <a href="#about">About</a>
 			  <a href="#contact">Contact</a>
 			  <input type="text" id="searchByText" name="searchByText" placeholder="Search.."/>
-			  <button name="searchByTextButton" id="searchByTextButton" value="true" onclick="searchByTextAjax('${pageContext.request.contextPath}/Start');return false;">
+			  <div>
+			  	<ul>
+			  		<button name="searchByTextButton" id="searchByTextButton" value="true" onclick="searchByTextAjax('${pageContext.request.contextPath}/Start');return false;">
 	 				Search
-			</button>
-		</div>
-	
-		<center>	<h1 style="color:white;">Brick And Mortars</h1></center>
+					</button>
+				</ul>
+			</div>
+		</div>	
+		
+		<span style="font-size:30px;cursor:pointer" onclick="openNav()">Category</span>	
+		<BR />
 		<select name="category" id="category">
 			<option selected="selected" disabled="disabled" hidden="true">Choose Category</option>
 			<option value="Science">Science</option>
@@ -41,20 +72,27 @@
 			<option value="Childrens">Childrens</option>
 			<option value="Law">Law</option>
 			<option value="Non-Fiction">Non-Fiction</option>
-		</select>
+		</select>			
 		<BR />
-			
 		<BR />
-		
 		<button name="searchByCategory" id="searchByCategory" value="true" onclick="doAjax('${pageContext.request.contextPath}/Start');return false;">
  				Search By Category
 		</button>
 		
+		<BR />
+		<BR />
 		
-		
+		<center>
+			<h2>Submit a Review</h2>
+				<textarea id="review" rows="15" cols="100" maxlength="1000" onfocus="review.value = '';">Enter review here (max 1000 chars)</textarea>
+				<div>
+					<BR />
+					<button name="submitReview" id="submitReview">Submit Review</button>
+				</div>
+		</center>
+		</div>
 	</fieldset>
 	</FORM>
-	<img src="'${kitty}'"></img>
 	<div id="result"></div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package Bean;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -11,12 +12,13 @@ public class CartBean {
 	private Map<BookBean, Integer> books;
 	private double subtotal;
 	private double total;
+	private String sessionID;
 	
-//	public CartBean(){
-//		//this(new Map<BookBean, Integer>);
-//	}
+	public CartBean(){
+		this(new HashMap<BookBean, Integer>());
+	}
 
-	public CartBean(Map<BookBean, Integer> books) {
+	public CartBean(HashMap<BookBean, Integer> books) {
 		this.books = books;
 		this.subtotal = 0;
 		this.total = 0;

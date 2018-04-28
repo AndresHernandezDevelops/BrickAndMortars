@@ -1,13 +1,8 @@
 ----------------------------------------------------------------
-Thu Apr 26 14:05:28 EDT 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0163-0321-ab2a-000017f8feb0 
-on database directory /eecs/home/mymsong/workspace/BrickAndMortars/MyDB with class loader ParallelWebappClassLoader
-  context: BrickAndMortars
-  delegate: false
-----------> Parent Classloader:
-java.net.URLClassLoader@76ed5528
- 
-Loaded from file:/eecs/home/mymsong/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/BrickAndMortars/WEB-INF/lib/derby.jar
+Fri Apr 27 22:10:27 EDT 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0163-0a04-0ad0-000002e3a230 
+on database directory /eecs/home/mymsong/workspace/BrickAndMortars/MyDB with class loader java.net.FactoryURLClassLoader@7792eaee 
+Loaded from file:/eecs/home/mymsong/workspace/db-derby-10.12.1.1-bin/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_144-b01
 user.dir=/eecs/home/mymsong/workspace/BrickAndMortars
@@ -16,3 +11,6 @@ os.arch=amd64
 os.version=3.10.0-693.21.1.el7.x86_64
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Fri Apr 27 22:18:11 EDT 2018:
+Shutting down instance a816c00e-0163-0a04-0ad0-000002e3a230 on database directory /eecs/home/mymsong/workspace/BrickAndMortars/MyDB with class loader java.net.FactoryURLClassLoader@7792eaee 

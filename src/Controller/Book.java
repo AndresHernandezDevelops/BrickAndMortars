@@ -20,13 +20,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Book")
 public class Book extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	
 	
 	private BookBean book;
 	private CartBean cart;
 
-	
     /**
      * @see HttpServlet#HttpServlet()
      */

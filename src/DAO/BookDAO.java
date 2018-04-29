@@ -12,7 +12,6 @@ import javax.sql.DataSource;
 public class BookDAO {
 	
 	DataSource ds;
-	BookBean bb;
 	
 	//constructor that initializes the datasource object
 	public BookDAO() throws ClassNotFoundException{

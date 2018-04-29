@@ -113,8 +113,22 @@ INSERT INTO VisitEvent (day, bid, eventtype) VALUES ('12242015', 'b001', 'CART')
 INSERT INTO VisitEvent (day, bid, eventtype) VALUES ('12252015', 'b001', 'PURCHASE');
 
 
-update visitevent set day = '20150120' where day = '01202015';
-update visitevent set day = '20151220' where day = '12242015';
-update visitevent set day = '20151221' where day = '12252015';
-update visitevent set day = '20151222' where day = '12232015';
-update visitevent set day = '20151225' where day = '12202015';
+update visitevent set day = '20150120' where day = '20180103';
+update visitevent set day = '20151220' where day = '20170429';
+update visitevent set day = '20151221' where day = '20180426';
+update visitevent set day = '20151222' where day = '20180425';
+update visitevent set day = '20151225' where day = '20180424';
+
+CREATE TABLE REVIEW (
+bid VARCHAR(20) NOT NULL,
+name VARCHAR(20) NOT NULL,
+day varchar(20) NOT NULL,
+review varchar(200),
+rating int,
+PRIMARY KEY(bid, name, day),
+FOREIGN KEY (bid) REFERENCES book (bid) ON DELETE CASCADE
+)
+
+insert into review(bid, name, day, review, rating) values ('b001', 'joseph', '20180420162530', 'this book sucks!!!!! somebody save me!!', 5);
+insert into review(bid, name, day, review, rating) values ('b001', 'anonymous', '20180421183034', 'this book aint that bad, but ill still give it a 1', 1);
+insert into review(bid, name, day, review, rating) values ('b002', 'henry', '20180415104445', 'meh ive written better books', 3);

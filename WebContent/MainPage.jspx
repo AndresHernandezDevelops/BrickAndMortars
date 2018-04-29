@@ -99,6 +99,7 @@
 	</fieldset>
 	</FORM>
 	<div id="result"></div>
+	<div id="thumbnail"></div>
 </body>
 </html>
 </jsp:root>

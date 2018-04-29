@@ -5,11 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import Bean.BookBean;
 import Bean.ReviewBean;
 
 public class ReviewDAO {
@@ -27,7 +27,7 @@ public class ReviewDAO {
 		}
 	}
 	
-	public HashMap<String, ReviewBean> retrieveByBID (String bookID) throws SQLException
+	public Map<String, ReviewBean> searchReviews(String bookID) throws SQLException
 	{
 		String query = String.format("select * from REVIEW where bID = " + bookID);
 		
@@ -49,5 +49,17 @@ public class ReviewDAO {
 		p.close();
 		con.close();
 		return rv;
+	}
+	
+	public void addReview(String bID, String username, String time, String review, int rating) throws SQLException
+	{
+		String query = String.format("insert into review (bid, username, day, review, rating)"
+				+ " VALUES ('" + bID + "', '" + username + "', '" + time + "', '" + review + "', '" +  rating + "')");
+		System.out.println("debugging the addReview query: " + query);
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		p.executeUpdate();
+		p.close();
+		con.close();
 	}
 }

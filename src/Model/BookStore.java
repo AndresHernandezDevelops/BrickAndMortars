@@ -26,7 +26,7 @@ import Bean.*;
 
 public class BookStore {
 
-	//private DAO object used for accessing the database
+	//private DAO objects used for accessing the database
 	private BookDAO books;
 	private eventTypeDAO events;
 	private ReviewDAO reviews;
@@ -36,9 +36,10 @@ public class BookStore {
 	{
 		books = new BookDAO();
 		events = new eventTypeDAO();
+		reviews = new ReviewDAO();
 	}
 	
-	//a method used to retrieve the books by category from the DAO object.
+	//main page search by category
 	public Map<String, BookBean> searchByCategory(String category) throws Exception
 	{
 		try{
@@ -50,10 +51,40 @@ public class BookStore {
 		}
 	}
 	
+	//main page search bar
 	public Map<String, BookBean> searchByTitle(String title) throws Exception
 	{
 		try{
 			return books.searchByTitle(title);
+		}
+		catch (Exception e)
+		{
+			throw new Exception();
+		}
+	}
+	
+	//returns the reviews for the book page
+	public Map<String, ReviewBean> searchReviews(String bID) throws Exception
+	{
+		try{
+			return reviews.searchReviews(bID);
+		}
+		catch (Exception e)
+		{
+			throw new Exception();
+		}
+	}
+	
+	public void addReview(String bID, String username, String review, int rating) throws Exception
+	{
+		try{
+			//get the date to the second in the form of YYYYmmddHHmmss and pass it to this method as well
+			Calendar cal = Calendar.getInstance();
+			Date result = cal.getTime();
+			DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+			String time = dateFormat.format(result).toString();
+			System.out.println("testing the add review date and time: " + time);
+			reviews.addReview(bID, username, time, review, rating);
 		}
 		catch (Exception e)
 		{
@@ -79,7 +110,7 @@ public class BookStore {
 		}
 	}
 	
-	
+	//book report for the admins
 	public void export(String lastMonth, String filename, String f) throws Exception{
 		List<PurchaseBean> list = new ArrayList<PurchaseBean>();
 		Collection<PurchaseBean> sbean = this.searchLastMonth().values();

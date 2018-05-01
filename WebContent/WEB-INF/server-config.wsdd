@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -33,18 +33,17 @@
   <ns1:parameter name="className" value="org.apache.axis.Version"/>
  </ns1:service>
  <ns1:service name="BookRetrievalSOAP" provider="java:RPC" style="wrapped" use="literal">
-  <ns3:operation name="getProductInfo" qname="ns1:getProductInfo" returnQName="ns1:getProductInfoReturn" returnType="ns2:BookBean" soapAction="" xmlns:ns1="http://Model" xmlns:ns2="http://Bean" xmlns:ns3="http://xml.apache.org/axis/wsdd/">
-   <ns3:parameter qname="ns1:productID" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-  </ns3:operation>
+  <ns2:operation name="getProductInfo" qname="ns1:getProductInfo" returnQName="ns1:getProductInfoReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://Model" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:productID" type="xsd:string"/>
+  </ns2:operation>
   <ns1:parameter name="allowedMethods" value="getProductInfo"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="BookRetrievalSOAP"/>
   <ns1:parameter name="className" value="Model.BookRetrievalSOAP"/>
   <ns1:parameter name="wsdlServicePort" value="BookRetrievalSOAP"/>
-  <ns1:parameter name="schemaQualified" value="http://Model,http://Bean"/>
+  <ns1:parameter name="schemaQualified" value="http://Model"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://Model"/>
   <ns1:parameter name="wsdlServiceElement" value="BookRetrievalSOAPService"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns3:BookBean" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:Bean.BookBean" xmlns:ns3="http://Bean"/>
  </ns1:service>
  <ns1:transport name="http">
   <ns1:requestFlow>

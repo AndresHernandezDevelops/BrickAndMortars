@@ -5,16 +5,15 @@
   <service name="BookRetrievalSOAP" provider="java:RPC" style="wrapped" use="literal">
       <parameter name="wsdlTargetNamespace" value="http://Model"/>
       <parameter name="wsdlServiceElement" value="BookRetrievalSOAPService"/>
-      <parameter name="schemaQualified" value="http://Model,http://Bean"/>
+      <parameter name="schemaQualified" value="http://Model"/>
       <parameter name="wsdlServicePort" value="BookRetrievalSOAP"/>
       <parameter name="className" value="Model.BookRetrievalSOAP"/>
       <parameter name="wsdlPortType" value="BookRetrievalSOAP"/>
       <parameter name="typeMappingVersion" value="1.2"/>
-      <operation xmlns:operNS="http://Model" xmlns:retNS="http://Model" xmlns:rtns="http://Bean" name="getProductInfo" qname="operNS:getProductInfo" returnQName="retNS:getProductInfoReturn" returnType="rtns:BookBean" soapAction="">
+      <operation xmlns:operNS="http://Model" xmlns:retNS="http://Model" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getProductInfo" qname="operNS:getProductInfo" returnQName="retNS:getProductInfoReturn" returnType="rtns:string" soapAction="">
         <parameter xmlns:pns="http://Model" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:productID" type="tns:string"/>
       </operation>
       <parameter name="allowedMethods" value="getProductInfo"/>
 
-      <typeMapping xmlns:ns="http://Bean" qname="ns:BookBean" type="java:Bean.BookBean" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
   </service>
 </deployment>

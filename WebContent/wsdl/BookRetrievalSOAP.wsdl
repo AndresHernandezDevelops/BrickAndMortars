@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions targetNamespace="http://Model" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://Model" xmlns:intf="http://Model" xmlns:tns1="http://Bean" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<wsdl:definitions targetNamespace="http://Model" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://Model" xmlns:intf="http://Model" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <!--WSDL created by Apache Axis version: 1.4
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://Model" xmlns="http://www.w3.org/2001/XMLSchema">
-   <import namespace="http://Bean"/>
    <element name="getProductInfo">
     <complexType>
      <sequence>
@@ -15,20 +14,10 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <element name="getProductInfoResponse">
     <complexType>
      <sequence>
-      <element name="getProductInfoReturn" type="tns1:BookBean"/>
+      <element name="getProductInfoReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
-  </schema>
-  <schema elementFormDefault="qualified" targetNamespace="http://Bean" xmlns="http://www.w3.org/2001/XMLSchema">
-   <complexType name="BookBean">
-    <sequence>
-     <element name="bID" nillable="true" type="xsd:string"/>
-     <element name="category" nillable="true" type="xsd:string"/>
-     <element name="price" type="xsd:int"/>
-     <element name="title" nillable="true" type="xsd:string"/>
-    </sequence>
-   </complexType>
   </schema>
  </wsdl:types>
 

@@ -24,8 +24,10 @@ import DAO.PurchaseOrderItemDAO;
 public class ProductRetrievalREST {
 
 	
-	HashMap<Integer, List<PurchaseOrderItemBean>> data;
+	private static HashMap<Integer, List<PurchaseOrderItemBean>> data;
+	private static ProductRetrievalREST instance;
 	
+	//do not call constructor call getInstance() to get the instance same as the REST
 	public ProductRetrievalREST()
 	{
 		data = new HashMap<Integer, List<PurchaseOrderItemBean>>();
@@ -35,6 +37,12 @@ public class ProductRetrievalREST {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	//call to get instance of the object
+	public static ProductRetrievalREST getInstance()
+	{
+		return instance;
 	}
 	
 	@GET
@@ -55,10 +63,8 @@ public class ProductRetrievalREST {
 		return outList;
 	}
 	
-	@POST
-	@Path("/orders/addEntry/")
-	@Consumes("text/plain")
-	public String addEntry(@FormParam("id") String sid, @FormParam("bid") String bid, @FormParam("price") String sprice)
+	//call this to add a data entry
+	public String addEntry(String sid,String bid, String sprice)
 	{
 		System.out.println(sid);
 		System.out.println(bid);
@@ -77,7 +83,6 @@ public class ProductRetrievalREST {
 			tlist.add(tmp);
 			data.put(id, tlist);
 		}
-		System.out.println(data.containsKey(id));
 		return id + "," + id + " " + bid + " " + price;
 	}
 }

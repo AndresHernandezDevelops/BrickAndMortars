@@ -51,7 +51,7 @@ function fetchResult(address){
 	 
 	 var searchByCategory = document.getElementById("searchByCategory").value;
 	 
-	 var data="bID=null&title=null&category=" + category + "&price=0&searchByCategory=" + searchByCategory;
+	 var data="category=" + category + "&price=0&searchByCategory=" + searchByCategory;
 
 	 request.onreadystatechange = function()
 	 {

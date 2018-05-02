@@ -40,8 +40,7 @@
 		</tr>
 		
 		<tr>
-			<form action="http://localhost:8080/BrickAndMortars/Register.jspx">
-			<input type="submit" value="New here? Click to register"/></form>
+			<input type="submit" value="New here? Click to register"/>
 		</tr>
 	</TABLE>
 	</form>

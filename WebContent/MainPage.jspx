@@ -55,7 +55,7 @@
 			  <input type="text" id="searchByText" name="searchByText" placeholder="Search.."/>
 			  <div>
 			  	<ul>
-			  		<button name="searchByTextButton" id="searchByTextButton" value="true" onclick="searchByTextAjax('${pageContext.request.contextPath}/Start');return false;">
+			  		<button name="searchByTextButton" id="searchByTextButton" value="true" onclick="searchByTextAjax('${pageContext.request.contextPath}/MainPage');return false;">
 	 				Search
 					</button>
 				</ul>
@@ -76,7 +76,7 @@
 		</select>			
 		<BR />
 		<BR />
-		<button name="searchByCategory" id="searchByCategory" value="true" onclick="doAjax('${pageContext.request.contextPath}/Start');return false;">
+		<button name="searchByCategory" id="searchByCategory" value="true" onclick="doAjax('${pageContext.request.contextPath}/MainPage');return false;">
  				Search By Category
 		</button>
 		

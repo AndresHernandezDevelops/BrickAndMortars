@@ -53,47 +53,47 @@ public class BookRetrievalSOAP {
 		String cate = tmp.getCategory();
 		int price = tmp.getPrice();
 		
-		if (bid.contains(delimiter))
-		{
-			String[] tmpchar = bid.split(delimiter);
-			StringBuilder build = new StringBuilder();
-			build.append(tmpchar[0]);
-			int i = 1;
-			for (i = 1; i < tmpchar.length; i++)
-			{
-				build.append("\\");
-				build.append(tmpchar[i]);
-			}
-			cate = build.toString();
-		}
+//		if (bid.contains(delimiter))
+//		{
+//			String[] tmpchar = bid.split(delimiter);
+//			StringBuilder build = new StringBuilder();
+//			build.append(tmpchar[0]);
+//			int i = 1;
+//			for (i = 1; i < tmpchar.length; i++)
+//			{
+//				build.append("\\");
+//				build.append(tmpchar[i]);
+//			}
+//			cate = build.toString();
+//		}
 		
-		if (title.contains(delimiter))
-		{
-			String[] tmpchar = title.split(delimiter);
-			StringBuilder build = new StringBuilder();
-			build.append(tmpchar[0]);
-			int i = 1;
-			for (i = 1; i < tmpchar.length; i++)
-			{
-				build.append("\\");
-				build.append(tmpchar[i]);
-			}
-			title = build.toString();
-		}
-		
-		if (cate.contains(delimiter))
-		{
-			String[] tmpchar = cate.split(delimiter);
-			StringBuilder build = new StringBuilder();
-			build.append(tmpchar[0]);
-			int i = 1;
-			for (i = 1; i < tmpchar.length; i++)
-			{
-				build.append("\\");
-				build.append(tmpchar[i]);
-			}
-			cate = build.toString();
-		}
+//		if (title.contains(delimiter))
+//		{
+//			String[] tmpchar = title.split(delimiter);
+//			StringBuilder build = new StringBuilder();
+//			build.append(tmpchar[0]);
+//			int i = 1;
+//			for (i = 1; i < tmpchar.length; i++)
+//			{
+//				build.append("\\");
+//				build.append(tmpchar[i]);
+//			}
+//			title = build.toString();
+//		}
+//		
+//		if (cate.contains(delimiter))
+//		{
+//			String[] tmpchar = cate.split(delimiter);
+//			StringBuilder build = new StringBuilder();
+//			build.append(tmpchar[0]);
+//			int i = 1;
+//			for (i = 1; i < tmpchar.length; i++)
+//			{
+//				build.append("\\");
+//				build.append(tmpchar[i]);
+//			}
+//			cate = build.toString();
+//		}
 		
 		String out = bid + delimiter + title + delimiter + cate + delimiter + price;
 		return out;

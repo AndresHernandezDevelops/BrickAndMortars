@@ -20,8 +20,8 @@ import Model.BookStore;
 /**
  * Servlet implementation class Start
  */
-@WebServlet(urlPatterns = { "/Start", "/Startup", "/Startup/*", "/Start/*" })
-public class Start extends HttpServlet {
+@WebServlet(urlPatterns =  "/MainPage" )
+public class MainPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	//bookstore object to access the various functions of a bookstore
@@ -46,7 +46,7 @@ public class Start extends HttpServlet {
      * @throws ServletException 
      * @see HttpServlet#HttpServlet()
      */
-    public Start() throws ServletException {
+    public MainPage() throws ServletException {
         this.init();	
         
     }
@@ -149,7 +149,7 @@ public class Start extends HttpServlet {
 //			String tmp1 = tmp.nextElement();
 //			System.out.println(tmp1 + "=" + request.getParameter(tmp1));
 //		}
-		if(request.getParameter("cart").equals("true"))
+		if(request.getParameter("cart") != null && request.getParameter("cart").equals("true"))
 			request.getRequestDispatcher("ShoppingCart").forward(request, response);	
 		else if(request.getParameter("bookID")!= null){
 			request.setAttribute("book", bookBeanList.get(request.getParameter("bookID")));//setting the chosen book to a request variable and grabbing it from shopping cart

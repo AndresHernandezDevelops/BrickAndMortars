@@ -19,50 +19,25 @@
 	
 	<FORM action=""  method="POST" >
 	<fieldset>
-		<div id="mySidenav" class="sidenav">
-  			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&amp;times</a>
-  			<a href="#">Science</a>
- 			<a href="#">Fiction</a>
-  			<a href="#">Tech</a>
-  			<a href="#">Lifestyle</a>
-  			<a href="#">Childrens</a>
-  			<a href="#">Law</a>
-  			<a href="#">Non-Fiction</a>
-		</div>
 		
-		<script>function openNav() {
-		    document.getElementById("mySidenav").style.width = "250px";
-		    document.getElementById("main").style.marginLeft = "250px";
-		    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-		}
-
-		/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-		function closeNav() {
-		    document.getElementById("mySidenav").style.width = "0";
-		    document.getElementById("main").style.marginLeft = "0";
-		    document.body.style.backgroundColor = "white";
-		}
-		</script>
 		
-		<!-- Add all page content inside this div if you want the side nav to 
-		push page content to the right (not used if you only want the sidenav to sit on top of the page -->
 	<div id="main">
 		<div class="topnav">
-			  <a class="active" href="#home">Home</a>
+			  <a class="active" href="http://localhost:8080/BrickAndMortars/MainPage.jspx">Home</a>
 			  <a href="#about">About</a>
-			  <a href="#contact">Contact</a>
-			  <a href="#cart">Shopping Cart</a>
-			  <input type="text" id="searchByText" name="searchByText" placeholder="Search.."/>
-			  <div>
-			  	<ul>
-			  		<button name="searchByTextButton" id="searchByTextButton" value="true" onclick="searchByTextAjax('${pageContext.request.contextPath}/MainPage');return false;">
-	 				Search
+			  <a href="http://localhost:8080/BrickAndMortars/Contact.jspx">Contact</a>
+			  <a href="http://localhost:8080/BrickAndMortars/ShoppingCart.jspx">Shopping Cart</a>
+			  <div class="search-container">
+			  <input type="text" id="searchByText" name="searchByText" placeholder="Search..."/>	  	
+			  		<button type="submit" name="searchByTextButton" id="searchByTextButton" value="true" onclick="searchByTextAjax('${pageContext.request.contextPath}/MainPage');return false;">
+	 				Submit
 					</button>
-				</ul>
+			  <a class="login" href="http://localhost:8080/BrickAndMortars/Login.jspx">Login</a>
+			  <a class="register" href="http://localhost:8080/BrickAndMortars/Register.jspx">Register</a>
 			</div>
 		</div>	
 		
-		<span style="font-size:30px;cursor:pointer" onclick="openNav()">Category</span>	
+		
 		<BR />
 		<select name="category" id="category">
 			<option selected="selected" disabled="disabled" hidden="true">Choose Category</option>
@@ -83,6 +58,23 @@
 		<button name="cart" id="cart" value="true" type="submit">
  				Shopping cart (to be implemented at top bar)
 		</button>
+		
+		<BR />
+		<BR />
+		
+		<table style="width:100%">
+  			<tr>
+    			<th><IMG alt="GOT" src="https://i.imgur.com/KABVpWn.png" /></th>
+    			<th><IMG alt="GOT" src="https://i.imgur.com/KABVpWn.png" /></th> 
+   				<th><IMG alt="GOT" src="https://i.imgur.com/KABVpWn.png" /></th>
+ 		 	</tr>
+ 		 	<tr>
+    			<th><IMG alt="GOT" src="https://i.imgur.com/KABVpWn.png" /></th>
+    			<th><IMG alt="GOT" src="https://i.imgur.com/KABVpWn.png" /></th> 
+   				<th><IMG alt="GOT" src="https://i.imgur.com/KABVpWn.png" /></th>
+ 		 	</tr>
+ 
+		</table>
 		
 		<BR />
 		<BR />

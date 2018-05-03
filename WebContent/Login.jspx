@@ -8,6 +8,8 @@
 		omit-xml-declaration="true" />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
+	<script type="text/javascript" src="res/login.js">;</script>
 	<link rel="stylesheet" href="" type="text/css"/>
 	<title>Login</title>
 	<style>
@@ -16,36 +18,47 @@
 	}</style>
 </head>
 <body>
+
+	
+	
+<form action="" onsubmit="return validate();" method="post">
 	<FIELDSET>
-	<center>
-		<h1>Login</h1>
-		<form action="" method="post">
-	<TABLE>
-		<tr>
-			<td><label for="username">Username: </label></td>
-			<div>
-				<td><input id='username' name='username' /></td>
-			</div>
-		</tr>
-		
-		<tr>
-			<td><label for="password">Password: </label></td>
-			<div>
-				<td><input id='password' name='password' /></td>
-			</div>
-		</tr>
-		
-		<tr>
-		<td><input id='login' name='login' type="submit" value="Login"/></td>
-		</tr>
-		
-		<tr>
-			<input type="submit" value="New here? Click to register"/>
-		</tr>
-	</TABLE>
+		<center>
+			<h1>Login</h1>
+				<TABLE>
+					<tr>
+						<td><label for="username">Username: </label></td>
+						<div>
+							<td><input id='username' name='username' /></td>
+						</div>
+					</tr>
+			
+					<tr>
+						<td><label for="password">Password: </label></td>
+						<div>
+							<td><input id='password' name='password' /></td>
+						</div>
+					</tr>
+					
+					<tr>
+						<td><button type='submit' value="true" id='loginButton' name='loginButton'>Log in</button></td>		
+				
+<!-- 						<td><button value="true" id = "resiterButton" name='registerButton' type="submit" >New here? click to register</button></td> -->
+					</tr>
+				</TABLE>
+			</center>
+		</FIELDSET>
 	</form>
-	</center>
-	</FIELDSET>
+	
+	
+	<form action="" method="post">
+		<FIELDSET>
+			<center>
+				<button value="true" id = "resiterButton" name='registerButton' type="submit" >New here? click to register</button>
+			</center>
+		</FIELDSET>
+	</form>
+	
 </body>
 </html>
 </jsp:root>

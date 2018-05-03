@@ -26,6 +26,20 @@
 			  <a class="active" href="http://localhost:8080/BrickAndMortars/MainPage.jspx">Home</a>
 			  <a href="#about">About</a>
 			  <a href="http://localhost:8080/BrickAndMortars/Contact.jspx">Contact</a>
+			  	
+			  	<div class="dropdown">
+			  		<button class="dropbutton" name="searchByCategory" id="searchByCategory" value="true" onclick="doAjax('${pageContext.request.contextPath}/MainPage');return false;">Category</button>
+			  		<div class="dropdown-content">
+			  			<a href="#">Science</a>
+			  			<a href="#">Fiction</a>
+			  			<a href="#">Tech</a>
+			  			<a href="#">LifeStyle</a>
+			  			<a href="#">Childrens</a>
+			  			<a href="#">Law</a>
+			  			<a href="#">Non-Fiction</a>
+			  		</div>
+			  	</div>
+			  	
 			  <a href="http://localhost:8080/BrickAndMortars/ShoppingCart.jspx">Shopping Cart</a>
 			  <div class="search-container">
 			  <input type="text" id="searchByText" name="searchByText" placeholder="Search..."/>	  	
@@ -36,28 +50,6 @@
 			  <a class="register" href="http://localhost:8080/BrickAndMortars/Register.jspx">Register</a>
 			</div>
 		</div>	
-		
-		
-		<BR />
-		<select name="category" id="category">
-			<option selected="selected" disabled="disabled" hidden="true">Choose Category</option>
-			<option value="Science">Science</option>
-			<option value="Fiction">Fiction</option>
-			<option value="Tech">Tech</option>
-			<option value="Lifestyle">Lifestyle</option>
-			<option value="Childrens">Childrens</option>
-			<option value="Law">Law</option>
-			<option value="Non-Fiction">Non-Fiction</option>
-		</select>			
-		<BR />
-		<BR />
-		<button name="searchByCategory" id="searchByCategory" value="true" onclick="doAjax('${pageContext.request.contextPath}/MainPage');return false;">
- 				Search By Category
-		</button>
-		
-		<button name="cart" id="cart" value="true" type="submit">
- 				Shopping cart (to be implemented at top bar)
-		</button>
 		
 		<BR />
 		<BR />

@@ -8,7 +8,7 @@ public class BookBean {
 	private String title;
 	private String category;
 	private String thumbnail;
-	private int price;
+	private double price;
 	
 	//default constructor needed for webservices
 	public BookBean()
@@ -17,7 +17,7 @@ public class BookBean {
 	}
 	
 	//constructor
-	public BookBean(String bID, String title, String category, int price, String thumbnail)
+	public BookBean(String bID, String title, String category, double price, String thumbnail)
 	{
 		this.bID = bID;
 		this.title = title;
@@ -51,7 +51,7 @@ public class BookBean {
 		this.category = category;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 

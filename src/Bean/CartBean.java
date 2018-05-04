@@ -39,7 +39,7 @@ public class CartBean {
 	}
 	
 	public double getSubtotal(){
-		float result = 0;
+		double result = 0;
 		Iterator <Map.Entry<BookBean, Integer>> it = books.entrySet().iterator();
 		while(it.hasNext())
 		{

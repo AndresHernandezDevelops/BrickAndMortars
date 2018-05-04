@@ -117,12 +117,12 @@ public class MainPage extends HttpServlet {
 					String bID = item.getbID();
 					String title = item.getTitle();
 					String category = item.getCategory();
-					int price = item.getPrice();
+					double price = item.getPrice();
 					rw.println("<tr>");
 					rw.print("<td>" + bID + "</td>");
 					rw.print("<td>" + title + "</td>");
 					rw.print("<td>" + category + "</td>");
-					rw.print("<td>" + price + "</td>");
+					rw.print("<td>" + String.format("%.2f", price) + "</td>");
 					rw.println("</tr>");
 				}
 				rw.println("</table");

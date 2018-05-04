@@ -51,7 +51,7 @@ public class BookRetrievalSOAP {
 		String bid = tmp.getbID();
 		String title = tmp.getTitle();
 		String cate = tmp.getCategory();
-		int price = tmp.getPrice();
+		double price = tmp.getPrice();
 		
 //		if (bid.contains(delimiter))
 //		{

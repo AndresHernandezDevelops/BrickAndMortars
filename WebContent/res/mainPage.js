@@ -1,9 +1,6 @@
 function doAjax(address)
 {
-	if(validate())
-		{
-			fetchResult(address);
-		}
+	fetchResult(address);
 }
 
 function searchByTextAjax(address)
@@ -29,21 +26,6 @@ function textValidate(address)
 		alert(errorMessage);
 	return ok;
 }
-
-function validate() {
-	var errorMessage = "";
-	var ok = true;
-	var category = document.getElementById("category").value;
-	if(category.trim() == "")
-	{
-		errorMessage = "invalid category!";
-		ok = false;
-	}
-	if(!ok)
-		alert(errorMessage);
-	return ok;
-}
-
 
 function fetchResult(address){
 	 var request = new XMLHttpRequest();

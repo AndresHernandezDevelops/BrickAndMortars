@@ -57,7 +57,8 @@ public class MainPage extends HttpServlet {
     	String category = request.getParameter("category");
     	if (searchByCategoryParameter != null && searchByCategoryParameter.equals("true"))
     	{
-    		System.out.println("1");
+    		System.out.println("searching by category...");
+    		System.out.println(category);
     		this.category = category;
     		this.bID = request.getParameter("bID");
     		this.title = request.getParameter("title");
@@ -69,7 +70,7 @@ public class MainPage extends HttpServlet {
     	}
     	else if (searchByTextParameter != null && searchByTextParameter.equals("true"))
     	{
-    		System.out.println("2");
+    		System.out.println("searching by text...");
     		this.title = request.getParameter("searchByText");
     		try{
     			bookBeanList = bookStore.searchByTitle(this.title);

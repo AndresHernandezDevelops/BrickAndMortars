@@ -42,19 +42,9 @@
 					
 					<tr>
 						<td><button type='submit' value="true" id='loginButton' name='loginButton'>Log in</button></td>		
-				
-<!-- 						<td><button value="true" id = "resiterButton" name='registerButton' type="submit" >New here? click to register</button></td> -->
+						
 					</tr>
 				</TABLE>
-			</center>
-		</FIELDSET>
-	</form>
-	
-	
-	<form action="" method="post">
-		<FIELDSET>
-			<center>
-				<button value="true" id = "resiterButton" name='registerButton' type="submit" >New here? click to register</button>
 			</center>
 		</FIELDSET>
 	</form>

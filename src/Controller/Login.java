@@ -21,6 +21,16 @@ public class Login extends HttpServlet {
         
     }
 
+    private void queryTables(HttpServletRequest request) {
+    	String loginButtonParameter = request.getParameter("LoginButton");
+    	String usernameParameter = request.getParameter("username");
+    	String passwordParameter = request.getParameter("password");
+    	if(loginButtonParameter != null && loginButtonParameter.equals("true")) {
+    		System.out.println("login button pressed, username=" + usernameParameter + " and password=" + passwordParameter);
+    		
+    	}
+    }
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -32,10 +42,7 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getParameter("username"));
-		System.out.println(request.getParameter("password"));
-		if(request.getParameter("registerButton")!=null)
-			System.out.println(request.getParameter("registerButton"));
+		queryTables(request);
 	}
 
 }

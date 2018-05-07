@@ -30,7 +30,7 @@ public class LoginDAO {
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
 		System.out.println("the login lookup number of results is: " + r.getFetchSize());
-		if(r.getFetchSize() == 1)
+		if(r.next())
 			result = true;
 		r.close();
 		p.close();

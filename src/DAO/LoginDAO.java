@@ -38,4 +38,20 @@ public class LoginDAO {
 		return result;	
 	}
 	
+	public boolean register(String username, String password) throws SQLException{
+		String query = String.format("insert * from LOGIN where username = " + username + " and password = " + password);
+		System.out.println("the login lookup query is: " + query);
+		boolean result = false;
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		System.out.println("the login lookup number of results is: " + r.getFetchSize());
+		if(r.getFetchSize() == 1)
+			result = true;
+		r.close();
+		p.close();
+		con.close();
+		return result;	
+	}
+	
 }

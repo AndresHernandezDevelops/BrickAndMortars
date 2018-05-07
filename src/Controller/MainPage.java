@@ -129,18 +129,20 @@ public class MainPage extends HttpServlet {
     		request.getRequestDispatcher("Login").forward(request, response);
     	else if(registerParamter != null && registerParamter.equals("true"))
     		request.getRequestDispatcher("Register").forward(request, response);
-    	else if(searchByCategoryParameter != null && searchByCategoryParameter.equals("true"))
+    	else if(searchByCategoryParameter != null && searchByCategoryParameter.equals("true")){
     		this.searchByCategory(request);
-    	else if (searchByTextParameter != null && searchByTextParameter.equals("true"))
+    		serveJSP(request, response);
+    	}
+    	else if (searchByTextParameter != null && searchByTextParameter.equals("true")){
     		this.searchByText(request);
+    		serveJSP(request, response);
+    	}
     	else if(bookIDParameter != null && bookIDParameter.equals("true")){
     		request.setAttribute("book", bookBeanList.get(bookIDParameter));//setting the chosen book to a request variable and grabbing it from shopping cart
 			request.getRequestDispatcher("Book").forward(request, response);
     	}
     	else
     		System.out.println("didn't hit any if-statement");
-    	
-    	serveJSP(request, response);
     }
 
 	/**

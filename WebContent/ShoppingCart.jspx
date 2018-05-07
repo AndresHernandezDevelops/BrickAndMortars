@@ -41,6 +41,25 @@
 			</div>
 		</div>	
 		
+		<FIELDSET>
+			<table>
+				<tr>
+					<th>Book title</th>
+					<th>Qty <INPUT id="qty" name="qty" type="number" step="1" value="1"/></th>
+					<th>Price</th>
+				</tr>
+				<tr>
+					<th><TH />
+					<th><TH />
+					<th>subtotal<TH />
+				</tr>
+				<tr>
+					<th><TH />
+					<th><TH />
+					<th>total<TH />
+				</tr>
+			</table>
+		</FIELDSET>
 		
 </body>
 </html>

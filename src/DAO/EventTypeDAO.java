@@ -13,12 +13,12 @@ import javax.sql.DataSource;
 
 import Bean.PurchaseBean;
 
-public class eventTypeDAO {
+public class EventTypeDAO {
 
 	DataSource ds;
 	
 	
-	public eventTypeDAO() throws ClassNotFoundException{
+	public EventTypeDAO() throws ClassNotFoundException{
 		try{
 			ds = (DataSource) (new InitialContext()).lookup("java:/comp/env/jdbc/EECS");
 		} catch (Exception e){

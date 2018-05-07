@@ -51,44 +51,28 @@ public class MainPage extends HttpServlet {
         
     }
     
-    private void queryTables(HttpServletRequest request) {
-    	String searchByCategoryParameter = request.getParameter("searchByCategory");
-    	String searchByTextParameter = request.getParameter("searchByTextButton");
-    	String category = request.getParameter("category");
-    	if (searchByCategoryParameter != null && searchByCategoryParameter.equals("true"))
-    	{
-    		System.out.println("searching by category...");
-    		System.out.println(category);
-    		this.category = category;
-    		this.bID = request.getParameter("bID");
-    		this.title = request.getParameter("title");
-    		try{
-    			bookBeanList = bookStore.searchByCategory(this.category);
-    		}catch (Exception e){
-    			e.printStackTrace();
-    		}
-    	}
-    	else if (searchByTextParameter != null && searchByTextParameter.equals("true"))
-    	{
-    		System.out.println("searching by text...");
-    		this.title = request.getParameter("searchByText");
-    		try{
-    			bookBeanList = bookStore.searchByTitle(this.title);
-    		}catch (Exception e){
-    			e.printStackTrace();
-    		}
-    	}
-		
-		//sample code to debug parameters, DONT DELETE this
-//		System.out.println(this.category);
-//		Enumeration<String> tmp = request.getParameterNames();
-//		while (tmp.hasMoreElements())
-//		{
-//			String tmp1 = tmp.nextElement();
-//			System.out.println(tmp1 + "=" + request.getParameter(tmp1));
-//		}
-		
-		
+    private void searchByCategory(HttpServletRequest request){
+    	System.out.println("searching by category...");
+		this.category = request.getParameter("category");
+		System.out.println("category = " + category);
+		this.bID = request.getParameter("bID");
+		this.title = request.getParameter("title");
+		try{
+			bookBeanList = bookStore.searchByCategory(this.category);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+    }
+    
+    private void searchByText(HttpServletRequest request){
+    	System.out.println("searching by text...");
+		this.title = request.getParameter("searchByText");
+		System.out.println("title = " + title);
+		try{
+			bookBeanList = bookStore.searchByTitle(this.title);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
     }
 
     //prints out to the jspx using ajax 
@@ -130,6 +114,34 @@ public class MainPage extends HttpServlet {
 				e.printStackTrace();
 			}
     }
+    
+    public void processParameters(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    	String cartParameter = request.getParameter("cart");
+    	String bookIDParameter = request.getParameter("bookID");
+    	String loginParameter = request.getParameter("login");
+    	String registerParamter = request.getParameter("register");
+    	String searchByCategoryParameter = request.getParameter("searchByCategory");
+    	String searchByTextParameter = request.getParameter("searchByTextButton");
+
+    	if(cartParameter != null && cartParameter.equals("true"))
+    		request.getRequestDispatcher("ShoppingCart").forward(request, response);
+    	else if(loginParameter != null && loginParameter.equals("true"))
+    		request.getRequestDispatcher("Login").forward(request, response);
+    	else if(registerParamter != null && registerParamter.equals("true"))
+    		request.getRequestDispatcher("Register").forward(request, response);
+    	else if(searchByCategoryParameter != null && searchByCategoryParameter.equals("true"))
+    		this.searchByCategory(request);
+    	else if (searchByTextParameter != null && searchByTextParameter.equals("true"))
+    		this.searchByText(request);
+    	else if(bookIDParameter != null && bookIDParameter.equals("true")){
+    		request.setAttribute("book", bookBeanList.get(bookIDParameter));//setting the chosen book to a request variable and grabbing it from shopping cart
+			request.getRequestDispatcher("Book").forward(request, response);
+    	}
+    	else
+    		System.out.println("didn't hit any if-statement");
+    	
+    	serveJSP(request, response);
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -143,23 +155,14 @@ public class MainPage extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//testing the shopping cart
+		//iterate and print out parameters
 //		Enumeration<String> tmp = request.getParameterNames();
 //		while (tmp.hasMoreElements())
 //		{
 //			String tmp1 = tmp.nextElement();
 //			System.out.println(tmp1 + "=" + request.getParameter(tmp1));
 //		}
-		if(request.getParameter("cart") != null && request.getParameter("cart").equals("true"))
-			request.getRequestDispatcher("ShoppingCart").forward(request, response);	
-		else if(request.getParameter("bookID")!= null){
-			request.setAttribute("book", bookBeanList.get(request.getParameter("bookID")));//setting the chosen book to a request variable and grabbing it from shopping cart
-			request.getRequestDispatcher("Book").forward(request, response);
-		}
-		else{
-			queryTables(request);
-			serveJSP(request, response);
-		}
+		processParameters(request, response);
 	}
 
 }

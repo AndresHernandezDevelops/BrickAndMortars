@@ -28,14 +28,14 @@ public class BookStore {
 
 	//private DAO objects used for accessing the database
 	private BookDAO books;
-	private eventTypeDAO events;
+	private EventTypeDAO events;
 	private ReviewDAO reviews;
 	
 	//constructor
 	public BookStore() throws ClassNotFoundException
 	{
 		books = new BookDAO();
-		events = new eventTypeDAO();
+		events = new EventTypeDAO();
 		reviews = new ReviewDAO();
 	}
 	

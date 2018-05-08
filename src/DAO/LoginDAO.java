@@ -39,18 +39,21 @@ public class LoginDAO {
 	}
 	
 	public boolean register(String username, String password) throws SQLException{
-		String query = String.format("insert * from LOGIN where username = " + username + " and password = " + password);
-		System.out.println("the login lookup query is: " + query);
 		boolean result = false;
-		Connection con = this.ds.getConnection();
-		PreparedStatement p = con.prepareStatement(query);
-		ResultSet r = p.executeQuery();
-		System.out.println("the login lookup number of results is: " + r.getFetchSize());
-		if(r.getFetchSize() == 1)
-			result = true;
-		r.close();
-		p.close();
-		con.close();
+		if(!this.lookup(username, password)) {
+			String query = String.format("register into login (USERNAME, PASSWORD) "
+					+ "VALUES ('" + username + "', '" + password + "')");
+			System.out.println("the register query is: " + query);
+			
+			Connection con = this.ds.getConnection();
+			PreparedStatement p = con.prepareStatement(query);
+			p.executeUpdate();
+			
+			//r.close();
+			p.close();
+			con.close();
+			return true;
+		}
 		return result;	
 	}
 	

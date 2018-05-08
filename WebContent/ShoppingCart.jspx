@@ -45,18 +45,18 @@
 			<table>
 				<tr>
 					<th>Book title</th>
-					<th>Qty <INPUT id="qty" name="qty" type="number" step="1" value="1"/></th>
+					<th>Qty <INPUT id="qty" style="width: 50px" name="qty" type="number" step="1" value="1"/></th>
 					<th>Price</th>
 				</tr>
 				<tr>
-					<th><TH />
-					<th><TH />
-					<th>subtotal<TH />
+					<th></th>
+					<th></th>
+					<th>subtotal</th>
 				</tr>
 				<tr>
-					<th><TH />
-					<th><TH />
-					<th>total<TH />
+					<th></th>
+					<th></th>
+					<th>total</th>
 				</tr>
 			</table>
 		</FIELDSET>

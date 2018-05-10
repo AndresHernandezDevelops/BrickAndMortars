@@ -30,11 +30,11 @@ function textValidate(address)
 function fetchResult(address){
 	 var request = new XMLHttpRequest();
 	 var category = document.getElementById("category").value;
-	 
+
 	 var searchByCategory = document.getElementById("searchByCategory").value;
 	 
 	 var data="category=" + category + "&price=0&searchByCategory=" + searchByCategory;
-
+	 
 	 request.onreadystatechange = function()
 	 {
 			handler(request);
@@ -55,14 +55,16 @@ function handler(request){
 
 function textFetchResult(address){
 	 var request = new XMLHttpRequest();
-	 
+
 	 var searchByText = document.getElementById("searchByText").value;
+
 	 var searchByTextButton = document.getElementById("searchByTextButton").value;
 	 
 	 var data="searchByText=" + searchByText + "&searchByTextButton=" + searchByTextButton;
+
 	 request.onreadystatechange = function()
 	 {
-			textHandler(request);
+		textHandler(request);
 	 };
 	 request.open("POST", address, true);
 	 request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

@@ -8,13 +8,19 @@ import Bean.CartBean;
 
 public class SetOfCartsBean {
 
-	private static Map<String, CartBean> carts = new HashMap<String, CartBean>();
+	private Map<String, CartBean> carts;
+	private static SetOfCartsBean instance = new SetOfCartsBean();
 	
 	private SetOfCartsBean(){
-		
+		this.carts = new HashMap<String, CartBean>();
 	}
 	
-	public static CartBean addCart(String ID){
+	public static SetOfCartsBean getInstance()
+	{
+		return instance;
+	}
+	
+	public CartBean addCart(String ID){
 		if(carts.containsKey(ID))
 			return carts.get(ID);
 		else{
@@ -24,7 +30,7 @@ public class SetOfCartsBean {
 		}
 	}
 	
-	public static CartBean retrieveCart(String ID){
+	public CartBean retrieveCart(String ID){
 		if(carts.containsKey(ID))
 			return carts.get(ID);
 		else{
@@ -32,7 +38,7 @@ public class SetOfCartsBean {
 		}
 	}
 	
-	public static boolean removeCart(String ID){
+	public boolean removeCart(String ID){
 		if(carts.containsKey(ID)){
 			carts.remove(ID);
 			return true;
@@ -41,7 +47,7 @@ public class SetOfCartsBean {
 			return false;
 	}
 	
-	public static boolean emptyCart(String ID){
+	public boolean emptyCart(String ID){
 		if(carts.containsKey(ID)){
 			carts.put(ID, new CartBean());
 			return true;

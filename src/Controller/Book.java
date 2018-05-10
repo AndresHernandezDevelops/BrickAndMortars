@@ -40,7 +40,7 @@ public class Book extends HttpServlet {
     public void init(HttpServletRequest request, HttpServletResponse response){
     	this.book = (BookBean) request.getAttribute("book");//from the attribute we had set in start
     	String ID = request.getSession().getId();
-	    this.cart = SetOfCartsBean.addCart(ID);
+	    this.cart = SetOfCartsBean.getInstance().addCart(ID);
     	try {
 			this.bookStore = new BookStore();
 			this.bookBeanList = this.bookStore.searchReviews(book.getbID());
@@ -58,11 +58,11 @@ public class Book extends HttpServlet {
     }
     
     public void goBack(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-    	request.getRequestDispatcher("Start").forward(request, response);
+    	this.getServletContext().getRequestDispatcher("Start").forward(request, response);
     }
     
     public void goShoppingCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-    	request.getRequestDispatcher("ShoppingCart").forward(request, response);
+    	this.getServletContext().getRequestDispatcher("ShoppingCart").forward(request, response);
     }
     
     public void addReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{

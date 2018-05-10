@@ -97,7 +97,7 @@ public class MainPage extends HttpServlet {
 				while (bookIterator.hasNext())
 				{
 					BookBean item = bookIterator.next();
-					System.out.println(item.getThumbnail());
+					System.out.println("thumbnail filepath = " + item.getThumbnail());
 					String bID = item.getbID();
 					String title = item.getTitle();
 					String category = item.getCategory();
@@ -124,11 +124,11 @@ public class MainPage extends HttpServlet {
     	String searchByTextParameter = request.getParameter("searchByTextButton");
 
     	if(cartParameter != null && cartParameter.equals("true"))
-    		request.getRequestDispatcher("ShoppingCart").forward(request, response);
+    		this.getServletContext().getRequestDispatcher("ShoppingCart").forward(request, response);
     	else if(loginParameter != null && loginParameter.equals("true"))
-    		request.getRequestDispatcher("Login").forward(request, response);
+    		this.getServletContext().getRequestDispatcher("Login").forward(request, response);
     	else if(registerParamter != null && registerParamter.equals("true"))
-    		request.getRequestDispatcher("Register").forward(request, response);
+    		this.getServletContext().getRequestDispatcher("Register").forward(request, response);
     	else if(searchByCategoryParameter != null && searchByCategoryParameter.equals("true")){
     		this.searchByCategory(request);
     		serveJSP(request, response);
@@ -158,12 +158,12 @@ public class MainPage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//iterate and print out parameters
-//		Enumeration<String> tmp = request.getParameterNames();
-//		while (tmp.hasMoreElements())
-//		{
-//			String tmp1 = tmp.nextElement();
-//			System.out.println(tmp1 + "=" + request.getParameter(tmp1));
-//		}
+		Enumeration<String> tmp = request.getParameterNames();
+		while (tmp.hasMoreElements())
+		{
+			String tmp1 = tmp.nextElement();
+			System.out.println(tmp1 + "=" + request.getParameter(tmp1));
+		}
 		processParameters(request, response);
 	}
 

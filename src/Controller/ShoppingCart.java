@@ -20,6 +20,18 @@ public class ShoppingCart extends HttpServlet {
     public ShoppingCart() {
         
     }
+    
+    public void processParameters(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    	String updateParameter = request.getParameter("update");
+    	String checkoutParameter = request.getParameter("checkout");
+    	
+    	if(updateParameter != null  && updateParameter.equals("true"))
+    		this.getServletContext().getRequestDispatcher("UpdateQuantity").forward(request, response);
+    	else if(checkoutParameter != null && updateParameter.equals("true"))
+    		request.getRequestDispatcher("/Checkout.jspx").forward(request, response);
+    	else
+    		System.out.println("did not hit an if statement in the shopping cart parameters");
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,7 +45,7 @@ public class ShoppingCart extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		processParameters(request, response);
 	}
 
 }

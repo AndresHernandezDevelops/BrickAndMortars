@@ -46,7 +46,10 @@ function handler(request){
 	 if ((request.readyState == 4) && (request.status == 200))
 	 {
 		 var target = document.getElementById("result");
-		 target.innerHTML = request.responseText;
+		 var result =  JSON.parse(request.responseText);
+		 var table = buildTable(result);
+		 target.innerHTML = "";
+		 target.appendChild(table);
 	 }
 	}
 
@@ -73,6 +76,66 @@ function textHandler(request){
 	 if ((request.readyState == 4) && (request.status == 200))
 	 {
 		 var target = document.getElementById("result");
-		 target.innerHTML = request.responseText;
+		 var result =  JSON.parse(request.responseText);
+		 var table = buildTable(result);
+		 target.innerHTML = "";
+		 target.appendChild(table);
 	 }
 	}
+
+
+function buildTable(result){
+	var table = document.createElement("TABLE");
+	table.setAttribute("id", "myTable");
+    var row = document.createElement("TR");
+    var data = document.createElement("TD");
+    data.innerHTML = "book ID";
+    row.appendChild(data);
+    
+    data = document.createElement("TD");
+    data.innerHTML = "title";
+    row.appendChild(data);
+    
+    data = document.createElement("TD");
+    data.innerHTML = "category";
+    row.appendChild(data);
+    
+    data = document.createElement("TD");
+    data.innerHTML = "price";
+    row.appendChild(data);
+    
+    data = document.createElement("TD");
+    data.innerHTML = "thumbnail";
+    row.appendChild(data);
+    table.appendChild(row);
+    
+    var i=0;
+    for (i=0; i<result.length; i++){
+    	
+    row = document.createElement("TR");
+    
+    data = document.createElement("TD");
+    data.innerHTML =result[i].bID;
+    row.appendChild(data);
+    
+    data = document.createElement("TD");
+    data.innerHTML = result[i].title;
+    row.appendChild(data);
+    
+    data = document.createElement("TD");
+    data.innerHTML = result[i].category;
+    row.appendChild(data);
+    
+    data = document.createElement("TD");
+    data.innerHTML = "$" + result[i].price;
+    row.appendChild(data);
+    
+    data = document.createElement("TD");
+    data.innerHTML = "<img src= " + result[i].thumbnail + "/>";
+    row.appendChild(data);
+    
+    table.appendChild(row);
+    }
+    
+    return table;
+}

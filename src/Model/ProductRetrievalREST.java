@@ -49,7 +49,7 @@ public class ProductRetrievalREST {
 	@Path("/orders/")
 	@Produces(MediaType.APPLICATION_XML)
 	@Consumes("text/plain")
-	public PurchaseOrderItemListWrapper getOrdersByPartNumber(@DefaultValue("1") @QueryParam("partNumber")int partNumber)
+	public PurchaseOrderItemListWrapper getOrdersByPartNumber(@QueryParam("partNumber")int partNumber)
 	{
 		PurchaseOrderItemListWrapper outList = new PurchaseOrderItemListWrapper();
 		List<PurchaseOrderItemBean> tmpList = data.get(partNumber);

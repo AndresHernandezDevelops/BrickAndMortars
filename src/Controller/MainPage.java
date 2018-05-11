@@ -6,6 +6,7 @@ import java.io.Writer;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
 
 import Bean.BookBean;
 import Model.BookStore;
@@ -87,7 +90,12 @@ public class MainPage extends HttpServlet {
 				Collection<BookBean> bbean = bookBeanList.values();
 				Iterator<BookBean> bookIterator = bbean.iterator();
 				
-				rw.println("<table border='1'>");
+				LinkedList<BookBean> bookbeanll = new LinkedList<BookBean>(bbean);
+				Gson testGson = new Gson();
+				String out = testGson.toJson(bookbeanll);
+				rw.println(out);
+				System.out.println(out);
+				/*rw.println("<table border='1'>");
 				rw.println("<tr>");
 				rw.println("<td>book ID</td>");
 				rw.println("<td>title</td>");
@@ -111,11 +119,12 @@ public class MainPage extends HttpServlet {
 					rw.print("<br /><img src=" + thumbnail + "/><br />");
 					rw.println("</center>");
 				}
-				rw.println("</table>");
+				rw.println("</table>");*/
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
     }
+    
     
     public void processParameters(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
     	String cartParameter = request.getParameter("cart");

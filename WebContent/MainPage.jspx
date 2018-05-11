@@ -53,12 +53,12 @@
 		
 		<BR />
 		<BR />
-		
+	<div id="result">
 		<table style="width:100%">
   			<tr>
     			<th><IMG alt="GOT" src="https://i.imgur.com/KABVpWn.png" /></th>
     			<th><IMG alt="GOT" src="https://i.imgur.com/KABVpWn.png" /></th> 
-   				<th><IMG alt="GOT" src="https://i.imgur.com/KABVpWn.png" /></th>
+   				<th><IMG alt="GOT" src="https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png" /></th>
  		 	</tr>
  		 	<tr>
     			<th><IMG alt="GOT" src="https://i.imgur.com/KABVpWn.png" /></th>
@@ -67,7 +67,7 @@
  		 	</tr>
  
 		</table>
-		
+	</div>
 		<BR />
 		<BR />
 		
@@ -82,7 +82,7 @@
 		</div>
 	</fieldset>
 	</FORM>
-	<div id="result"></div>
+	
 	<div id="thumbnail"></div>
 </body>
 </html>

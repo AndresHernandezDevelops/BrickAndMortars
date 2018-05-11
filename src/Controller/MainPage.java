@@ -34,6 +34,7 @@ public class MainPage extends HttpServlet {
 	private String bID;
 	private String title;
 	private String category;
+	private String thumbnail;
 	
 	public void init() throws ServletException{
 		try {
@@ -102,11 +103,13 @@ public class MainPage extends HttpServlet {
 					String title = item.getTitle();
 					String category = item.getCategory();
 					double price = item.getPrice();
+					String thumbnail = item.getThumbnail();
 					rw.println("<tr>");
 					rw.print("<td>" + bID + "</td>");
 					rw.print("<td>" + title + "</td>");
 					rw.print("<td>" + category + "</td>");
 					rw.print("<td>" + String.format("%.2f", price) + "</td>");
+					rw.print("<td><img src=" + thumbnail + "/></td>");
 					rw.println("</tr>");
 				}
 				rw.println("</table");

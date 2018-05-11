@@ -40,6 +40,9 @@
 			  <a class="register" href="http://localhost:8080/BrickAndMortars/Register.jspx">Register</a>
 			</div>
 		</div>	
+		
+		<hr></hr>
+		
 
 </body>
 </html>

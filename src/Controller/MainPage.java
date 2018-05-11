@@ -86,7 +86,6 @@ public class MainPage extends HttpServlet {
 			try {
 				Collection<BookBean> bbean = bookBeanList.values();
 				Iterator<BookBean> bookIterator = bbean.iterator();
-				//request.setAttribute("kitty", bookIterator.next().getThumbnail());
 				
 				rw.println("<table border='1'>");
 				rw.println("<tr>");
@@ -104,15 +103,15 @@ public class MainPage extends HttpServlet {
 					String category = item.getCategory();
 					double price = item.getPrice();
 					String thumbnail = item.getThumbnail();
-					rw.println("<tr>");
-					rw.print("<td>" + bID + "</td>");
-					rw.print("<td>" + title + "</td>");
-					rw.print("<td>" + category + "</td>");
-					rw.print("<td>" + String.format("%.2f", price) + "</td>");
-					rw.print("<td><img src=" + thumbnail + "/></td>");
-					rw.println("</tr>");
+					rw.println("<center>");
+					rw.print("<br />" + bID);
+					rw.print("<br />" + title);
+					rw.print("<br />" + category);
+					rw.print("<br />$" + String.format("%.2f", price));
+					rw.print("<br /><img src=" + thumbnail + "/><br />");
+					rw.println("</center>");
 				}
-				rw.println("</table");
+				rw.println("</table>");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

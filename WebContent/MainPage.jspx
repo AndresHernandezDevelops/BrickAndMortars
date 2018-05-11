@@ -67,10 +67,8 @@
  		 	</tr>
  
 		</table>
-	</div>
-		<BR />
-		<BR />
 		
+	</div>
 		<center>
 			<h2>Submit a Review</h2>
 				<textarea id="review" rows="15" cols="100" maxlength="1000" onfocus="review.value = '';">Enter review here (max 1000 chars)</textarea>

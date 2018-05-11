@@ -1,6 +1,6 @@
 function doAjax(address, category)
 {
-	//alert("hit1");
+	
 	fetchResult(address, category);
 }
 
@@ -30,13 +30,9 @@ function textValidate(address)
 
 function fetchResult(address, category){
 	 var request = new XMLHttpRequest();
-	 //alert("hit2");
-	 //var category = document.getElementById("category").value;
-	 //alert("hit3");
-	 //var searchByCategory = document.getElementById("searchByCategory").value;
-	 //alert("hit4");
+	
 	 var data="category=" + category + "&price=0";
-	 //alert("hit5");
+	 
 	 request.onreadystatechange = function()
 	 {
 			handler(request);

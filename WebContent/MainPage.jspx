@@ -30,7 +30,7 @@
 			  	<div class="dropdown">
 			  		<a class="dropbtn" name="searchByCategory" id="searchByCategory" value="true">Category</a>
 			  		<div class="dropdown-content">
-			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage');return false;" id="category" value='Science'>Science</a>
+			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage', 'Science');return false;" id="category" value='Science'>Science</a>
 			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage');return false;" id="category" value='Fiction'>Fiction</a>
 			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage');return false;" id="category" value='Tech'>Tech</a>
 			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage');return false;" id="category" value='LifeStyle'>LifeStyle</a>

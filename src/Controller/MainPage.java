@@ -122,7 +122,7 @@ public class MainPage extends HttpServlet {
     	String bookIDParameter = request.getParameter("bookID");
     	String loginParameter = request.getParameter("login");
     	String registerParamter = request.getParameter("register");
-    	String searchByCategoryParameter = request.getParameter("searchByCategory");
+    	String searchByCategory = request.getParameter("category");
     	String searchByTextParameter = request.getParameter("searchByTextButton");
 
     	if(cartParameter != null && cartParameter.equals("true"))
@@ -131,7 +131,7 @@ public class MainPage extends HttpServlet {
     		this.getServletContext().getRequestDispatcher("Login").forward(request, response);
     	else if(registerParamter != null && registerParamter.equals("true"))
     		this.getServletContext().getRequestDispatcher("Register").forward(request, response);
-    	else if(searchByCategoryParameter != null && searchByCategoryParameter.equals("true")){
+    	else if(searchByCategory != null){
     		this.searchByCategory(request);
     		serveJSP(request, response);
     	}

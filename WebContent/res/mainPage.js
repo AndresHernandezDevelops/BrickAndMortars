@@ -1,7 +1,7 @@
-function doAjax(address)
+function doAjax(address, category)
 {
-	alert("hit1");
-	fetchResult(address);
+	//alert("hit1");
+	fetchResult(address, category);
 }
 
 function searchByTextAjax(address)
@@ -28,15 +28,15 @@ function textValidate(address)
 	return ok;
 }
 
-function fetchResult(address){
+function fetchResult(address, category){
 	 var request = new XMLHttpRequest();
-	 alert("hit2");
-	 var category = document.getElementById("category").value;
-	 alert("hit3");
-	 var searchByCategory = document.getElementById("searchByCategory").value;
-	 alert("hit4");
-	 var data="category=" + category + "&price=0&searchByCategory=" + searchByCategory;
-	 alert("hit5");
+	 //alert("hit2");
+	 //var category = document.getElementById("category").value;
+	 //alert("hit3");
+	 //var searchByCategory = document.getElementById("searchByCategory").value;
+	 //alert("hit4");
+	 var data="category=" + category + "&price=0";
+	 //alert("hit5");
 	 request.onreadystatechange = function()
 	 {
 			handler(request);

@@ -1,10 +1,21 @@
 function validate(){
+	alert("hit")
+	var lengthValidator = false;
 	var username = document.getElementById("username").value;
 	var password = document.getElementById("password").value;
 	var ok = test(username) && test(password);
+	
+	lengthValidator = ((password.length<=30) && (username.length<=30));
+	
+	if(!lengthValidator)
+		alert("username or password too long!");
+	//Checks for everything 
+	var totalBoolean = lengthValidator && ok;
+	
 	if(!ok)
 		alert("numbers and letters only please");
-	return ok;
+	
+	return totalBoolean;
 }
 
 

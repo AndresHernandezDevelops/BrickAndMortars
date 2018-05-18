@@ -8,24 +8,24 @@
 		omit-xml-declaration="true" />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<link rel="StyleSheet" href="res/register.css" type="text/css" title="eecs4413" media="screen, print"/>
-	
+	<link rel="StyleSheet" href="${pageContext.request.contextPath}/res/register.css" type="text/css" title="eecs4413" media="screen, print"/>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/res/login.js">;</script>
 	
 <title>Register</title>
 </head>
 <body>
 <div id="id01">
   
-  <form class="modal-content" action="http://localhost:8080/BrickAndMortars/MainPage.jspx">
+  <form class="modal-content" action="Register" method="POST">
     <div class="container">
       <h1>Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
       <hr></hr>
       <label for="username"><b>Username (your email address)</b></label>
-      <input type="text" placeholder="Enter Username" name="user" id="user" required="required"/>
+      <input type="text" placeholder="Enter Username" name="username" id="username" required="required"/>
 
       <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="pw" id="password" required="required"/>
+      <input type="password" placeholder="Enter Password" name="password" id="password" required="required"/>
 
       <label for="pwconf"><b>Confirm Password</b></label>
       <input type="password" placeholder="Confirm Password" name="pwconf" id="pwconf" required="required"/>
@@ -41,7 +41,7 @@
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="color:black;">Cancel</button>
-        <button type="submit" class="signupbtn">Sign Up</button>
+        <button type="submit" class="signupbtn" name="registerButton" value="true" onclick="return validate();">Sign Up</button>
       </div>
     </div>
   </form>

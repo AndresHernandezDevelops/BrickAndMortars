@@ -21,7 +21,7 @@
       <h1>Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
       <hr></hr>
-      <label for="username"><b>Username</b></label>
+      <label for="username"><b>Username (your email address)</b></label>
       <input type="text" placeholder="Enter Username" name="user" id="user" required="required"/>
 
       <label for="password"><b>Password</b></label>
@@ -30,12 +30,9 @@
       <label for="pwconf"><b>Confirm Password</b></label>
       <input type="password" placeholder="Confirm Password" name="pwconf" id="pwconf" required="required"/>
       
-      <label for="email"><b>Email Address</b></label>
-      <input type="text" placeholder="Enter Email" name="email" id="email" required="required"/>
-      
-      <label for="cc"><b>Credit Card Number</b></label>
-      <input type="text" placeholder="Enter credit card number" name="cc" id="cc" required="required"/>
-      
+      <label for="address"><b>Address</b></label>
+      <input type="text" placeholder="4700 Keele St. Toronto" name="address" id="address" required="required"/>
+ 
       <label>
         <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"/> Remember me
       </label>

@@ -23,7 +23,7 @@
 		
 	<div id="main">
 		<div class="topnav">
-			  <a class="active" href="http://localhost:8080/BrickAndMortars/MainPage.jspx">Home</a>
+			  <a class="active" href="MainPage">Home</a>
 			  <a href="#about">About</a>
 			  <a href="http://localhost:8080/BrickAndMortars/Contact.jspx">Contact</a>
 			  	
@@ -40,14 +40,14 @@
 			  		</div>
 			  	</div>
 			  	
-			  <a href="http://localhost:8080/BrickAndMortars/ShoppingCart.jspx">Shopping Cart</a>
+			  <a href="ShoppingCart">Shopping Cart</a>
 			  <div class="search-container">
 			  <input type="text" id="searchByText" name="searchByText" placeholder="Search..."/>	  	
 			  		<button name="searchByTextButton" id="searchByTextButton" value="true" onclick="searchByTextAjax('${pageContext.request.contextPath}/MainPage');return false;">
 	 					Search
 					</button>
-			  <a class="login" href="http://localhost:8080/BrickAndMortars/Login.jspx">Login</a>
-			  <a class="register" href="http://localhost:8080/BrickAndMortars/Register.jspx">Register</a>
+			  <a class="login" href="Login">Login</a>
+			  <a class="register" href="Register">Register</a>
 			</div>
 		</div>	
 		

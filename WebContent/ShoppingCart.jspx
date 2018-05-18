@@ -12,36 +12,37 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-	<div class="topnav">
-			  <a class="active" href="http://localhost:8080/BrickAndMortars/MainPage.jspx">Home</a>
-			  <a href="#about">About</a>
-			  <a href="http://localhost:8080/BrickAndMortars/Contact.jspx">Contact</a>
+<!-- 	<div class="topnav"> -->
+<!-- 			  <a class="active" href="http://localhost:8080/BrickAndMortars/MainPage.jspx">Home</a> -->
+<!-- 			  <a href="#about">About</a> -->
+<!-- 			  <a href="http://localhost:8080/BrickAndMortars/Contact.jspx">Contact</a> -->
 			  	
-			  	<div class="dropdown">
-			  		<button class="dropbutton" name="searchByCategory" id="searchByCategory" value="true" onclick="doAjax('${pageContext.request.contextPath}/MainPage');return false;">Category</button>
-			  		<div class="dropdown-content">
-			  			<a href="#">Science</a>
-			  			<a href="#">Fiction</a>
-			  			<a href="#">Tech</a>
-			  			<a href="#">LifeStyle</a>
-			  			<a href="#">Childrens</a>
-			  			<a href="#">Law</a>
-			  			<a href="#">Non-Fiction</a>
-			  		</div>
-			  	</div>
+<!-- 			  	<div class="dropdown"> -->
+<!-- 			  		<button class="dropbutton" name="searchByCategory" id="searchByCategory" value="true" onclick="doAjax('${pageContext.request.contextPath}/MainPage');return false;">Category</button> -->
+<!-- 			  		<div class="dropdown-content"> -->
+<!-- 			  			<a href="#">Science</a> -->
+<!-- 			  			<a href="#">Fiction</a> -->
+<!-- 			  			<a href="#">Tech</a> -->
+<!-- 			  			<a href="#">LifeStyle</a> -->
+<!-- 			  			<a href="#">Childrens</a> -->
+<!-- 			  			<a href="#">Law</a> -->
+<!-- 			  			<a href="#">Non-Fiction</a> -->
+<!-- 			  		</div> -->
+<!-- 			  	</div> -->
 			  	
-			  <a href="http://localhost:8080/BrickAndMortars/ShoppingCart.jspx">Shopping Cart</a>
-			  <div class="search-container">
-			  <input type="text" id="searchByText" name="searchByText" placeholder="Search..."/>	  	
-			  		<button type="submit" name="searchByTextButton" id="searchByTextButton" value="true" onclick="searchByTextAjax('${pageContext.request.contextPath}/MainPage');return false;">
-	 				Submit
-					</button>
-			  <a class="login" href="http://localhost:8080/BrickAndMortars/Login.jspx">Login</a>
-			  <a class="register" href="http://localhost:8080/BrickAndMortars/Register.jspx">Register</a>
-			</div>
-		</div>	
+<!-- 			  <a href="http://localhost:8080/BrickAndMortars/ShoppingCart.jspx">Shopping Cart</a> -->
+<!-- 			  <div class="search-container"> -->
+<!-- 			  <input type="text" id="searchByText" name="searchByText" placeholder="Search..."/>	  	 -->
+<!-- 			  		<button type="submit" name="searchByTextButton" id="searchByTextButton" value="true" onclick="searchByTextAjax('${pageContext.request.contextPath}/MainPage');return false;"> -->
+<!-- 	 				Submit -->
+<!-- 					</button> -->
+<!-- 			  <a class="login" href="http://localhost:8080/BrickAndMortars/Login.jspx">Login</a> -->
+<!-- 			  <a class="register" href="http://localhost:8080/BrickAndMortars/Register.jspx">Register</a> -->
+<!-- 			</div> -->
+<!-- 		</div>	 -->
 		
 		<FIELDSET>
+		<!-- ForEach loop goes here, so that every time the shopping cart page is called, iterate through the static class "setofzcartsBean" and populate it here -->
 			<table>
 				<tr>
 					<th>Book title</th>
@@ -59,6 +60,7 @@
 					<th>total</th>
 				</tr>
 			</table>
+			<INPUT type="submit" value="checkout" id="checkout"/>
 		</FIELDSET>
 		
 </body>

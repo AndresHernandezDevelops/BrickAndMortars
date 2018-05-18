@@ -1,6 +1,8 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.Enumeration;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,6 +32,13 @@ public class Register extends HttpServlet {
     	String registerButtonParameter = request.getParameter("registerButton");
     	String usernameParameter = request.getParameter("username");
     	String passwordParameter = request.getParameter("password");
+    	String addressParameter = request.getParameter("address");
+    	
+    	System.out.println(registerButtonParameter);
+    	System.out.println(usernameParameter);
+    	System.out.println(passwordParameter);
+    	System.out.println(addressParameter);
+    	
     	
     	try{
     		if(registerButtonParameter != null && registerButtonParameter.equals("true")){

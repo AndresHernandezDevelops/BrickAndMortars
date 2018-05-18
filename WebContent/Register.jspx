@@ -8,34 +8,50 @@
 		omit-xml-declaration="true" />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<link rel="StyleSheet" href="res/register.css" type="text/css" title="eecs4413" media="screen, print"/>
-	
+	<link rel="StyleSheet" href="${pageContext.request.contextPath}/res/register.css" type="text/css" title="eecs4413" media="screen, print"/>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/res/login.js">;</script>
 	
 <title>Register</title>
 </head>
 <body>
 <div id="id01">
   
-  <form class="modal-content" action="http://localhost:8080/BrickAndMortars/MainPage.jspx">
+  <form class="modal-content" action="Register" method="POST">
     <div class="container">
       <h1>Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
       <hr></hr>
-      <label for="username"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="user" id="user" required="required"/>
+      <label for="username"><b>Username (your email address)</b></label>
+      <input type="text" placeholder="Enter Username" name="username" id="username" required="required"/>
 
       <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="pw" id="password" required="required"/>
+      <input type="password" placeholder="Enter Password" name="password" id="password" required="required"/>
 
       <label for="pwconf"><b>Confirm Password</b></label>
       <input type="password" placeholder="Confirm Password" name="pwconf" id="pwconf" required="required"/>
+ 
+      <label for="firstname"><b>first name</b></label>
+      <input type="text" placeholder="first name..." name="firstname" id="firstname" required="required"/>
+
+      <label for="lastname"><b>last name</b></label>
+      <input type="text" placeholder="lastname" name="lastname" id="lastname" required="required"/>
       
-      <label for="email"><b>Email Address</b></label>
-      <input type="text" placeholder="Enter Email" name="email" id="email" required="required"/>
+      <label for="address"><b>Address</b></label>
+      <input type="text" placeholder="4700 Keele St. Toronto" name="address" id="address" required="required"/>
       
-      <label for="cc"><b>Credit Card Number</b></label>
-      <input type="text" placeholder="Enter credit card number" name="cc" id="cc" required="required"/>
+      <label for="postalcode"><b>postal code</b></label>
+      <input type="text" placeholder="m2j102" name="postalcode" id="postalcode" required="required"/>
+ 
+      <label for="province"><b>province</b></label>
+      <input type="text" placeholder="province..." name="province" id="province" required="required"/>
+
+      <label for="country"><b>country</b></label>
+      <input type="text" placeholder="country..." name="country" id="country" required="required"/>
       
+      <label for="phone"><b>phone number</b></label>
+      <input type="text" placeholder="4161111111..." name="phone" id="phone" required="required"/>
+ 
+ 
       <label>
         <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"/> Remember me
       </label>
@@ -44,7 +60,7 @@
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="color:black;">Cancel</button>
-        <button type="submit" class="signupbtn">Sign Up</button>
+        <button type="submit" class="signupbtn" name="registerButton" value="true" onclick="return validate();">Sign Up</button>
       </div>
     </div>
   </form>

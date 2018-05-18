@@ -24,23 +24,25 @@ INSERT INTO Book (bid, title, price, category) VALUES ('b003','Mechanics' ,100,'
 *
 */
 DROP TABLE Address;
+
 CREATE TABLE Address (
-id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+username varchar(30) NOT NULL,
 street VARCHAR(100) NOT NULL,
 province VARCHAR(20) NOT NULL,
 country VARCHAR(20) NOT NULL,
 zip VARCHAR(20) NOT NULL,
-phone VARCHAR(20),
-PRIMARY KEY(id)
+phone VARCHAR(20) not NULL,
+PRIMARY KEY(username),
+foreign key (username) references login(username) on delete cascade
 );
 /*
 # Inserting data for table 'address'
 #*/
-INSERT INTO Address (street, province, country, zip, phone) VALUES ('123 Yonge St', 'ON',
+INSERT INTO Address (username, street, province, country, zip, phone) VALUES ('juyoung', '123 Yonge St', 'ON',
 'Canada', 'K1E 6T5' ,'647-123-4567');
-INSERT INTO Address (street, province, country, zip, phone) VALUES ('445 Avenue rd', 'ON',
+INSERT INTO Address (username, street, province, country, zip, phone) VALUES ('andres','445 Avenue rd', 'ON',
 'Canada', 'M1C 6K5' ,'416-123-8569');
-INSERT INTO Address (street, province, country, zip, phone) VALUES ('789 Keele St.', 'ON',
+INSERT INTO Address (username, street, province, country, zip, phone) VALUES ('narbeh', '789 Keele St.', 'ON',
 'Canada', 'K3C 9T5' ,'416-123-9568');
 
 

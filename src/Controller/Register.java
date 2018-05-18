@@ -32,15 +32,13 @@ public class Register extends HttpServlet {
     	String registerButtonParameter = request.getParameter("registerButton");
     	String usernameParameter = request.getParameter("username");
     	String passwordParameter = request.getParameter("password");
-    	System.out.println("registerButtonParameter");
-    	System.out.println("usernameParameter");
-    	System.out.println("passwordParameter");
-    	Enumeration<String> tmp = request.getParameterNames();
-		while (tmp.hasMoreElements())
-		{
-			String tmp1 = tmp.nextElement();
-			System.out.println(tmp1 + "=" + request.getParameter(tmp1));
-		}
+    	String addressParameter = request.getParameter("address");
+    	
+    	System.out.println(registerButtonParameter);
+    	System.out.println(usernameParameter);
+    	System.out.println(passwordParameter);
+    	System.out.println(addressParameter);
+    	
     	
     	try{
     		if(registerButtonParameter != null && registerButtonParameter.equals("true")){

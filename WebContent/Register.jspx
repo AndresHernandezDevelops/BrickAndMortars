@@ -29,9 +29,28 @@
 
       <label for="pwconf"><b>Confirm Password</b></label>
       <input type="password" placeholder="Confirm Password" name="pwconf" id="pwconf" required="required"/>
+ 
+      <label for="firstname"><b>first name</b></label>
+      <input type="text" placeholder="first name..." name="firstname" id="firstname" required="required"/>
+
+      <label for="lastname"><b>last name</b></label>
+      <input type="text" placeholder="lastname" name="lastname" id="lastname" required="required"/>
       
       <label for="address"><b>Address</b></label>
       <input type="text" placeholder="4700 Keele St. Toronto" name="address" id="address" required="required"/>
+      
+      <label for="postalcode"><b>postal code</b></label>
+      <input type="text" placeholder="m2j102" name="postalcode" id="postalcode" required="required"/>
+ 
+      <label for="province"><b>province</b></label>
+      <input type="text" placeholder="province..." name="province" id="province" required="required"/>
+
+      <label for="country"><b>country</b></label>
+      <input type="text" placeholder="country..." name="country" id="country" required="required"/>
+      
+      <label for="phone"><b>phone number</b></label>
+      <input type="text" placeholder="4161111111..." name="phone" id="phone" required="required"/>
+ 
  
       <label>
         <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"/> Remember me

@@ -74,7 +74,7 @@
 				<textarea id="review" rows="15" cols="100" maxlength="1000" onfocus="review.value = '';">Enter review here (max 1000 chars)</textarea>
 				<div>
 					<BR />
-					<button name="submitReview" id="submitReview">Submit Review</button>
+					<button name="submitReview" id="submitReview" onclick="checkInject();return false;">Submit Review</button>
 				</div>
 		</center>
 		</div>

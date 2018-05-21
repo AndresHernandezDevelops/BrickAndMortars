@@ -33,7 +33,7 @@ public class Register extends HttpServlet {
     	String usernameParameter = request.getParameter("username");
     	String passwordParameter = request.getParameter("password");
     	String addressParameter = request.getParameter("address");
-    	String firsnameParameter = request.getParameter("firstname");
+    	String firstnameParameter = request.getParameter("firstname");
     	String lastnameParameter = request.getParameter("lastname");
     	String postalcodeParameter = request.getParameter("postalcode");
     	String provinceParameter = request.getParameter("province");
@@ -45,7 +45,7 @@ public class Register extends HttpServlet {
     	System.out.println(usernameParameter);
     	System.out.println(passwordParameter);
     	System.out.println(addressParameter);
-    	System.out.println(firsnameParameter);
+    	System.out.println(firstnameParameter);
     	System.out.println(lastnameParameter);
     	System.out.println(postalcodeParameter);
     	System.out.println(provinceParameter);
@@ -55,7 +55,7 @@ public class Register extends HttpServlet {
     	
     	try{
     		if(registerButtonParameter != null && registerButtonParameter.equals("true")){
-    			boolean status = register.register(usernameParameter, passwordParameter);
+    			boolean status = register.register(usernameParameter, passwordParameter, firstnameParameter, lastnameParameter, addressParameter, postalcodeParameter, provinceParameter, countryParameter, phoneParameter);
     			if(status) {
 	    			request.getSession().setAttribute("username", usernameParameter);
 	    			request.getRequestDispatcher("MainPage").forward(request, response);

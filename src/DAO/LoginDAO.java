@@ -38,18 +38,20 @@ public class LoginDAO {
 		return result;	
 	}
 	
-	public boolean register(String username, String password) throws SQLException{
+	public boolean register(String username, String password, String firstname, String lastname, String address, String postalcode, String province, String country, String phone) throws SQLException{
 		boolean result = false;
 		if(!this.lookup(username, password)) {
 			String loginCommand = String.format("insert into login (USERNAME, PASSWORD) "
-					+ "VALUES ('" + username + "', '" + password + "')");
-			String addressCommand = String.format("");
-			System.out.println("the register register is: " + loginCommand + " ---- as well as: " + addressCommand);
+					+ "values ('" + username + "', '" + password + "')");
+			String addressCommand = String.format("insert into address (USERNAME, STREET, PROVINCE, COUNTRY, ZIP, PHONE, FIRSTNAME, LASTNAME) "
+					+ "values ('" + username + "', '" + address + "', '" + province + "', '" + country + "', '" + postalcode + "', '" + phone + "', '" + firstname + "', '" + lastname + "')");
+			System.out.println("the register command is: " + loginCommand + " ---- as well as: " + addressCommand);
 			
 			Connection con = this.ds.getConnection();
-			PreparedStatement p = con.prepareStatement(query);
+			PreparedStatement p = con.prepareStatement(loginCommand);
 			p.executeUpdate();
-			
+			p = con.prepareStatement(addressCommand);
+			p.executeUpdate();
 			//r.close();
 			p.close();
 			con.close();

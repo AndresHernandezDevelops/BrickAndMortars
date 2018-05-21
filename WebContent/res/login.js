@@ -1,24 +1,16 @@
 function validate(){
-	var lengthValidator = false;
-	var bothPasswordsSame = false;
 	var username = document.getElementById("username").value;
 	var password = document.getElementById("password").value;
+	var lengthValidator = ((password.length<=30) && (username.length<=30));
+	var bothPasswordsSame = check_pw();
 	var ok = test(username) && test(password);
-	
-	lengthValidator = ((password.length<=30) && (username.length<=30));
-	
-	bothPasswordsSame = check_pw();
-	
 	if(!lengthValidator)
 		alert("username or password too long!");
 	if(!bothPasswordsSame)	
-		alert("passwordds dont match!!");
+		alert("passwords dont match!!");
 	if(!ok)
 		alert("numbers and letters only please");
-	
-	var totalBoolean = lengthValidator && ok && bothPasswordsSame;
-	alert("finihsed validation!")
-	return totalBoolean;
+	return totalBoolean = lengthValidator && ok && bothPasswordsSame;
 }
 
 

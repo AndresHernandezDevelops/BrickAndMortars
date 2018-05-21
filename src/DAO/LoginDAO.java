@@ -23,7 +23,7 @@ public class LoginDAO {
 	}
 	
 	public boolean lookup(String username, String password) throws SQLException{
-		String query = String.format("select * from LOGIN where username = " + username + " and password = " + password);
+		String query = String.format("select * from LOGIN where username = '" + username + "'");
 		System.out.println("the login lookup query is: " + query);
 		boolean result = false;
 		Connection con = this.ds.getConnection();
@@ -41,9 +41,10 @@ public class LoginDAO {
 	public boolean register(String username, String password) throws SQLException{
 		boolean result = false;
 		if(!this.lookup(username, password)) {
-			String query = String.format("register into login (USERNAME, PASSWORD) "
+			String loginCommand = String.format("insert into login (USERNAME, PASSWORD) "
 					+ "VALUES ('" + username + "', '" + password + "')");
-			System.out.println("the register query is: " + query);
+			String addressCommand = String.format("");
+			System.out.println("the register register is: " + loginCommand + " ---- as well as: " + addressCommand);
 			
 			Connection con = this.ds.getConnection();
 			PreparedStatement p = con.prepareStatement(query);

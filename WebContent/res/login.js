@@ -13,7 +13,6 @@ function validate(){
 	return totalBoolean = lengthValidator && ok && bothPasswordsSame;
 }
 
-
 function check_pw(){
 	var ok = false;
 	var pw = document.getElementById("password").value;

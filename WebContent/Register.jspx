@@ -34,7 +34,7 @@
       <input type="text" placeholder="first name..." name="firstname" id="firstname" required="required"/>
 
       <label for="lastname"><b>last name</b></label>
-      <input type="text" placeholder="lastname" name="lastname" id="lastname" required="required"/>
+      <input type="text" placeholder="last name..." name="lastname" id="lastname" required="required"/>
       
       <label for="address"><b>Address</b></label>
       <input type="text" placeholder="4700 Keele St. Toronto" name="address" id="address" required="required"/>

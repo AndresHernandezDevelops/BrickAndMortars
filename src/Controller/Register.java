@@ -28,27 +28,43 @@ public class Register extends HttpServlet {
         register = new LoginDAO();
     }
     
-    private void register(HttpServletRequest request){
+    private void register(HttpServletRequest request, HttpServletResponse response){
     	String registerButtonParameter = request.getParameter("registerButton");
     	String usernameParameter = request.getParameter("username");
     	String passwordParameter = request.getParameter("password");
     	String addressParameter = request.getParameter("address");
+    	String firsnameParameter = request.getParameter("firstname");
+    	String lastnameParameter = request.getParameter("lastname");
+    	String postalcodeParameter = request.getParameter("postalcode");
+    	String provinceParameter = request.getParameter("province");
+    	String countryParameter = request.getParameter("country");
+    	String phoneParameter = request.getParameter("phone");
+    	
     	
     	System.out.println(registerButtonParameter);
     	System.out.println(usernameParameter);
     	System.out.println(passwordParameter);
     	System.out.println(addressParameter);
+    	System.out.println(firsnameParameter);
+    	System.out.println(lastnameParameter);
+    	System.out.println(postalcodeParameter);
+    	System.out.println(provinceParameter);
+    	System.out.println(countryParameter);
+    	System.out.println(phoneParameter);
     	
     	
     	try{
     		if(registerButtonParameter != null && registerButtonParameter.equals("true")){
-    			System.out.println("register button pressed, username=" + usernameParameter + " and password=" + passwordParameter);
     			boolean status = register.register(usernameParameter, passwordParameter);
-    			if(status)
+    			if(status) {
 	    			request.getSession().setAttribute("username", usernameParameter);
+	    			request.getRequestDispatcher("MainPage").forward(request, response);
+    			}
 	    		else{
-	    			request.getSession().setAttribute("username", "anonymous");
+	    			//request.getSession().setAttribute("username", "anonymous");
 	    			System.out.println("could not register! username already exist");
+	    			request.getSession().setAttribute("error", "User already exists!");
+	    			request.getRequestDispatcher("/Register.jspx").forward(request, response);
 	    		}
     		
     		}
@@ -69,7 +85,7 @@ public class Register extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		register(request);
+		register(request, response);
 	}
 
 }

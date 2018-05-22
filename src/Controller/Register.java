@@ -39,18 +39,20 @@ public class Register extends HttpServlet {
     	String provinceParameter = request.getParameter("province");
     	String countryParameter = request.getParameter("country");
     	String phoneParameter = request.getParameter("phone");
+    	String cancelParameter = request.getParameter("cancel");
     	
     	
-    	System.out.println(registerButtonParameter);
-    	System.out.println(usernameParameter);
-    	System.out.println(passwordParameter);
-    	System.out.println(addressParameter);
-    	System.out.println(firstnameParameter);
-    	System.out.println(lastnameParameter);
-    	System.out.println(postalcodeParameter);
-    	System.out.println(provinceParameter);
-    	System.out.println(countryParameter);
-    	System.out.println(phoneParameter);
+//    	System.out.println(registerButtonParameter);
+//    	System.out.println(usernameParameter);
+//    	System.out.println(passwordParameter);
+//    	System.out.println(addressParameter);
+//    	System.out.println(firstnameParameter);
+//    	System.out.println(lastnameParameter);
+//    	System.out.println(postalcodeParameter);
+//    	System.out.println(provinceParameter);
+//    	System.out.println(countryParameter);
+//    	System.out.println(phoneParameter);
+//    	System.out.println(cancelParameter);
     	
     	
     	try{
@@ -67,7 +69,10 @@ public class Register extends HttpServlet {
 	    			request.getSession().setAttribute("error", "User already exists!");
 	    			this.getServletContext().getRequestDispatcher("/Register.jspx").forward(request, response);
 	    		}
-    		
+    		}else if(cancelParameter != null && cancelParameter.equals("true")) {
+    			System.out.println("hit the cancel button!");
+    			String redirection=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath()+"/MainPage";
+    			response.sendRedirect(redirection);
     		}
     		
     	} catch (Exception e){

@@ -50,15 +50,11 @@
       
       <label for="phone"><b>phone number</b></label>
       <input type="text" placeholder="4161111111..." name="phone" id="phone" required="required"/>
- 
-      <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"/> Remember me
-      </label>
 
-      <p>By creating an account you agree to our Terms and Privacy.</p>
+      <p>By creating an account you agree to our Terms and Privacy Agreement.</p>
 
       <div class="clearfix">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="color:black;">Cancel</button>
+        <button type="submit" value="true" class="cancel" name="cancel" style="color:black;" formnovalidate="formnovalidate">Cancel</button>
         <button type="submit" class="signupbtn" name="registerButton" value="true" onclick="return validate();">Sign Up</button>
       </div>
     </div>

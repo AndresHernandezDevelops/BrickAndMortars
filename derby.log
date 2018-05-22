@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Tue May 22 14:47:34 EDT 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0163-892d-8d23-00002731f890 
+Tue May 22 15:14:06 EDT 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0163-8945-d83b-000027c20168 
 on database directory /eecs/home/saeeds28/workspace/BrickAndMortars/MyDB with class loader ParallelWebappClassLoader
   context: BrickAndMortars
   delegate: false

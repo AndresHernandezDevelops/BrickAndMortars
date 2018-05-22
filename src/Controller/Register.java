@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -56,18 +57,23 @@ public class Register extends HttpServlet {
     	
     	
     	try{
+    		PrintWriter out= response.getWriter();
     		if(registerButtonParameter != null && registerButtonParameter.equals("true")){
     			boolean status = register.register(usernameParameter, passwordParameter, firstnameParameter, lastnameParameter, addressParameter, postalcodeParameter, provinceParameter, countryParameter, phoneParameter);
     			if(status) {
 	    			request.getSession().setAttribute("username", usernameParameter);
+    				out.print("Registration Successful");
+	    			//request.getSession().setAttribute("message", "successfully signed up!");
+    				
 	    			String redirection=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath()+"/MainPage";
 	    			response.sendRedirect(redirection);
     			}
 	    		else{
 	    			//request.getSession().setAttribute("username", "anonymous");
 	    			System.out.println("could not register! username already exist");
-	    			request.getSession().setAttribute("error", "User already exists!");
-	    			this.getServletContext().getRequestDispatcher("/Register.jspx").forward(request, response);
+	    			out.print(usernameParameter+ " already exist");
+	    			//request.getSession().setAttribute("message", "User already exists!");	
+	    			//this.getServletContext().getRequestDispatcher("/Register.jspx").forward(request, response);
 	    		}
     		}else if(cancelParameter != null && cancelParameter.equals("true")) {
     			System.out.println("hit the cancel button!");

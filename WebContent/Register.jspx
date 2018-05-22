@@ -9,7 +9,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<link rel="StyleSheet" href="${pageContext.request.contextPath}/res/register.css" type="text/css" title="eecs4413" media="screen, print"/>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/res/login.js">;</script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/res/register.js">;</script>
 	
 <title>Register</title>
 </head>
@@ -18,7 +18,10 @@
   
   <form class="modal-content" action="Register" method="POST">
     <div class="container">
+    
       <h1>Sign Up</h1>
+      
+      <div id="result"></div>
       <p>Please fill in this form to create an account.</p>
       <hr></hr>
       <label for="username"><b>Username</b></label>
@@ -55,7 +58,7 @@
 
       <div class="clearfix">
         <button type="submit" value="true" class="cancel" name="cancel" style="color:black;" formnovalidate="formnovalidate">Cancel</button>
-        <button type="submit" class="signupbtn" name="registerButton" value="true" onclick="return validate();">Sign Up</button>
+        <button type="submit" class="signupbtn" name="registerButton" value="true" onclick="return doAjax('${pageContext.request.contextPath}/Register');return false;">Sign Up</button>
       </div>
     </div>
   </form>

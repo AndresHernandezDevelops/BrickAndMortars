@@ -160,8 +160,8 @@ public class MainPage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String target = "/MainPage.jspx";
-		request.getRequestDispatcher(target).forward(request, response);
+		System.out.println("-----------------DOGET OF THE MAINPAGE SAAAD!!!!!---------------");
+		request.getRequestDispatcher("/MainPage.jspx").forward(request, response);
 	}
 
 	/**
@@ -169,6 +169,7 @@ public class MainPage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//iterate and print out parameters
+		System.out.println("-----------------DOPOST OF THE MAINPAGE SAAAD!!!!!---------------");
 		Enumeration<String> tmp = request.getParameterNames();
 		while (tmp.hasMoreElements())
 		{

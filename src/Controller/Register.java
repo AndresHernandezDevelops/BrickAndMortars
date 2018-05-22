@@ -58,13 +58,14 @@ public class Register extends HttpServlet {
     			boolean status = register.register(usernameParameter, passwordParameter, firstnameParameter, lastnameParameter, addressParameter, postalcodeParameter, provinceParameter, countryParameter, phoneParameter);
     			if(status) {
 	    			request.getSession().setAttribute("username", usernameParameter);
-	    			request.getRequestDispatcher("MainPage").forward(request, response);
+	    			String redirection=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath()+"/MainPage";
+	    			response.sendRedirect(redirection);
     			}
 	    		else{
 	    			//request.getSession().setAttribute("username", "anonymous");
 	    			System.out.println("could not register! username already exist");
 	    			request.getSession().setAttribute("error", "User already exists!");
-	    			request.getRequestDispatcher("/Register.jspx").forward(request, response);
+	    			this.getServletContext().getRequestDispatcher("/Register.jspx").forward(request, response);
 	    		}
     		
     		}

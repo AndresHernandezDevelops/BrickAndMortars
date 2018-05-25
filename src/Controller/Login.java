@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -29,19 +30,28 @@ public class Login extends HttpServlet {
         login = new LoginDAO();
     }
 
-    private void lookup(HttpServletRequest request){
+    private void login(HttpServletRequest request, HttpServletResponse response){
     	String loginButtonParameter = request.getParameter("loginButton");
     	String usernameParameter = request.getParameter("username");
     	String passwordParameter = request.getParameter("password");
+    	
     	try{
+    		PrintWriter out = response.getWriter();
 	    	if(loginButtonParameter != null && loginButtonParameter.equals("true")) {
 	    		System.out.println("login button pressed, username=" + usernameParameter + " and password=" + passwordParameter);
-	    		boolean status = login.lookup(usernameParameter, passwordParameter);
-	    		if(status)
+	    		boolean status = login.login(usernameParameter, passwordParameter);
+	    		if(status) {
 	    			request.getSession().setAttribute("username", usernameParameter);
+	    			String redirection=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath()+"/MainPage";
+	    			response.sendRedirect(redirection);
+	    		}
 	    		else{
 	    			request.getSession().setAttribute("username", "anonymous");
-	    			System.out.println("could not find credentials, sorry!");
+	    			response.setContentType("text/html");
+					out.println("<script type=\"text/javascript\">");
+					out.println("alert('invalid username or password');");
+					out.println("location='Login';");
+					out.println("</script>");
 	    		}
 	    	}
     	}
@@ -61,7 +71,7 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
-		lookup(request);
+		login(request, response);
 	}
 
 }

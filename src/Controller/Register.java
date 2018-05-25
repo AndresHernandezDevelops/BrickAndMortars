@@ -65,15 +65,18 @@ public class Register extends HttpServlet {
     				//out.print("Registration Successful"); //JS code goes here
 	    			
 	    			//response.setContentType("text/html");
-	    			response.setContentType("text/html");  
-	    			out.println("<script type=\"text/javascript\">");  
-	    			out.println("alert('User registered successfully! Praise Allah');");  
-	    			out.println("</script>");
+//	    			response.setContentType("text/html");  
+//	    			out.println("<script type=\"text/javascript\">");  
+//	    			out.println("alert('User registered successfully! Praise Allah');");  
+//	    			out.println("</script>");
 	    			
-	    			//request.getSession().setAttribute("message", "successfully signed up!");
-    				
-	    			String redirection=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath()+"/MainPage";
-	//   			response.sendRedirect(redirection);
+	    			response.setContentType("text/html"); 
+	    			   out.println("<script type=\"text/javascript\">");
+	    			   out.println("alert('successfully registered');");
+	    			   out.println("location='MainPage';");
+	    			   out.println("</script>");
+	    			   String redirection=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath()+"/MainPage";
+	    			   //response.sendRedirect(redirection);
     			}
 	    		else{
 	    			//request.getSession().setAttribute("username", "anonymous");

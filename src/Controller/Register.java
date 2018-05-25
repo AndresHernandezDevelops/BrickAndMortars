@@ -42,18 +42,6 @@ public class Register extends HttpServlet {
 		String phoneParameter = request.getParameter("phone");
 		String cancelParameter = request.getParameter("cancel");
 
-		// System.out.println(registerButtonParameter);
-		// System.out.println(usernameParameter);
-		// System.out.println(passwordParameter);
-		// System.out.println(addressParameter);
-		// System.out.println(firstnameParameter);
-		// System.out.println(lastnameParameter);
-		// System.out.println(postalcodeParameter);
-		// System.out.println(provinceParameter);
-		// System.out.println(countryParameter);
-		// System.out.println(phoneParameter);
-		// System.out.println(cancelParameter);
-
 		try {
 			PrintWriter out = response.getWriter();
 			if (registerButtonParameter != null && registerButtonParameter.equals("true")) {
@@ -62,14 +50,8 @@ public class Register extends HttpServlet {
 						phoneParameter);
 				if (status) {
 					request.getSession().setAttribute("username", usernameParameter);
-					// out.print("Registration Successful"); //JS code goes here
-
-					// response.setContentType("text/html");
-					// response.setContentType("text/html");
-					// out.println("<script type=\"text/javascript\">");
-					// out.println("alert('User registered successfully! Praise Allah');");
-					// out.println("</script>");
-
+					
+					//This is the code that shows the popup boxes
 					response.setContentType("text/html");
 					out.println("<script type=\"text/javascript\">");
 					out.println("alert('successfully registered');");

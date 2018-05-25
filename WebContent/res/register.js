@@ -1,9 +1,3 @@
-function doAjax(address){
-	if(validate){
-		fetchUsername(address)
-	}
-}
-
 function validate(){
 	var username = document.getElementById("username").value;
 	var password = document.getElementById("password").value;
@@ -36,39 +30,15 @@ function test(input){
 	return regex.test(input);
 }
 
-function fetchUsername(address){
-	var request = new XMLHttpRequest();
-	
-	var username = document.getElementById("username").value;
-	var password = document.getElementById("password").value;
-	var firstname = document.getElementById("firstname").value;
-	var lastname = document.getElementById("lastname").value;
-	var address = document.getElementById("address").value;
-	var postalcode = document.getElementById("postalcode").value;
-	var province = document.getElementById("province").value;
-	var country = document.getElementById("country").value;
-	var phone = document.getElementById("phone").value;
-	
-	var data ="username=" + username + "&password=" +password + "&firstname=" + firstname + "&lastname=" + lastname + "&address=" + address + "&postalcode=" + postalcode + "&province=" + province + "&country=" + country + "&phone=" + phone;
-	alert(data);
-	request.onreadystatechange = function()
-	 {
-		textHandler(request);
-	 };
-	 request.open("POST", address, true);
-	 request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	 request.send(data); 
+
+function copy()
+{
+	var regex = RegExp('^[0-9a-zA-Z]*@[0-9a-zA-Z]*.com$');
+	var t1 = "test";
+	var t2 = "@#$";
+	var t3 = "jyk1961@hotmail.com"
+	console.log(regex.test(t1));
+	console.log(regex.test(t2));
+	console.log(regex.test(t3));
 }
 
-function handler(request){
-if (request.readyState == 4 && request.status == 200) {
-		
-		if (request.responseText.charAt(0) == 'R') {			//Registration successful
-			document.getElementById("result").innerHTML = request.responseText;
-		}
-		else {			//registration not successful
-			document.getElementById("result").innerHTML = request.responseText;
-		}
-
-	}
-}

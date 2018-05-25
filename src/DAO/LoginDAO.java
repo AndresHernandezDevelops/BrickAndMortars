@@ -29,7 +29,6 @@ public class LoginDAO {
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
-		System.out.println("the login lookup number of results is: " + r.getFetchSize());
 		if(r.next())
 			result = true;
 		r.close();

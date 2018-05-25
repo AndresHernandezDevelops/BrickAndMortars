@@ -58,7 +58,7 @@
 
       <div class="clearfix">
         <button type="submit" value="true" class="cancel" name="cancel" style="color:black;" formnovalidate="formnovalidate">Cancel</button>
-        <button type="submit" class="signupbtn" name="registerButton" value="true" onclick="return doAjax('${pageContext.request.contextPath}/Register');return false;">Sign Up</button>
+         <button type="submit" class="signupbtn" name="registerButton" value="true" onclick="return validate();">Sign Up</button>s
       </div>
     </div>
   </form>

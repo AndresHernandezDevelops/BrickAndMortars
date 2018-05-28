@@ -2,15 +2,13 @@ function validate(){
 	var username = document.getElementById("username").value;
 	var password = document.getElementById("password").value;
 	var lengthValidator = ((password.length<=30) && (username.length<=30));
-	var bothPasswordsSame = check_pw();
 	var ok = test(username) && test(password);
 	if(!lengthValidator)
 		alert("username or password too long!");
-	if(!bothPasswordsSame)	
-		alert("passwords dont match!!");
 	if(!ok)
 		alert("numbers and letters only please");
-	return totalBoolean = lengthValidator && ok && bothPasswordsSame;
+	hashPW(password)
+	return totalBoolean = lengthValidator && ok;
 }
 
 function check_pw(){
@@ -18,10 +16,14 @@ function check_pw(){
 	var pw = document.getElementById("password").value;
 	var pwconf = document.getElementById("pwconf").value;
 	if ((pwconf === pw)){
-	//	alert("Passwords don't match!");
 		ok = true;
 	}
 	return ok;
+}
+
+function hashPW(password){
+	var hash = CryptoJS.SHA3(password);
+	document.getElementById("password").value = hash;
 }
 
 

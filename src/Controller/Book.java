@@ -57,12 +57,10 @@ public class Book extends HttpServlet {
 	    cart.addBook(book);
     }
     
-    public void goBack(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-    	this.getServletContext().getRequestDispatcher("Start").forward(request, response);
-    }
-    
-    public void goShoppingCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-    	this.getServletContext().getRequestDispatcher("ShoppingCart").forward(request, response);
+    public void redirect(HttpServletRequest request, HttpServletResponse response, String target) throws IOException {
+    	String redirection = request.getScheme() + "://" + request.getServerName() + ":"
+				+ request.getServerPort() + request.getContextPath() + "/" + target;
+		response.sendRedirect(redirection);
     }
     
     public void addReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -89,9 +87,9 @@ public class Book extends HttpServlet {
     	if(addBookParameter != null && addBookParameter.equals("true"))
     		this.addBook();
     	else if(cartParameter != null && cartParameter.equals("true"))
-    		this.goShoppingCart(request, response);
+    		this.redirect(request, response, "ShoppingCart");
     	else if(goBackParameter != null && goBackParameter.equals("true"))
-    		this.goBack(request, response);
+    		this.redirect(request, response, "MainPage");
     	else if(reviewButtonParameter != null && reviewButtonParameter.equals("true")){
         	this.addReview(request, response);
     	}

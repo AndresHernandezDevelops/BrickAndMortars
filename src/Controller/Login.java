@@ -29,6 +29,12 @@ public class Login extends HttpServlet {
     public Login() throws ClassNotFoundException {
         login = new LoginDAO();
     }
+    
+    public void redirect(HttpServletRequest request, HttpServletResponse response, String target) throws IOException {
+    	String redirection = request.getScheme() + "://" + request.getServerName() + ":"
+				+ request.getServerPort() + request.getContextPath() + "/" + target;
+		response.sendRedirect(redirection);
+    }
 
     private void login(HttpServletRequest request, HttpServletResponse response){
     	String loginButtonParameter = request.getParameter("loginButton");
@@ -42,8 +48,7 @@ public class Login extends HttpServlet {
 	    		boolean status = login.login(usernameParameter, passwordParameter);
 	    		if(status) {
 	    			request.getSession().setAttribute("username", usernameParameter);
-	    			String redirection=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath()+"/MainPage";
-	    			response.sendRedirect(redirection);
+	    			this.redirect(request, response, "MainPage");
 	    		}
 	    		else{
 	    			request.getSession().setAttribute("username", "anonymous");

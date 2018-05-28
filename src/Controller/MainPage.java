@@ -125,6 +125,11 @@ public class MainPage extends HttpServlet {
 			}
     }
     
+    public void redirect(HttpServletRequest request, HttpServletResponse response, String target) throws IOException {
+    	String redirection = request.getScheme() + "://" + request.getServerName() + ":"
+				+ request.getServerPort() + request.getContextPath() + "/" + target;
+		response.sendRedirect(redirection);
+    }
     
     public void processParameters(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
     	String cartParameter = request.getParameter("cart");
@@ -135,11 +140,11 @@ public class MainPage extends HttpServlet {
     	String searchByTextParameter = request.getParameter("searchByTextButton");
 
     	if(cartParameter != null && cartParameter.equals("true"))
-    		this.getServletContext().getRequestDispatcher("ShoppingCart").forward(request, response);
+    		this.redirect(request, response, "ShoppingCart");
     	else if(loginParameter != null && loginParameter.equals("true"))
-    		this.getServletContext().getRequestDispatcher("Login").forward(request, response);
-    	else if(registerParamter != null && registerParamter.equals("true"))
-    		this.getServletContext().getRequestDispatcher("Register").forward(request, response);
+    		this.redirect(request, response, "Login");
+    	else if(registerParamter != null && registerParamter.equals("true")) 
+    		this.redirect(request, response, "Register");
     	else if(searchByCategory != null){
     		this.searchByCategory(request);
     		serveJSP(request, response);
@@ -150,17 +155,17 @@ public class MainPage extends HttpServlet {
     	}
     	else if(bookIDParameter != null && bookIDParameter.equals("true")){
     		request.setAttribute("book", bookBeanList.get(bookIDParameter));//setting the chosen book to a request variable and grabbing it from shopping cart
-			request.getRequestDispatcher("Book").forward(request, response);
+    		this.redirect(request, response, "Book");
     	}
     	else
-    		System.out.println("didn't hit any if-statement");
+    		System.out.println("didn't hit any if-statement in the mainpage");
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("-----------------DOGET OF THE MAINPAGE SAAAD!!!!!---------------");
+		System.out.println("-----------------DOGET OF THE MAINPAGE!!!!!---------------");
 		request.getRequestDispatcher("/MainPage.jspx").forward(request, response);
 	}
 
@@ -169,7 +174,7 @@ public class MainPage extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//iterate and print out parameters
-		System.out.println("-----------------DOPOST OF THE MAINPAGE SAAAD!!!!!---------------");
+		System.out.println("-----------------DOPOST OF THE MAINPAGE!!!!!---------------");
 		Enumeration<String> tmp = request.getParameterNames();
 		while (tmp.hasMoreElements())
 		{

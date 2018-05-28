@@ -21,16 +21,22 @@ public class ShoppingCart extends HttpServlet {
         
     }
     
+    public void redirect(HttpServletRequest request, HttpServletResponse response, String target) throws IOException {
+    	String redirection = request.getScheme() + "://" + request.getServerName() + ":"
+				+ request.getServerPort() + request.getContextPath() + "/" + target;
+		response.sendRedirect(redirection);
+    }
+    
     public void processParameters(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
     	String updateParameter = request.getParameter("update");
     	String checkoutParameter = request.getParameter("checkout");
     	
     	if(updateParameter != null  && updateParameter.equals("true"))
-    		this.getServletContext().getRequestDispatcher("UpdateQuantity").forward(request, response);
+    		this.redirect(request, response, "UpdateQuantity");
     	else if(checkoutParameter != null && updateParameter.equals("true"))
-    		request.getRequestDispatcher("/Checkout.jspx").forward(request, response);
+    		this.redirect(request, response, "Checkout");
     	else
-    		System.out.println("did not hit an if statement in the shopping cart parameters");
+    		System.out.println("did not hit an if statement in the shopping cart");
     }
 
 	/**

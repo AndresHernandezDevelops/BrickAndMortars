@@ -18,7 +18,6 @@ import listener.Top10Books;
 @WebServlet("/Administrator")
 public class Analytics extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 	
 	private BookStore bookStore;
 	private Top10Books top10Books;
@@ -55,8 +54,14 @@ public class Analytics extends HttpServlet {
 		catch (Exception e){
 			e.printStackTrace();
 		}
-    }
+    }   
     
+    public void processParameters(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    	String monthlyReportParameter = request.getParameter("monthlyReport");
+    	
+		if (monthlyReportParameter != null && monthlyReportParameter.equals("true"))
+			export(request, response);
+    }
     
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -64,25 +69,22 @@ public class Analytics extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String target = "/Administrator.jspx";
-		request.getRequestDispatcher(target).forward(request, response);
-		
+		request.getRequestDispatcher(target).forward(request, response);		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String monthlyReportParameter = request.getParameter("monthlyReport");
-		if (monthlyReportParameter != null && monthlyReportParameter.equals("true")) {
-			export(request, response);
-			top10Books.getTop10();
-			request.setAttribute("bID", "b004");
-			request.setAttribute("bID", "b004");
-			request.setAttribute("bID", "b004");
-			request.setAttribute("bID", "b004");
-			request.setAttribute("bID", "b004");
-			top10Books.getTop10();
+		processParameters(request, response);
+			//testing
+//			top10Books.getTop10();
+//			request.setAttribute("bID", "b004");
+//			request.setAttribute("bID", "b004");
+//			request.setAttribute("bID", "b004");
+//			request.setAttribute("bID", "b004");
+//			request.setAttribute("bID", "b004");
+//			top10Books.getTop10();
 			
-		}
 	}
 }

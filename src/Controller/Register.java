@@ -28,6 +28,12 @@ public class Register extends HttpServlet {
 	public Register() throws ClassNotFoundException {
 		register = new LoginDAO();
 	}
+	
+	public void redirect(HttpServletRequest request, HttpServletResponse response, String target) throws IOException {
+    	String redirection = request.getScheme() + "://" + request.getServerName() + ":"
+				+ request.getServerPort() + request.getContextPath() + "/" + target;
+		response.sendRedirect(redirection);
+    }
 
 	private void register(HttpServletRequest request, HttpServletResponse response) {
 		String registerButtonParameter = request.getParameter("registerButton");
@@ -68,9 +74,7 @@ public class Register extends HttpServlet {
 				}
 			} else if (cancelParameter != null && cancelParameter.equals("true")) {
 				System.out.println("hit the cancel button!");
-				String redirection = request.getScheme() + "://" + request.getServerName() + ":"
-						+ request.getServerPort() + request.getContextPath() + "/MainPage";
-				response.sendRedirect(redirection);
+				this.redirect(request, response, "MainPage");
 			}
 
 		} catch (Exception e) {

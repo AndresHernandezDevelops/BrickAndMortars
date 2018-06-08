@@ -7,7 +7,7 @@ function validate(){
 		alert("username or password too long!");
 	if(!ok)
 		alert("numbers and letters only please");
-	hashPW(password)
+	hashPW(password);
 	return totalBoolean = lengthValidator && ok;
 }
 
@@ -22,8 +22,12 @@ function check_pw(){
 }
 
 function hashPW(password){
-	var hash = CryptoJS.SHA3(password);
+	var hash = "";
+	for(var i = 0; i < password.length; i++){
+		hash += password.charCodeAt(i);
+	}
 	document.getElementById("password").value = hash;
+	alert(hash);
 }
 
 

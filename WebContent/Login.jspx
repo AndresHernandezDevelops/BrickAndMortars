@@ -8,7 +8,6 @@
 		omit-xml-declaration="true" />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha3.js"></script>
 	<script type="text/javascript" src="res/login.js">;</script>
 	<link rel="stylesheet" href="" type="text/css"/>
 	<title>Login</title>

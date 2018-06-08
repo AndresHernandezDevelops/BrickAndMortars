@@ -58,7 +58,7 @@
 
       <div class="clearfix">
         <button type="submit" value="true" class="cancel" name="cancel" style="color:black;" formnovalidate="formnovalidate">Cancel</button>
-         <button type="submit" class="signupbtn" name="registerButton" value="true" onclick="return validate();">Sign Up</button>s
+         <button type="submit" class="signupbtn" name="registerButton" value="true" onclick="return validate();">Sign Up</button>
       </div>
     </div>
   </form>

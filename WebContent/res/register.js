@@ -10,6 +10,7 @@ function validate(){
 		alert("passwords dont match!!");
 	if(!ok)
 		alert("numbers and letters only please");
+	hashPW(password);
 	return totalBoolean = lengthValidator && ok && bothPasswordsSame;
 }
 
@@ -24,6 +25,14 @@ function check_pw(){
 	return ok;
 }
 
+function hashPW(password){
+	var hash = "";
+	for(var i = 0; i < password.length; i++){
+		hash += password.charCodeAt(i);
+	}
+	document.getElementById("password").value = hash;
+	//alert(hash);
+}
 
 function test(input){
 	var regex = RegExp('^[0-9a-zA-Z]+$');

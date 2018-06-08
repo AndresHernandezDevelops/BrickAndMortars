@@ -27,7 +27,7 @@ function hashPW(password){
 		hash += password.charCodeAt(i);
 	}
 	document.getElementById("password").value = hash;
-	alert(hash);
+	//alert(hash);
 }
 
 

@@ -27,16 +27,27 @@ button:hover {
     opacity:1;
 }
 
-/* Extra styles for the cancel button */
+.buttons
+{
+	width: 100%
+}
+
+/* Extra styles for the cancel button *//*
 .cancelbtn {
     padding: 14px 20px;
     background-color: #e9e9e9;
-}
+}*/
 
 /* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
+.cancelbtn{
   float: left;
   width: 50%;
+}
+
+.signupbtn 
+{
+	float: left;
+	width: 100%
 }
 
 /* Add padding to container elements */

@@ -58,11 +58,19 @@ public class Analytics extends HttpServlet {
     
     public void processParameters(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
     	String monthlyReportParameter = request.getParameter("monthlyReport");
+    	String UBStatsParam = request.getParameter("UBStats");
     	
 		if (monthlyReportParameter != null && monthlyReportParameter.equals("true"))
 			export(request, response);
+		else if (UBStatsParam != null && UBStatsParam.equals("true"))
+			exportUBStats(request, response);
     }
     
+	private void exportUBStats(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */

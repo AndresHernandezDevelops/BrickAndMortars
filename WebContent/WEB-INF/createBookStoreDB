@@ -1,10 +1,31 @@
+DROP TABLE address;
+DROP TABLE book;
+DROP TABLE Login;
+DROP TABLE po;
+DROP TABLE poitem;
+DROP TABLE review;
+DROP TABLE visitevent;
+
+/** username: login id
+* password: login password
+**/
+CREATE TABLE Login(
+username VARCHAR(30) NOT NULL,
+password VARCHAR(30) NOT NULL,
+PRIMARY KEY(username)
+);
+INSERT INTO login (username, password) values 
+('****', '*'),
+('juyoung', 'admin'),
+('andres', 'password'),
+('saad', 'rebooted');
+
 /** bid: unique identifier of Book (like ISBN)
 * title: title of Book
 * price: unit price WHEN ordered
 * author: name of authors
 * category: as specified
 */
-DROP TABLE Book;
 CREATE TABLE Book (
 bid VARCHAR(20) NOT NULL,
 title VARCHAR(60) NOT NULL,
@@ -23,7 +44,6 @@ INSERT INTO Book (bid, title, price, category) VALUES ('b003','Mechanics' ,100,'
 * id: address id
 *
 */
-DROP TABLE Address;
 
 CREATE TABLE Address (
 username varchar(30) NOT NULL,
@@ -32,18 +52,20 @@ province VARCHAR(20) NOT NULL,
 country VARCHAR(20) NOT NULL,
 zip VARCHAR(20) NOT NULL,
 phone VARCHAR(20) not NULL,
+firstname VARCHAR(30) NOT NULL,
+LASTNAME VARCHAR(30) NOT NULL,
 PRIMARY KEY(username),
 foreign key (username) references login(username) on delete cascade
 );
 /*
 # Inserting data for table 'address'
 #*/
-INSERT INTO Address (username, street, province, country, zip, phone) VALUES ('juyoung', '123 Yonge St', 'ON',
-'Canada', 'K1E 6T5' ,'647-123-4567');
-INSERT INTO Address (username, street, province, country, zip, phone) VALUES ('andres','445 Avenue rd', 'ON',
-'Canada', 'M1C 6K5' ,'416-123-8569');
-INSERT INTO Address (username, street, province, country, zip, phone) VALUES ('narbeh', '789 Keele St.', 'ON',
-'Canada', 'K3C 9T5' ,'416-123-9568');
+INSERT INTO Address (username, street, province, country, zip, phone, firstname, lastname) VALUES ('juyoung', '123 Yonge St', 'ON',
+'Canada', 'K1E 6T5' ,'647-123-4567', 'John', 'White');
+INSERT INTO Address (username, street, province, country, zip, phone, firstname, lastname) VALUES ('andres','445 Avenue rd', 'ON',
+'Canada', 'M1C 6K5' ,'416-123-8569', 'Peter', 'Black');
+INSERT INTO Address (username, street, province, country, zip, phone, firstname, lastname) VALUES ('saad', '789 Keele St.', 'ON',
+'Canada', 'K3C 9T5' ,'416-123-9568', 'Andy', 'Green');
 
 
 /* Purchase Order
@@ -52,23 +74,22 @@ INSERT INTO Address (username, street, province, country, zip, phone) VALUES ('n
 * id: purchase order id
 * status:status of purchase
 */
-DROP TABLE PO;
 CREATE TABLE PO (
-id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+username VARCHAR(30) NOT NULL,
 lname VARCHAR(20) NOT NULL,
 fname VARCHAR(20) NOT NULL,
 status VARCHAR(32) CONSTRAINT status_ck CHECK (status IN ('ORDERED','PROCESSED','DENIED')) NOT NULL,
 address INT NOT NULL,
-PRIMARY KEY(id),
+PRIMARY KEY(username),
 /*INDEX (address),*/
-FOREIGN KEY (address) REFERENCES Address (id) ON DELETE CASCADE
+foreign key (username) references login(username) on delete cascade
 );/*
 #
 # Inserting data for table 'PO'
 #*/
-INSERT INTO PO (lname, fname, status, address) VALUES ('John', 'White', 'PROCESSED', 1);
-INSERT INTO PO (lname, fname, status, address) VALUES ('Peter', 'Black', 'DENIED', 2);
-INSERT INTO PO (lname, fname, status, address) VALUES ('Andy', 'Green', 'ORDERED', 3);
+INSERT INTO PO (username, lname, fname, status, address) VALUES ('juyoung', 'John', 'White', 'PROCESSED', 1);
+INSERT INTO PO (username, lname, fname, status, address) VALUES ('andres', 'Peter', 'Black', 'DENIED', 2);
+INSERT INTO PO (username, lname, fname, status, address) VALUES ('saad', 'Andy', 'Green', 'ORDERED', 3);
 
 
 /* Items on order
@@ -76,23 +97,22 @@ INSERT INTO PO (lname, fname, status, address) VALUES ('Andy', 'Green', 'ORDERED
 * bid: unique identifier of Book
 * price: unit price
 */
-DROP TABLE POItem;
 CREATE TABLE POItem (
-id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+username VARCHAR(30) NOT NULL,
 bid VARCHAR(20) NOT NULL,
 price INT NOT NULL,
-PRIMARY KEY(id,bid),
+PRIMARY KEY(username,bid),
 /*INDEX (id),*/
-FOREIGN KEY(id) REFERENCES PO(id) ON DELETE CASCADE,
+foreign key (username) references login(username) on delete cascade,
 /*INDEX (bid),*/
 FOREIGN KEY(bid) REFERENCES Book(bid) ON DELETE CASCADE
 );
 /*
 # Inserting data for table 'POitem'
 */
-INSERT INTO POItem (bid, price) VALUES ('b001', 20);
-INSERT INTO POItem (bid, price) VALUES ('b002', 201);
-INSERT INTO POItem (bid, price) VALUES ('b003', 100);
+INSERT INTO POItem (username, bid, price) VALUES ('juyoung', 'b001', 20);
+INSERT INTO POItem (username, bid, price) VALUES ('andres', 'b002', 201);
+INSERT INTO POItem (username, bid, price) VALUES ('saad', 'b003', 100);
 
 
 /* visit to website
@@ -100,7 +120,6 @@ INSERT INTO POItem (bid, price) VALUES ('b003', 100);
 * bid: unique identifier of Book
 * eventtype: status of purchase
 */
-DROP TABLE VisitEvent;
 CREATE TABLE VisitEvent (
 day varchar(8) NOT NULL,
 bid varchar(20) not null, /*REFERENCES Book.bid,*/
@@ -129,7 +148,7 @@ review varchar(200),
 rating int,
 PRIMARY KEY(bid, name, day),
 FOREIGN KEY (bid) REFERENCES book (bid) ON DELETE CASCADE
-)
+);
 
 insert into review(bid, name, day, review, rating) values ('b001', 'joseph', '20180420162530', 'this book sucks!!!!! somebody save me!!', 5);
 insert into review(bid, name, day, review, rating) values ('b001', 'anonymous', '20180421183034', 'this book aint that bad, but ill still give it a 1', 1);

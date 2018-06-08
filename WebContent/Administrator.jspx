@@ -21,6 +21,10 @@
 		<button name="monthlyReport" id="monthlyReport" value="true" onclick="doSimpleAjax('${pageContext.request.contextPath}/Administrator');return false;">
  				Report monthly sales
 		</button>
+		
+		<button name="UBStats" id="UBStats" value="true" onclick="doSimpleAjax('${pageContext.request.contextPath}/Administrator');return false;">
+ 				User Buying Statistics
+		</button>
 				
 	</fieldset>
 </FORM>

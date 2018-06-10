@@ -53,17 +53,29 @@
 		
 		<BR />
 		<BR />
+		<center>
+			<div class="slideshow-container">
+				<div class="mySlides fade">
+					<img name="slides" />
+				</div>
+			</div>
+		</center>
+		<BR />
+		<center><H2>FEATURED</H2></center>
+		
+		<!-- update these with thumbnails including price and availability -->
 	<div id="result">
 		<table style="width:100%">
   			<tr>
-    			<th><IMG alt="GOT" src="https://i.imgur.com/KABVpWn.png" /></th>
-    			<th><IMG alt="GOT" src="https://i.imgur.com/KABVpWn.png" /></th> 
-   				<th><IMG alt="GOT" src="https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png" /></th>
+    			<th><IMG src="https://i.imgur.com/qUwh4YA.jpg" /><p>BECOMING</p><p>by Michelle Obama</p></th>		
+    			<th><IMG src="https://i.imgur.com/9RQLeBN.jpg" /><p>Fire &amp; BLOOD: 300 YEARS</p><p>BEFORE A GAME OF TH..</p><p>by George RR Martin</p></th> 
+   				<th><IMG src="https://i.imgur.com/aCGdVVl.jpg" /><p>The Handmaid's Tale</p><p>by Margaret Atwood</p></th>
+   				<th><img src="https://i.imgur.com/QRvBOVK.jpg"/><p>Deadpool Kills the Marvel Universe</p><p>by Cullen Bunn</p></th>
  		 	</tr>
  		 	<tr>
-    			<th><IMG alt="GOT" src="https://i.imgur.com/KABVpWn.png" /></th>
-    			<th><IMG alt="GOT" src="https://i.imgur.com/KABVpWn.png" /></th> 
-   				<th><IMG alt="GOT" src="https://i.imgur.com/KABVpWn.png" /></th>
+    			<th><IMG alt="GOT" src="" /></th>
+    			<th><IMG alt="GOT" src="" /></th> 
+   				<th><IMG alt="GOT" src="" /></th>
  		 	</tr>
  
 		</table>

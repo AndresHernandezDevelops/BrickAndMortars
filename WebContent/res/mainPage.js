@@ -147,3 +147,31 @@ function checkInject()
 	textval = textval.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 	console.log(textval);
 }
+
+
+//slideshow js
+var imageIndex = 0;
+var images = [];
+
+var timeInterval = 2000;
+
+images[0] = "https://i.imgur.com/6h4GZho.jpg";
+images[1] = "https://i.imgur.com/EwiYP0P.jpg";
+images[2] = "https://i.imgur.com/CiGEFOF.jpg";
+images[3] = "https://i.imgur.com/9OI9Uw0.jpg";
+
+
+function changeImg(){
+	   document.slides.src = images[imageIndex];
+	  //document.getElementById("text").innerHTML = titles[imageIndex];
+	   
+	   if(imageIndex < images.length - 1){
+		   imageIndex++;
+	   }
+	   else{
+		   imageIndex = 0;
+	   }
+	   setTimeout("changeImg()", timeInterval);
+}
+
+window.onload = changeImg;

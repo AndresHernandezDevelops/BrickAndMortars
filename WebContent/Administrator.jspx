@@ -22,7 +22,7 @@
  				Report monthly sales
 		</button>
 		
-		<button name="UBStats" id="UBStats" value="true" onclick="doSimpleAjax('${pageContext.request.contextPath}/Administrator');return false;">
+		<button name="UBStats" id="UBStats" value="true" onclick="getUserStats('${pageContext.request.contextPath}/Administrator');return false;">
  				User Buying Statistics
 		</button>
 				

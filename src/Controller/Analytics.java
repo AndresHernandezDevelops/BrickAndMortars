@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
+import Bean.UBStatsBean;
+import DAO.UBStatsDAO;
 import Model.BookStore;
 import listener.Top10Books;
 
@@ -33,7 +38,6 @@ public class Analytics extends HttpServlet {
 		try {
 			this.bookStore = new BookStore();
 			this.top10Books = new Top10Books();
-			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -69,6 +73,15 @@ public class Analytics extends HttpServlet {
 	private void exportUBStats(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
+		Gson gson = new Gson();
+		try {
+			PrintWriter out = response.getWriter();
+			List<UBStatsBean> list = bookStore.getUserStats();
+			out.print(gson.toJson(list));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**

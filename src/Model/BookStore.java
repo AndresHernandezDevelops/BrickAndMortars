@@ -30,6 +30,7 @@ public class BookStore {
 	private BookDAO books;
 	private EventTypeDAO events;
 	private ReviewDAO reviews;
+	private UBStatsDAO uStats;
 	
 	//constructor
 	public BookStore() throws ClassNotFoundException
@@ -37,6 +38,18 @@ public class BookStore {
 		books = new BookDAO();
 		events = new EventTypeDAO();
 		reviews = new ReviewDAO();
+		uStats = new UBStatsDAO();
+	}
+	
+	public List<UBStatsBean> getUserStats() throws Exception
+	{
+		try {
+			return uStats.getUserStats();
+		}
+		catch (Exception e)
+		{
+			throw new Exception();
+		}
 	}
 	
 	//main page search by category

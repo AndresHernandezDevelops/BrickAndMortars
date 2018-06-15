@@ -43,6 +43,9 @@
 		
 		<hr></hr>
 		
+		<div id="result">
+			<!-- load book details in here when a certain book is clicked -->
+		</div>
 
 </body>
 </html>

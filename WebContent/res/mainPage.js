@@ -153,7 +153,7 @@ function checkInject()
 var imageIndex = 0;
 var images = [];
 
-var timeInterval = 2000;
+var timeInterval = 5000;
 
 images[0] = "https://i.imgur.com/6h4GZho.jpg";
 images[1] = "https://i.imgur.com/EwiYP0P.jpg";

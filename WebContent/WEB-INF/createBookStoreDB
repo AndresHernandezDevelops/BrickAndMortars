@@ -1,10 +1,10 @@
 DROP TABLE address;
-DROP TABLE book;
-DROP TABLE Login;
 DROP TABLE po;
 DROP TABLE poitem;
 DROP TABLE review;
 DROP TABLE visitevent;
+DROP TABLE book;
+DROP TABLE Login;
 
 /** username: login id
 * password: login password
@@ -30,16 +30,36 @@ CREATE TABLE Book (
 bid VARCHAR(20) NOT NULL,
 title VARCHAR(60) NOT NULL,
 price INT NOT NULL,
-category VARCHAR(32) CONSTRAINT category_ck CHECK (category IN ('Science','Fiction','Engineering'))  NOT NULL,
+category VARCHAR(32) CONSTRAINT category_ck CHECK (category IN ('Science','Fiction','Tech', 'LifeStyle', 'Childrens', 'Law', 'Non-Fiction'))  NOT NULL,
+thumbnail varchar(200) NOT NULL,
 PRIMARY KEY(bid)
 );/*
 #
 # Adding data for table 'Book'
 #*/
-INSERT INTO Book (bid, title, price, category) VALUES ('b001', 'Little Prince', 20, 'Fiction');
-INSERT INTO Book (bid, title, price, category) VALUES ('b002','Physics', 201, 'Science');
-INSERT INTO Book (bid, title, price, category) VALUES ('b003','Mechanics' ,100,'Engineering');
-
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b001', 'Little Prince', 10, 'Childrens', 'https://i.imgur.com/zNzbf6Y.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b002','Concepts of Physics', 201, 'Science', 'https://i.imgur.com/zPb909d.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b003','Orthopaedic Biomechanics' ,100,'Science', 'https://i.imgur.com/JwSP6Az.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b004','Dogman', 9,'Childrens', 'https://i.imgur.com/DdKc8KV.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b005','The Handmaids Tale', 39,'Fiction', 'https://i.imgur.com/aCGdVVl.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b006','Fire and Blood Game of Thrones', 59,'Fiction', 'https://i.imgur.com/9RQLeBN.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b007','Becoming', 30,'LifeStyle', 'https://i.imgur.com/qUwh4YA.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b008','TheOutsider', 19,'Fiction', 'https://i.imgur.com/6h4GZho.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b009','Line of Sight', 10,'Fiction', 'https://i.imgur.com/9OI9Uw0.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b010','A Higher Loyalty', 25,'Non-Fiction', 'https://i.imgur.com/CiGEFOF.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b011','Robin', 12,'Non-Fiction', 'https://i.imgur.com/EwiYP0P.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b012','Learn Python 3', 69,'Tech', 'https://i.imgur.com/jpZ7cke.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b013','Astrophysics for people in a hurry', 26,'Science', 'https://i.imgur.com/xlcmSv4.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b014','A brief history of time', 15,'Science', 'https://i.imgur.com/vFQOlqO.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b015','The rise and fall of the dinosaurs', 21,'Science', 'https://i.imgur.com/ihKhGZa.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b016','Canadian Law Dictionary', 55,'Law', 'https://i.imgur.com/UwakKYQ.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b017','The Official LSAT Superprep',73,'Law', 'https://i.imgur.com/NukMUBv.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b018','The book of the Law', 35,'Law', 'https://i.imgur.com/Xcj5gLa.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b019','Excel 2016 for Dummies', 29,'Tech', 'https://i.imgur.com/ovdY4BX.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b020','The Pragmatic Programmer', 80,'Tech', 'https://i.imgur.com/cUsaQXH.jpg');
+ INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b021','Principles of computer security', 126,'Tech', 'https://i.imgur.com/w0uLusm.jpg');
+ 
+ 
 /* Address
 * id: address id
 *

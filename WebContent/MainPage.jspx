@@ -32,7 +32,7 @@
 			  		<div class="dropdown-content">
 			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage', 'Science');return false;" id="category1" value='Science'>Science</a>
 			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage', 'Fiction');return false;" id="category2" value='Fiction'>Fiction</a>
-			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage', 'Tech);return false;" id="category3" value='Tech'>Tech</a>
+			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage', 'Tech');return false;" id="category3" value='Tech'>Tech</a>
 			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage', 'LifeStyle');return false;" id="category4" value='LifeStyle'>LifeStyle</a>
 			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage', 'Childrens');return false;" id="category5" value='Childrens'>Childrens</a>
 			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage', 'Law');return false;" id="category6" value='Law'>Law</a>
@@ -53,7 +53,7 @@
 		
 		<BR />
 		<BR />
-		<center>
+		<center><img src="https://i.imgur.com/k490EZv.png"/>
 			<div class="slideshow-container">
 				<div class="mySlides fade">
 					<img name="slides" />
@@ -61,21 +61,21 @@
 			</div>
 		</center>
 		<BR />
-		<center><H2>FEATURED</H2></center>
+		<center><img src="https://i.imgur.com/DrVS6pl.png"/></center>
 		
 		<!-- update these with thumbnails including price and availability -->
 	<div id="result">
 		<table style="width:100%">
   			<tr>
-    			<th><IMG src="https://i.imgur.com/qUwh4YA.jpg" /><p>BECOMING</p><p>by Michelle Obama</p></th>		
+    			<th><a href="Book"><IMG src="https://i.imgur.com/qUwh4YA.jpg" /><p>BECOMING</p><p>by Michelle Obama</p></a></th>		
     			<th><IMG src="https://i.imgur.com/9RQLeBN.jpg" /><p>Fire &amp; BLOOD: 300 YEARS</p><p>BEFORE A GAME OF TH..</p><p>by George RR Martin</p></th> 
    				<th><IMG src="https://i.imgur.com/aCGdVVl.jpg" /><p>The Handmaid's Tale</p><p>by Margaret Atwood</p></th>
    				<th><img src="https://i.imgur.com/QRvBOVK.jpg"/><p>Deadpool Kills the Marvel Universe</p><p>by Cullen Bunn</p></th>
  		 	</tr>
  		 	<tr>
-    			<th><IMG alt="GOT" src="" /></th>
-    			<th><IMG alt="GOT" src="" /></th> 
-   				<th><IMG alt="GOT" src="" /></th>
+    			<th><IMG src="https://i.imgur.com/zNzbf6Y.jpg" /><p>Little Prince</p><p>by Antoine de ...</p></th>
+    			<th><IMG src="https://i.imgur.com/6h4GZho.jpg" /><p>The Outsider</p><p>by Stephen King</p></th> 
+   				<th><IMG src="https://i.imgur.com/9OI9Uw0.jpg" /><p>Line of Sight</p><p>by Tom Clancy</p></th>
  		 	</tr>
  
 		</table>

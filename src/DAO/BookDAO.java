@@ -23,6 +23,26 @@ public class BookDAO {
 		}
 	}
 	
+	public BookBean getBookByBid (String bid) throws SQLException
+    {
+		String query = String.format("select * from BOOK where bid = '%s'", bid);
+
+        Connection con = this.ds.getConnection();
+        PreparedStatement p = con.prepareStatement(query);
+        ResultSet r = p.executeQuery();
+        if (r.next())
+        {
+            String bID = r.getString("BID");
+            String title = r.getString("TITLE");
+            int price = r.getInt("PRICE");
+            String category = r.getString("CATEGORY");
+            String thumbnail = r.getString("THUMBNAIL");
+            return new BookBean(bID, title, category, price, thumbnail);
+        }
+
+        return null;
+    }
+	
 	public HashMap<String, BookBean> retrieveAll () throws SQLException
 	{
 		String query = String.format("select * from BOOK");

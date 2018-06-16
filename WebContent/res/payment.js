@@ -5,10 +5,10 @@ var click=0;
 function clicks(){
 	click+=1;
 	if(click % 3 == 0){
-		alert("Payment Denied. Try again.");
+		alert("Credit Card Authorization Failed.");
 	}
 	else{
-		alert("Purchase Confirmed. Return to Home to browse for more");
+		alert("Order Successfully Completed.");
 	}
 }
 /*can add more functions if necessary*/

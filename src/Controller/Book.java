@@ -57,6 +57,9 @@ public class Book extends HttpServlet {
 	    cart.addBook(book);
     }
     
+    private void searchById() {
+    }
+    
     public void redirect(HttpServletRequest request, HttpServletResponse response, String target) throws IOException {
     	String redirection = request.getScheme() + "://" + request.getServerName() + ":"
 				+ request.getServerPort() + request.getContextPath() + "/" + target;
@@ -101,6 +104,8 @@ public class Book extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		init(request, response);
+		//query db
+		//request.setAttribute("img", "bid");
 		request.getRequestDispatcher("/Book.jspx").forward(request, response);	
 	}
 

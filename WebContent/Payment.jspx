@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8" 
+		pageEncoding="UTF-8" session="false"/>
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<SCRIPT type="text/javascript" src="res/payment.js">;</SCRIPT>
+<link rel="StyleSheet" href="res/style.css" type="text/css" title="eecs4413" media="screen, print"/>
+<title>Payment Confirmation</title>
+</head>
+<body>
+<div class="topnav">
+			  <a class="active" href="http://localhost:8080/BrickAndMortars/MainPage.jspx">Home</a>
+			  <a href="#about">About</a>
+			  <a href="http://localhost:8080/BrickAndMortars/Contact.jspx">Contact</a>
+			  	
+			  	<div class="dropdown">
+			  		<button class="dropbutton" name="searchByCategory" id="searchByCategory" value="true" onclick="doAjax('${pageContext.request.contextPath}/MainPage');return false;">Category</button>
+			  		<div class="dropdown-content">
+			  			<a href="#">Science</a>
+			  			<a href="#">Fiction</a>
+			  			<a href="#">Tech</a>
+			  			<a href="#">LifeStyle</a>
+			  			<a href="#">Childrens</a>
+			  			<a href="#">Law</a>
+			  			<a href="#">Non-Fiction</a>
+			  		</div>
+			  	</div>
+			  	
+			  <a href="http://localhost:8080/BrickAndMortars/ShoppingCart.jspx">Shopping Cart</a>
+			  <div class="search-container">
+			  <input type="text" id="searchByText" name="searchByText" placeholder="Search..."/>	  	
+			  		<button type="submit" name="searchByTextButton" id="searchByTextButton" value="true" onclick="searchByTextAjax('${pageContext.request.contextPath}/MainPage');return false;">
+	 				Submit
+					</button>
+			  <a class="login" href="http://localhost:8080/BrickAndMortars/Login.jspx">Login</a>
+			  <a class="register" href="http://localhost:8080/BrickAndMortars/Register.jspx">Register</a>
+			</div>
+		</div>
+	<table>
+		<tr>
+			<th><img src="https://i.imgur.com/4KZOJtL.png"/></th>
+			<th><img src="https://i.imgur.com/yo0xBZt.png"/></th>
+		</tr>
+		
+		<tr>
+			<th><input type="radio" name="cardtype"></input></th>
+			<th><input type="radio" name="cardtype"></input></th>
+		</tr>
+	</table>
+	
+		
+	
+	
+	Card Holder Name:<input type="text" placeholder="John Doe..." required="required"></input>
+	<br />
+	Card Number:<input type="text" placeholder="5555555555554444" required="required"></input>
+	<br />
+	Card Security Code:<input type="text" placeholder="123" required="required"></input>
+	<br />
+	Card Expiry Date:<input type="text" placeholder="Month..."></input> / 
+	<SELECT>
+		<option>2014</option>
+		<option>2015</option>
+		<option>2016</option>
+		<option>2017</option>
+		<option>2018</option>
+		<option>2019</option>
+		<option>2020</option>
+		<option>2021</option>
+	</SELECT>
+	<br />
+	<INPUT type="submit" onclick="clicks()" value="Confirm" id="submit"/>
+	
+</body>
+</html>
+</jsp:root>

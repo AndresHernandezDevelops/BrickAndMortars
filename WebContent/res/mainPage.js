@@ -87,6 +87,7 @@ function textHandler(request){
 function buildTable(result){
 	var table = document.createElement("TABLE");
 	table.setAttribute("id", "myTable");
+	table.setAttribute("class", "resultTable");
     var row = document.createElement("TR");
     var data = document.createElement("TD");
     data.innerHTML = "book ID";

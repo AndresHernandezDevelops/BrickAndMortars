@@ -1,16 +1,16 @@
 ----------------------------------------------------------------
-Fri May 25 15:40:25 EDT 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0163-98d1-05f8-0000273d8558 
-on database directory /eecs/home/saeeds28/workspace/BrickAndMortars/MyDB with class loader ParallelWebappClassLoader
+Tue Jun 19 16:26:06 EDT 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0164-19b9-d4ab-0000270006a8 
+on database directory /eecs/home/jyk3216/git/BrickAndMortars/MyDB with class loader ParallelWebappClassLoader
   context: BrickAndMortars
   delegate: false
 ----------> Parent Classloader:
 java.net.URLClassLoader@3fee733d
  
-Loaded from file:/eecs/home/saeeds28/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/BrickAndMortars/WEB-INF/lib/derby.jar
+Loaded from file:/eecs/home/jyk3216/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/BrickAndMortars/WEB-INF/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_171-b11
-user.dir=/eecs/home/saeeds28/workspace/BrickAndMortars
+user.dir=/eecs/home/jyk3216/git/BrickAndMortars
 os.name=Linux
 os.arch=amd64
 os.version=3.10.0-693.21.1.el7.x86_64

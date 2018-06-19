@@ -10,9 +10,7 @@ import Bean.BookBean;
 public class CartBean {
 
 	private Map<BookBean, Integer> books;
-	private double subtotal;
-	private double total;
-	private String sessionID;
+
 	
 	public CartBean(){
 		this(new HashMap<BookBean, Integer>());
@@ -20,8 +18,6 @@ public class CartBean {
 
 	public CartBean(HashMap<BookBean, Integer> books) {
 		this.books = books;
-		this.subtotal = 0;
-		this.total = 0;
 	}
 	
 	public void addBook(BookBean book){
@@ -31,11 +27,23 @@ public class CartBean {
 			books.put(book, 1);
 	}
 	
+	public void addBookAmount(BookBean book, int amount){
+		if(books.containsKey(book))
+			books.put(book, books.get(book) + amount);
+		else
+			books.put(book, amount);
+	}
+	
 	public void removeBook(BookBean book){
 		if(books.get(book)==1)
 			books.remove(book, 1);
 		else
 			books.put(book, books.get(book) - 1);
+	}
+	
+	public void setBookAmount(BookBean book, int amount) {
+		if (amount > 0)
+		books.put(book, amount);
 	}
 	
 	public double getSubtotal(){

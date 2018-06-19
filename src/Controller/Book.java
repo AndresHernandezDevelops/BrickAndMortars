@@ -26,15 +26,15 @@ public class Book extends HttpServlet {
 	private BookBean book;
 	private CartBean cart;
 	private BookStore bookStore;
-	
+	private String bID;
 	Map<String, ReviewBean> bookBeanList;
-
+	
     /**
      * @throws ServletException 
      * @see HttpServlet#HttpServlet()
      */
-    public Book() {
-    	
+    public Book() throws ServletException {
+    	this.init();
     }
     
     public void init(HttpServletRequest request, HttpServletResponse response){
@@ -57,7 +57,32 @@ public class Book extends HttpServlet {
 	    cart.addBook(book);
     }
     
-    private void searchById() {
+    private void searchById(HttpServletRequest request) {
+    	System.out.println("searching by ID..");
+		this.bID = request.getParameter("bID");
+		try{
+			//bookBeanList = bookStore.;
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+    }
+    
+    public void addToCart(String session, String bid)
+    {
+    	CartBean cart = SetOfCartsBean.getInstance().retrieveCart(session);
+    	cart.addBook(book);
+    }
+    
+    public void removeFromCart(String session, String bid)
+    {
+    	CartBean cart = SetOfCartsBean.getInstance().retrieveCart(session);
+    	cart.removeBook(book);
+    }
+    
+    public void setBookAmount(String session, String bid, int amount)
+    {
+    	CartBean cart = SetOfCartsBean.getInstance().retrieveCart(session);
+    	cart.setBookAmount(book, amount);
     }
     
     public void redirect(HttpServletRequest request, HttpServletResponse response, String target) throws IOException {
@@ -104,6 +129,9 @@ public class Book extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		init(request, response);
+		addToCart(request.getSession().getId(), request.getParameter(bID));
+		removeFromCart(request.getSession().getId(), request.getParameter(bID));
+		setBookAmount(request.getSession().getId(), request.getParameter(bID), 1);
 		//query db
 		//request.setAttribute("img", "bid");
 		request.getRequestDispatcher("/Book.jspx").forward(request, response);	

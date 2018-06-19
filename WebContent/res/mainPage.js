@@ -87,6 +87,7 @@ function textHandler(request){
 function buildTable(result){
 	var table = document.createElement("TABLE");
 	table.setAttribute("id", "myTable");
+	table.setAttribute("class", "resultTable");
     var row = document.createElement("TR");
     var data = document.createElement("TD");
     data.innerHTML = "book ID";
@@ -167,9 +168,3 @@ function changeImg(){
 }
 
 window.onload = changeImg;
-
-function contact(){
-	alert("please contact jyk3216@gmail.com " +
-			"for any business inquiries or questions " +
-			"regarding our product");
-}

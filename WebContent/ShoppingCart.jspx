@@ -43,24 +43,29 @@
 		
 		<FIELDSET>
 		<!-- ForEach loop goes here, so that every time the shopping cart page is called, iterate through the static class "setofzcartsBean" and populate it here -->
-			<table>
+		<form action="/Payment" method="get">	
+			<table id="result">
 				<tr>
 					<th>Book title</th>
 					<th>Qty <INPUT id="qty" style="width: 50px" name="qty" type="number" step="1" value="1"/></th>
+					<th></th>
 					<th>Price</th>
+					
+				</tr>
+			</table>
+			
+			<table>
+				<tr>
+					<td id="subtotal">$20</td>
+					<td>subtotal</td>
 				</tr>
 				<tr>
-					<th></th>
-					<th></th>
-					<th>subtotal</th>
-				</tr>
-				<tr>
-					<th></th>
-					<th></th>
-					<th>total</th>
+					<td id="total">$30</td>
+					<td>total</td>
 				</tr>
 			</table>
 			<INPUT type="submit" value="checkout" id="checkout"/>
+		</form>
 		</FIELDSET>
 		
 </body>

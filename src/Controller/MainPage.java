@@ -95,31 +95,6 @@ public class MainPage extends HttpServlet {
 				String out = testGson.toJson(bookbeanll);
 				rw.println(out);
 				System.out.println(out);
-				/*rw.println("<table border='1'>");
-				rw.println("<tr>");
-				rw.println("<td>book ID</td>");
-				rw.println("<td>title</td>");
-				rw.println("<td>category</td>");
-				rw.println("<td>price</td>");
-				rw.println("</tr>");
-				while (bookIterator.hasNext())
-				{
-					BookBean item = bookIterator.next();
-					System.out.println("thumbnail filepath = " + item.getThumbnail());
-					String bID = item.getbID();
-					String title = item.getTitle();
-					String category = item.getCategory();
-					double price = item.getPrice();
-					String thumbnail = item.getThumbnail();
-					rw.println("<center>");
-					rw.print("<br />" + bID);
-					rw.print("<br />" + title);
-					rw.print("<br />" + category);
-					rw.print("<br />$" + String.format("%.2f", price));
-					rw.print("<br /><img src=" + thumbnail + "/><br />");
-					rw.println("</center>");
-				}
-				rw.println("</table>");*/
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -138,6 +113,7 @@ public class MainPage extends HttpServlet {
     	String registerParamter = request.getParameter("register");
     	String searchByCategory = request.getParameter("category");
     	String searchByTextParameter = request.getParameter("searchByTextButton");
+    	String contactParameter = request.getParameter("contact");
 
     	if(cartParameter != null && cartParameter.equals("true"))
     		this.redirect(request, response, "ShoppingCart");

@@ -17,15 +17,14 @@
 
 <body> 
 	
-	<FORM action=""  method="POST" >
+	<FORM action=""  method="POST" id="mainForm">
 	<fieldset>
 		
 		
 	<div id="main">
 		<div class="topnav">
 			  <a class="active" href="MainPage">Home</a>
-			  <a href="#about">About</a>
-			  <a href="http://localhost:8080/BrickAndMortars/Contact.jspx">Contact</a>
+			  <a name="contact" id="contact" value="true" onclick="contact();return false;">Contact</a>
 			  	
 			  	<div class="dropdown">
 			  		<a class="dropbtn" name="searchByCategory" id="searchByCategory" value="true">Category</a>
@@ -81,15 +80,7 @@
 		</table>
 		
 	</div>
-		<center>
-			<h2>Submit a Review</h2>
-				<textarea id="review" rows="15" cols="100" maxlength="1000" onfocus="review.value = '';">Enter review here (max 1000 chars)</textarea>
-				<div>
-					<BR />
-					<button name="submitReview" id="submitReview" onclick="checkInject();return false;">Submit Review</button>
-				</div>
-		</center>
-		</div>
+	</div>
 	</fieldset>
 	</FORM>
 	

@@ -8,7 +8,8 @@
 		omit-xml-declaration="true" />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link rel="StyleSheet" href="res/mainPage.css" type="text/css" title="eecs4413" media="screen, print"/>
+<link rel="StyleSheet" href="res/book.css" type="text/css" title="eecs4413" media="screen, print"/>
+<script type="text/javascript" src="res/book.js">;</script>
 <title>BrickAndMortars</title>
 </head>
 <body>
@@ -45,6 +46,16 @@
 		
 		<div id="result">
 			<!-- load book details in here when a certain book is clicked -->
+			
+			<center>
+				<h2>Submit a Review</h2>
+					<textarea id="review" rows="15" cols="100" maxlength="1000" onfocus="review.value = '';">Enter review here (max 1000 chars)</textarea>
+					<div>
+						<BR />
+						<button name="submitReview" id="submitReview" onclick="checkInject();return false;">Submit Review</button>
+					</div>
+			</center>
+			
 		</div>
 
 </body>

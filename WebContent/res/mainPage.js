@@ -140,14 +140,6 @@ function buildTable(result){
     return table;
 }
 
-function checkInject()
-{
-	var text = document.getElementById("review");
-	var textval = text.value;
-	textval = textval.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-	console.log(textval);
-}
-
 
 //slideshow js
 var imageIndex = 0;
@@ -175,3 +167,9 @@ function changeImg(){
 }
 
 window.onload = changeImg;
+
+function contact(){
+	alert("please contact jyk3216@gmail.com " +
+			"for any business inquiries or questions " +
+			"regarding our product");
+}

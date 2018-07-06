@@ -67,15 +67,16 @@
 	<div id="result">
 		<table style="width:100%">
   			<tr>
-    			<th><a href="Book?bID=b001"><IMG src="https://i.imgur.com/qUwh4YA.jpg" /><p>BECOMING</p><p>by Michelle Obama</p></a></th>		
-    			<th><IMG src="https://i.imgur.com/9RQLeBN.jpg" /><p>Fire &amp; BLOOD: 300 YEARS</p><p>BEFORE A GAME OF TH..</p><p>by George RR Martin</p></th> 
-   				<th><IMG src="https://i.imgur.com/aCGdVVl.jpg" /><p>The Handmaid's Tale</p><p>by Margaret Atwood</p></th>
-   				<th><img src="https://i.imgur.com/QRvBOVK.jpg"/><p>Deadpool Kills the Marvel Universe</p><p>by Cullen Bunn</p></th>
+    			<th><a href="Book?bID=b007"><IMG src="https://i.imgur.com/qUwh4YA.jpg" /><p>BECOMING</p><p>by Michelle Obama</p></a></th>		
+    			<th><a href="Book?bID=b006"><IMG src="https://i.imgur.com/9RQLeBN.jpg" /><p>Fire &amp; BLOOD: 300 YEARS</p><p>BEFORE A GAME OF TH..</p><p>by George RR Martin</p></a></th> 
+   				<th><a href="Book?bID=b005"><IMG src="https://i.imgur.com/aCGdVVl.jpg" /><p>The Handmaid's Tale</p><p>by Margaret Atwood</p></a></th>
+   				<th><a href="Book?bID=b022"><img src="https://i.imgur.com/QRvBOVK.jpg"/><p>Deadpool Kills the Marvel Universe</p><p>by Cullen Bunn</p></a></th>
  		 	</tr>
  		 	<tr>
-    			<th><IMG src="https://i.imgur.com/zNzbf6Y.jpg" /><p>Little Prince</p><p>by Antoine de ...</p></th>
-    			<th><IMG src="https://i.imgur.com/6h4GZho.jpg" /><p>The Outsider</p><p>by Stephen King</p></th> 
-   				<th><IMG src="https://i.imgur.com/9OI9Uw0.jpg" /><p>Line of Sight</p><p>by Tom Clancy</p></th>
+    			<th><a href="Book?bID=b001"><IMG src="https://i.imgur.com/zNzbf6Y.jpg" /><p>Little Prince</p><p>by Antoine de ...</p></a></th>
+    			<th><a href="Book?bID=b008"><IMG src="https://i.imgur.com/6h4GZho.jpg" /><p>The Outsider</p><p>by Stephen King</p></a></th> 
+   				<th><a href="Book?bID=b009"><IMG src="https://i.imgur.com/9OI9Uw0.jpg" /><p>Line of Sight</p><p>by Tom Clancy</p></a></th>
+   				<th><a href="Book?bID=b012"><IMG src="https://i.imgur.com/jpZ7cke.jpg" /><p>Learn Python 3</p><p>by Zed A. Shaw</p></a></th>
  		 	</tr>
  
 		</table>

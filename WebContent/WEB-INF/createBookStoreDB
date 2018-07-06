@@ -58,7 +58,7 @@ PRIMARY KEY(bid)
  INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b019','Excel 2016 for Dummies', 29,'Tech', 'https://i.imgur.com/ovdY4BX.jpg');
  INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b020','The Pragmatic Programmer', 80,'Tech', 'https://i.imgur.com/cUsaQXH.jpg');
  INSERT INTO Book (bid, title, price, category, thumbnail) VALUES ('b021','Principles of computer security', 126,'Tech', 'https://i.imgur.com/w0uLusm.jpg');
- 
+ INSERT INTO BOOK (bid, title, price, category, thumbnail) VALUES ('b022','Deadpool Kills the Marvel Universe', 18, 'Fiction', 'https://i.imgur.com/QRvBOVK.jpg');
  
 /* Address
 * id: address id

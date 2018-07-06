@@ -39,7 +39,7 @@ public class BookRetrievalSOAP {
 	//call when data needs to be updated
 	public void updatedata (String bid, String title, String cate, int price, String thumb)
 	{
-		BookBean tmp = BookBean.makebookbean(bid, title, cate, price, thumb);
+		BookBean tmp = new BookBean(bid, title, cate, price, thumb);
 		data.put(bid, tmp);
 	}
 	

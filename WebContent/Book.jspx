@@ -10,9 +10,16 @@
 <head>
 <link rel="StyleSheet" href="res/book.css" type="text/css" title="eecs4413" media="screen, print"/>
 <script type="text/javascript" src="res/book.js">;</script>
+<script>
+function onload()
+{
+	var reviewdata = JSON.parse('${requestScope.reviewdata}');
+	insertReviews(reviewdata);
+}
+</script>
 <title>BrickAndMortars</title>
 </head>
-<body>
+<body onload='onload()'>
 	<div class="topnav">
 			  <a class="active" href="http://localhost:8080/BrickAndMortars/MainPage.jspx">Home</a>
 			  <a href="#about">About</a>
@@ -45,9 +52,11 @@
 		<hr></hr>
 		
 		<div id="result">
-			<!-- load book details in here when a certain book is clicked -->
-			
 			<center>
+				<p>${requestScope.title }</p>
+				<IMG alt="" src="${requestScope.thumbnail }" />
+				<div>price: ${requestScope.price }</div>
+				<div id="reviews"></div>
 				<h2>Submit a Review</h2>
 					<textarea id="review" rows="15" cols="100" maxlength="1000" onfocus="review.value = '';">Enter review here (max 1000 chars)</textarea>
 					<div>

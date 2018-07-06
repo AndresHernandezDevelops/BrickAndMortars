@@ -1,10 +1,12 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
 import Bean.BookBean;
+import Bean.BookInstances;
 import Bean.CartBean;
 import Bean.ReviewBean;
 import Bean.SetOfCartsBean;
@@ -38,7 +40,16 @@ public class Book extends HttpServlet {
     }
     
     public void init(HttpServletRequest request, HttpServletResponse response){
-    	this.book = (BookBean) request.getAttribute("book");//from the attribute we had set in start
+    	/*Enumeration<String> tmp = request.getParameterNames();
+    	while(tmp.hasMoreElements())
+    	{
+    		String tmpp = tmp.nextElement();
+    		System.out.println(tmpp + "=" + request.getParameter(tmpp));
+    	}*/
+    	
+    	this.bID = request.getParameter("bID");
+    	this.book = BookInstances.getInstance().getBook(this.bID);
+    	//this.book = (BookBean) request.getParameter("bID");//from the attribute we had set in start
     	String ID = request.getSession().getId();
 	    this.cart = SetOfCartsBean.getInstance().addCart(ID);
     	try {
@@ -50,7 +61,7 @@ public class Book extends HttpServlet {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}    
+    	} 
     }
     
     public void addBook(){

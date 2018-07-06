@@ -29,7 +29,7 @@ public class ReviewDAO {
 	
 	public Map<String, ReviewBean> searchReviews(String bookID) throws SQLException
 	{
-		String query = String.format("select * from REVIEW where bID = " + bookID);
+		String query = String.format("select * from REVIEW where bID = '" + bookID + "'");
 		
 		HashMap<String, ReviewBean> rv = new HashMap<String, ReviewBean>();
 		Connection con = this.ds.getConnection();

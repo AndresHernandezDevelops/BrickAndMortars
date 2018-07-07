@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import Bean.CartBean;
+import Bean.SetOfCartsBean;
+
 /**
  * Servlet implementation class ShoppingCart
  */
@@ -47,8 +50,11 @@ public class ShoppingCart extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String target = "/ShoppingCart.jspx";
 		request.getRequestDispatcher(target).forward(request, response);
-		Gson gsoncart = new Gson();
-		//String json = gsoncart.toJson();
+		Gson gson = new Gson();
+		
+		CartBean cartbean = SetOfCartsBean.getInstance().updateByLogin(request.getParameter("username"), request.getSession().getId());
+		String cart = gson.toJson(cartbean);
+		request.setAttribute("cart", cart);
 	}
 
 	/**

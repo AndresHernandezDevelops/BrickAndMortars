@@ -78,7 +78,7 @@ function onload()
 					<div class="product-stock">In Stock</div>
 					<hr></hr>
 					<div class="btn-group cart">
-						<button type="button" class="btn btn-success">
+						<button type="button" class="btn btn-success" onclick="">
 							Add to cart 
 						</button>
 					</div>

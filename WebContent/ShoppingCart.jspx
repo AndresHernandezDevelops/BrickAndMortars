@@ -9,6 +9,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link rel="StyleSheet" href="res/mainPage.css" type="text/css" title="eecs4413" media="screen, print"/>
+<script type="text/javascript" src="res/shoppingcart.js">;</script>
+<Script>
+function onload()
+{
+	var cart = JSON.parse('${requestScope.cart}');
+	showCart(cart);
+}
+</Script>
 <title>Shopping Cart</title>
 </head>
 <body>

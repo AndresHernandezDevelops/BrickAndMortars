@@ -29,6 +29,7 @@ public class SetOfCartsBean {
 		{
 			CartBean out = new CartBean();
 			users.put(username, out);
+			carts.remove(ID);
 			return out;
 		}
 		else

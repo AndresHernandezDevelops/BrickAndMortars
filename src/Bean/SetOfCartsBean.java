@@ -8,16 +8,49 @@ import Bean.CartBean;
 
 public class SetOfCartsBean {
 
+	private Map<String, CartBean> users;
 	private Map<String, CartBean> carts;
 	private static SetOfCartsBean instance = new SetOfCartsBean();
 	
 	private SetOfCartsBean(){
 		this.carts = new HashMap<String, CartBean>();
+		this.users = new HashMap<String, CartBean>();
 	}
 	
 	public static SetOfCartsBean getInstance()
 	{
 		return instance;
+	}
+	
+	public CartBean updateByLogin(String username, String ID)
+	{
+		CartBean cur = this.users.get(username);
+		if (cur == null)
+		{
+			CartBean out = new CartBean();
+			users.put(username, out);
+			return out;
+		}
+		else
+		{
+			return users.get(username);
+		}
+	}
+	
+	public CartBean updatebylogout (String ID)
+	{
+		CartBean out = new CartBean();
+		carts.put(ID, out);
+		return out;
+	}
+	
+	public boolean emptyUserCart(String username){
+		if(users.containsKey(username)){
+			users.put(username, new CartBean());
+			return true;
+		}
+		else
+			return false;
 	}
 	
 	public CartBean addCart(String ID){

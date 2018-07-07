@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
 	<jsp:directive.page contentType="text/html; charset=ISO-8859-1" 
-		pageEncoding="ISO-8859-1" session="false"/>
+		pageEncoding="ISO-8859-1" session="true"/>
 	<jsp:output doctype-root-element="html"
 		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
 		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
 		omit-xml-declaration="true" />
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core">
+
 <head>
 
 <link rel="StyleSheet" href="res/mainPage.css" type="text/css" title="eecs4413" media="screen, print"/>
@@ -46,8 +47,13 @@
 			  		<button name="searchByTextButton" id="searchByTextButton" value="true" onclick="searchByTextAjax('${pageContext.request.contextPath}/MainPage');return false;">
 	 					Search
 					</button>
-			  <a class="login" href="Login">Login</a>
-			  <a class="register" href="Register">Register</a>
+			  
+			  <c:set var = "login" scope="session" value="Login"></c:set>
+			  <c:if test = "${sessionScope.username == null}"></c:if>
+			  <c:out value="Logout"></c:out>
+			  	<a id="login" class="login" href="Login">Login</a>
+			  	<a class="register" href="Register">Register</a>
+			  
 			</div>
 		</div>	
 		

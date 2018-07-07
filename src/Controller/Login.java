@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bean.SetOfCartsBean;
 import DAO.LoginDAO;
 
 /**
@@ -48,6 +49,7 @@ public class Login extends HttpServlet {
 	    		boolean status = login.login(usernameParameter, passwordParameter);
 	    		if(status) {
 	    			request.getSession().setAttribute("username", usernameParameter);
+	    			SetOfCartsBean.getInstance().updateByLogin(usernameParameter, request.getSession().getId());
 	    			this.redirect(request, response, "MainPage");
 	    		}
 	    		else{

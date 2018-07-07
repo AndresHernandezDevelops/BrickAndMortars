@@ -22,6 +22,11 @@ public class SetOfCartsBean {
 		return instance;
 	}
 	
+	public CartBean getCartByUsername(String username)
+	{
+		return users.get(username);
+	}
+	
 	public CartBean updateByLogin(String username, String ID)
 	{
 		CartBean cur = this.users.get(username);

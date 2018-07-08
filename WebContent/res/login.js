@@ -47,4 +47,3 @@ function copy()
 	console.log(regex.test(t2));
 	console.log(regex.test(t3));
 }
-

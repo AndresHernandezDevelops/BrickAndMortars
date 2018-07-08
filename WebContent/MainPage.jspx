@@ -48,12 +48,15 @@
 	 					Search
 					</button>
 			  
-			  <c:set var = "login" scope="session" value="Login"></c:set>
-			  <c:if test = "${sessionScope.username == null}"></c:if>
-			  <c:out value="Logout"></c:out>
+			  <c:if test="${username eq null }">
 			  	<a id="login" class="login" href="Login">Login</a>
 			  	<a class="register" href="Register">Register</a>
+			  </c:if>
 			  
+			  <c:if test="${username ne null }">
+			    <a class="login" href="logout.jsp">Logout</a>
+			  	<a class="register" href="ShoppingCart">${username }</a>
+			  </c:if>
 			</div>
 		</div>	
 		

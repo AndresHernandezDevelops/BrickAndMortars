@@ -20,34 +20,41 @@ function onload()
 <title>Shopping Cart</title>
 </head>
 <body>
-<!-- 	<div class="topnav"> -->
-<!-- 			  <a class="active" href="http://localhost:8080/BrickAndMortars/MainPage.jspx">Home</a> -->
-<!-- 			  <a href="#about">About</a> -->
-<!-- 			  <a href="http://localhost:8080/BrickAndMortars/Contact.jspx">Contact</a> -->
+	<div class="topnav">
+			  <a class="active" href="MainPage">Home</a>
+			  <a name="contact" id="contact" value="true" onclick="contact();return false;">Contact</a>
 			  	
-<!-- 			  	<div class="dropdown"> -->
-<!-- 			  		<button class="dropbutton" name="searchByCategory" id="searchByCategory" value="true" onclick="doAjax('${pageContext.request.contextPath}/MainPage');return false;">Category</button> -->
-<!-- 			  		<div class="dropdown-content"> -->
-<!-- 			  			<a href="#">Science</a> -->
-<!-- 			  			<a href="#">Fiction</a> -->
-<!-- 			  			<a href="#">Tech</a> -->
-<!-- 			  			<a href="#">LifeStyle</a> -->
-<!-- 			  			<a href="#">Childrens</a> -->
-<!-- 			  			<a href="#">Law</a> -->
-<!-- 			  			<a href="#">Non-Fiction</a> -->
-<!-- 			  		</div> -->
-<!-- 			  	</div> -->
+			  	<div class="dropdown">
+			  		<a class="dropbtn" name="searchByCategory" id="searchByCategory" value="true">Category</a>
+			  		<div class="dropdown-content">
+			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage', '');return false;" id="category0" value='All'>All</a>
+			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage', 'Science');return false;" id="category1" value='Science'>Science</a>
+			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage', 'Fiction');return false;" id="category2" value='Fiction'>Fiction</a>
+			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage', 'Tech');return false;" id="category3" value='Tech'>Tech</a>
+			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage', 'LifeStyle');return false;" id="category4" value='LifeStyle'>LifeStyle</a>
+			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage', 'Childrens');return false;" id="category5" value='Childrens'>Childrens</a>
+			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage', 'Law');return false;" id="category6" value='Law'>Law</a>
+			  			<a onclick="doAjax('${pageContext.request.contextPath}/MainPage', 'Non-Fiction');return false;" id="category7" value='Non-Fiction'>Non-Fiction</a>
+			  		</div>
+			  	</div>
 			  	
-<!-- 			  <a href="http://localhost:8080/BrickAndMortars/ShoppingCart.jspx">Shopping Cart</a> -->
-<!-- 			  <div class="search-container"> -->
-<!-- 			  <input type="text" id="searchByText" name="searchByText" placeholder="Search..."/>	  	 -->
-<!-- 			  		<button type="submit" name="searchByTextButton" id="searchByTextButton" value="true" onclick="searchByTextAjax('${pageContext.request.contextPath}/MainPage');return false;"> -->
-<!-- 	 				Submit -->
-<!-- 					</button> -->
-<!-- 			  <a class="login" href="http://localhost:8080/BrickAndMortars/Login.jspx">Login</a> -->
-<!-- 			  <a class="register" href="http://localhost:8080/BrickAndMortars/Register.jspx">Register</a> -->
-<!-- 			</div> -->
-<!-- 		</div>	 -->
+			  <a href="ShoppingCart">Shopping Cart</a>
+			  <div class="search-container">
+			  <input type="text" id="searchByText" name="searchByText" placeholder="Search..."/>	  	
+			  		<button name="searchByTextButton" id="searchByTextButton" value="true" onclick="searchByTextAjax('${pageContext.request.contextPath}/MainPage');return false;">
+	 					Search
+					</button>
+			  <c:if test="${username eq null }">
+			  	<a id="login" class="login" href="Login">Login</a>
+			  	<a class="register" href="Register">Register</a>
+			  </c:if>
+			  
+			  <c:if test="${username ne null }">
+			    <a class="login" href="logout.jsp">Logout</a>
+			  	<a class="register" href="ShoppingCart">${username }</a>
+			  </c:if>
+			</div>
+		</div> 
 		
 		<FIELDSET>
 		<!-- ForEach loop goes here, so that every time the shopping cart page is called, iterate through the static class "setofzcartsBean" and populate it here -->

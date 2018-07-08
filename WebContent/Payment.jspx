@@ -37,8 +37,15 @@
 			  		<button type="submit" name="searchByTextButton" id="searchByTextButton" value="true" onclick="searchByTextAjax('${pageContext.request.contextPath}/MainPage');return false;">
 	 				Submit
 					</button>
-			  <a class="login" href="http://localhost:8080/BrickAndMortars/Login.jspx">Login</a>
-			  <a class="register" href="http://localhost:8080/BrickAndMortars/Register.jspx">Register</a>
+			  <c:if test="${username eq null }">
+			  	<a id="login" class="login" href="Login">Login</a>
+			  	<a class="register" href="Register">Register</a>
+			  </c:if>
+			  
+			  <c:if test="${username ne null }">
+			    <a class="login" href="logout.jsp">Logout</a>
+			  	<a class="register" href="ShoppingCart">${username }</a>
+			  </c:if>
 			</div>
 		</div>
 	<table>

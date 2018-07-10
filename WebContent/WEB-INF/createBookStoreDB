@@ -99,17 +99,17 @@ username VARCHAR(30) NOT NULL,
 lname VARCHAR(20) NOT NULL,
 fname VARCHAR(20) NOT NULL,
 status VARCHAR(32) CONSTRAINT status_ck CHECK (status IN ('ORDERED','PROCESSED','DENIED')) NOT NULL,
-address INT NOT NULL,
-PRIMARY KEY(username),
+count INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+PRIMARY KEY(count),
 /*INDEX (address),*/
 foreign key (username) references login(username) on delete cascade
 );/*
 #
 # Inserting data for table 'PO'
 #*/
-INSERT INTO PO (username, lname, fname, status, address) VALUES ('juyoung', 'John', 'White', 'PROCESSED', 1);
-INSERT INTO PO (username, lname, fname, status, address) VALUES ('andres', 'Peter', 'Black', 'DENIED', 2);
-INSERT INTO PO (username, lname, fname, status, address) VALUES ('saad', 'Andy', 'Green', 'ORDERED', 3);
+INSERT INTO PO (username, lname, fname, status) VALUES ('juyoung', 'John', 'White', 'ORDERED');
+INSERT INTO PO (username, lname, fname, status) VALUES ('andres', 'Peter', 'Black', 'ORDERED');
+INSERT INTO PO (username, lname, fname, status) VALUES ('saad', 'Andy', 'Green', 'DENIED');
 
 
 /* Items on order
@@ -117,11 +117,14 @@ INSERT INTO PO (username, lname, fname, status, address) VALUES ('saad', 'Andy',
 * bid: unique identifier of Book
 * price: unit price
 */
+DROP TABLE POItem;
 CREATE TABLE POItem (
 username VARCHAR(30) NOT NULL,
 bid VARCHAR(20) NOT NULL,
 price INT NOT NULL,
-PRIMARY KEY(username,bid),
+quantity INT NOT NULL,
+count INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+PRIMARY KEY(username,bid,count),
 /*INDEX (id),*/
 foreign key (username) references login(username) on delete cascade,
 /*INDEX (bid),*/
@@ -130,9 +133,9 @@ FOREIGN KEY(bid) REFERENCES Book(bid) ON DELETE CASCADE
 /*
 # Inserting data for table 'POitem'
 */
-INSERT INTO POItem (username, bid, price) VALUES ('juyoung', 'b001', 20);
-INSERT INTO POItem (username, bid, price) VALUES ('andres', 'b002', 201);
-INSERT INTO POItem (username, bid, price) VALUES ('saad', 'b003', 100);
+INSERT INTO POItem (username, bid, quantity, price) VALUES ('juyoung', 'b001', 1, 20);
+INSERT INTO POItem (username, bid, quantity, price) VALUES ('andres', 'b002', 1, 201);
+INSERT INTO POItem (username, bid, quantity, price) VALUES ('saad', 'b003', 1, 100);
 
 
 /* visit to website

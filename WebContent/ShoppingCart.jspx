@@ -18,6 +18,23 @@ function onload()
 }
 </Script>
 <title>Shopping Cart</title>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
 </head>
 <body>
 	<div class="topnav">
@@ -59,27 +76,27 @@ function onload()
 		<FIELDSET>
 		<!-- ForEach loop goes here, so that every time the shopping cart page is called, iterate through the static class "setofzcartsBean" and populate it here -->
 		<form action="/Payment" method="get">	
-			<table id="result">
+		<div id='result'>
+			<table><!-- this table will get overridden by the one built in the .js -->
 				<tr>
 					<th>Book title</th>
-					<th>Qty <INPUT id="qty" style="width: 50px" name="qty" type="number" step="1" value="1"/></th>
-					<th></th>
-					<th>Price</th>
+					<th>Quantity <INPUT id="qty" style="width: 50px" name="qty" type="number" step="1" value="1"/></th>
+					<th>Price</th>	
+				</tr>
+				<tr>
+					<td>${requestScope.title }</td>
+					<td></td>
+					<td></td>	
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
 					
 				</tr>
 			</table>
-			
-			<table>
-				<tr>
-					<td id="subtotal">$20</td>
-					<td>subtotal</td>
-				</tr>
-				<tr>
-					<td id="total">$30</td>
-					<td>total</td>
-				</tr>
-			</table>
-			<INPUT type="submit" value="checkout" id="checkout"/>
+		</div>
+		<INPUT type="submit" value="checkout" id="checkout" href="Payment.jspx"/>
 		</form>
 		</FIELDSET>
 		

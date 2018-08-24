@@ -123,7 +123,7 @@ username VARCHAR(30) NOT NULL,
 bid VARCHAR(20) NOT NULL,
 price INT NOT NULL,
 quantity INT NOT NULL,
-count INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+count INT NOT NULL,
 PRIMARY KEY(username,bid,count),
 /*INDEX (id),*/
 foreign key (username) references login(username) on delete cascade,
@@ -133,9 +133,9 @@ FOREIGN KEY(bid) REFERENCES Book(bid) ON DELETE CASCADE
 /*
 # Inserting data for table 'POitem'
 */
-INSERT INTO POItem (username, bid, quantity, price) VALUES ('juyoung', 'b001', 1, 20);
-INSERT INTO POItem (username, bid, quantity, price) VALUES ('andres', 'b002', 1, 201);
-INSERT INTO POItem (username, bid, quantity, price) VALUES ('saad', 'b003', 1, 100);
+INSERT INTO POItem (username, bid, quantity, price, count) VALUES ('juyoung', 'b001', 1, 20, 1);
+INSERT INTO POItem (username, bid, quantity, price, count) VALUES ('andres', 'b002', 1, 201, 2);
+INSERT INTO POItem (username, bid, quantity, price, count) VALUES ('saad', 'b003', 1, 100, 3);
 
 
 /* visit to website

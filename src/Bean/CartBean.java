@@ -11,13 +11,17 @@ public class CartBean {
 
 	private Map<BookBean, Integer> books;
 
-	
 	public CartBean(){
 		this(new HashMap<BookBean, Integer>());
 	}
 
 	public CartBean(HashMap<BookBean, Integer> books) {
 		this.books = books;
+	}
+	
+	public Map<BookBean, Integer> getbooks()
+	{
+		return books;
 	}
 	
 	public void addBook(BookBean book){

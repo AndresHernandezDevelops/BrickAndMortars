@@ -81,7 +81,7 @@
 		<option>2021</option>
 	</SELECT>
 	<br />
-	<INPUT type="submit" onclick="clicks()" value="Confirm" id="submit"/>
+	<INPUT type="submit" onclick="clicks('${pageContext.request.contextPath}/Payment');return false;" value="Confirm" id="submit"/>
 	
 </body>
 </html>

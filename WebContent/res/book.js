@@ -6,6 +6,36 @@ function checkInject()
 	console.log(textval);
 }
 
+function addtocart(address, bid)
+{
+	var request = new XMLHttpRequest();
+	 
+	 var data="addBook=true&bid=" + bid;
+
+	 request.onreadystatechange = function()
+	 {
+			handlerUserStats(request);
+	 };
+	 request.open("POST", address, true);
+	 request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	 request.send(data); 
+	
+}
+
+function handlerUserStats(request){
+	 if ((request.readyState == 4) && (request.status == 200))
+	 {
+		 //var target = document.getElementById("result");
+		 var result =  request.responseText;
+		 
+	 }
+}
+
+
+
+
+
+
 function insertReviews(reviewdata)
 {
 	var i = 0;

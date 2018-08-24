@@ -83,12 +83,29 @@ public class Book extends HttpServlet {
     {
     	CartBean cart = SetOfCartsBean.getInstance().retrieveCart(session);
     	BookBean book = BookInstances.getInstance().getBook(bid);
+    	if (cart == null)
+    	{
+    		cart = SetOfCartsBean.getInstance().addCart(session);
+    	}
     	cart.addBook(book);
     }
     
     public void removeFromCart(String session, String bid)
     {
     	CartBean cart = SetOfCartsBean.getInstance().retrieveCart(session);
+    	BookBean book = BookInstances.getInstance().getBook(bid);
+    	cart.removeBook(book);
+    }
+    
+    public void addToCartByUsername(String username, String bid)
+    {
+    	CartBean cart = SetOfCartsBean.getInstance().getCartByUsername(username);
+    	BookBean book = BookInstances.getInstance().getBook(bid);
+    	cart.addBook(book);
+    }
+    
+    public void removeFromCartByUsername(String username, String bid) {
+    	CartBean cart = SetOfCartsBean.getInstance().getCartByUsername(username);
     	BookBean book = BookInstances.getInstance().getBook(bid);
     	cart.removeBook(book);
     }
@@ -128,10 +145,19 @@ public class Book extends HttpServlet {
     	String goBackParameter = request.getParameter("goBack");
     	String cartParameter = request.getParameter("cart");
     	String bid = request.getParameter("bid");
-    	
+    	System.out.println("hit");
     	if(addBookParameter != null && addBookParameter.equals("true"))
     	{
-    		this.addToCart(request.getSession().getId(), bid);
+    		System.out.println("addbook");
+    		String username = (String) request.getSession().getAttribute("username");
+    		if (username != null)
+    		{
+    			System.out.println("username");
+    			this.addToCartByUsername(username, bid);
+    		}
+    		else
+    			System.out.println("anon");
+    			this.addToCart(request.getSession().getId(), bid);
     	}
     	else if(cartParameter != null && cartParameter.equals("true"))
     		this.redirect(request, response, "ShoppingCart");
@@ -172,6 +198,7 @@ public class Book extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("hit Post");
 		processParameters(request, response);
 	}
 

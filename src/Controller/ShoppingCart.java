@@ -48,13 +48,23 @@ public class ShoppingCart extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String target = "/ShoppingCart.jspx";
-		request.getRequestDispatcher(target).forward(request, response);
 		Gson gson = new Gson();
 		
-		CartBean cartbean = SetOfCartsBean.getInstance().updateByLogin(request.getParameter("username"), request.getSession().getId());
+		//CartBean cartbean = SetOfCartsBean.getInstance().updateByLogin(request.getParameter("username"), request.getSession().getId());
+		String usr = (String) request.getSession().getAttribute("username");
+		CartBean cartbean;
+		if (usr == null)
+		{
+			cartbean = SetOfCartsBean.getInstance().retrieveCart(request.getSession().getId());
+		}
+		else
+		{
+			cartbean = SetOfCartsBean.getInstance().getCartByUsername(usr);
+		}
 		String cart = gson.toJson(cartbean);
-		request.setAttribute("cart", cart);
+		//request.setAttribute("cart", cart);
+		String target = "/ShoppingCart.jspx";
+		request.getRequestDispatcher(target).forward(request, response);
 	}
 
 	/**

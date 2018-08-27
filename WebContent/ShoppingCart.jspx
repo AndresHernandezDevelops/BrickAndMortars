@@ -9,34 +9,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <head>
 <link rel="StyleSheet" href="res/mainPage.css" type="text/css" title="eecs4413" media="screen, print"/>
+<link rel="StyleSheet" href="res/shoppingcart.css" type="text/css" title="eecs4413" media="screen, print"/>
 <script type="text/javascript" src="res/shoppingcart.js">;</script>
 <Script>
 function onload()
 {
 	var cart = JSON.parse('${requestScope.cart}');
 	showCart(cart);
+	var cartvalues = JSON.parse('$requestScope.cartvalues}');
+	showCart(cartvalues);
+	if(isEmpty(cart)){
+		alert("cart is empty");
+	}
 }
 </Script>
 <title>Shopping Cart</title>
-<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
 </head>
-<body>
+<body onload='onload()'>
 	<div class="topnav">
 			  <a class="active" href="MainPage">Home</a>
 			  <a name="contact" id="contact" value="true" onclick="contact();return false;">Contact</a>
@@ -76,27 +66,16 @@ tr:nth-child(even) {
 		<FIELDSET>
 		<!-- ForEach loop goes here, so that every time the shopping cart page is called, iterate through the static class "setofzcartsBean" and populate it here -->
 		<form action="/Payment" method="get">	
-		<div id='result'>
-			<table><!-- this table will get overridden by the one built in the .js -->
+		<div id="result">
+			<table class="cartTable"><!-- this table will get overridden by the one built in the .js -->
 				<tr>
 					<th>Book title</th>
-					<th>Quantity <INPUT id="qty" style="width: 50px" name="qty" type="number" step="1" value="1"/></th>
+					<th>Quantity</th>
 					<th>Price</th>	
-				</tr>
-				<tr>
-					<td>${requestScope.title }</td>
-					<td></td>
-					<td></td>	
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					
 				</tr>
 			</table>
 		</div>
-		<INPUT type="submit" value="checkout" id="checkout" href="Payment.jspx"/>
+		<a class="link-btn" href="Payment">Checkout</a>
 		</form>
 		</FIELDSET>
 		

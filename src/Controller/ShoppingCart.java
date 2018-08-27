@@ -61,8 +61,10 @@ public class ShoppingCart extends HttpServlet {
 		{
 			cartbean = SetOfCartsBean.getInstance().getCartByUsername(usr);
 		}
-		String cart = gson.toJson(cartbean);
-		//request.setAttribute("cart", cart);
+		String cart = gson.toJson(cartbean.getbooks().keySet());
+		String cartvalues = gson.toJson(cartbean.getbooks().entrySet());
+		request.setAttribute("cart", cart);
+		request.setAttribute("cartvalues", cartvalues);
 		String target = "/ShoppingCart.jspx";
 		request.getRequestDispatcher(target).forward(request, response);
 	}

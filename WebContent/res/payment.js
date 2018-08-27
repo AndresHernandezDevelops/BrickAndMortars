@@ -35,6 +35,8 @@ function clicks(address){
 	}
 	else{
 		getPost(address);
+		alert("Order Successfully Completed." + "\nPO #:" + result);
+
 	}
 }
 /*can add more functions if necessary*/

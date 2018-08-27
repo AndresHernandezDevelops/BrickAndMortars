@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.Map;
@@ -39,6 +40,7 @@ public class Payment extends HttpServlet {
 		String lname = request.getAttribute("lname").toString();
 		CartBean currentCart;
 		String usrnme;
+		PrintWriter out = response.getWriter();
 		
 		if(username != null) 
 		{
@@ -52,7 +54,9 @@ public class Payment extends HttpServlet {
 		}
 			int count = po.updatePO(usrnme, fname, lname, "APPROVED");
 			if (count == -1) {
-				
+				out.println("<script type=\"text/javascript\">");
+				   out.println("alert('cart empty!');");
+				   out.println("</script>");
 			}
 			po.updatePOItem(usrnme, currentCart, count);
 	

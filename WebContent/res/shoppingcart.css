@@ -1,0 +1,24 @@
+@charset "ISO-8859-1";
+
+.cartTable tr:nth-child(even){
+	background-color: #f2f2f2
+}
+.cartTable{
+	width:100%;
+}
+
+.link-btn {
+    color: white;
+    background: #32CD32;
+    padding: 10px 20px;
+    display: block;
+    margin: 10px 0;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 13px;
+}
+ 
+.link-btn:hover {
+    background: #228B22;
+}

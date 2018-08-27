@@ -14,7 +14,7 @@ function addtocart(address, bid)
 
 	 request.onreadystatechange = function()
 	 {
-			handlerUserStats(request);
+			handler(request);
 	 };
 	 request.open("POST", address, true);
 	 request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -22,7 +22,7 @@ function addtocart(address, bid)
 	
 }
 
-function handlerUserStats(request){
+function handler(request){
 	 if ((request.readyState == 4) && (request.status == 200))
 	 {
 		 //var target = document.getElementById("result");
@@ -42,7 +42,7 @@ function insertReviews(reviewdata)
 	var table = document.createElement("table");
 	for (i = 0; i < reviewdata.length; i++)
 	{
-		alert(i + " " + reviewdata.length);
+		//alert(i + " " + reviewdata.length);
 		var row = document.createElement("tr");
 		var tdata = document.createElement("td");
 		tdata.innerHTML = reviewdata[i].name;

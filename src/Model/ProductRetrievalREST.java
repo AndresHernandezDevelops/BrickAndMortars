@@ -64,25 +64,20 @@ public class ProductRetrievalREST {
 	}
 	
 	//call this to add a data entry
-	public String addEntry(String sid,String bid, String sprice)
+	public String addEntry(int sid, String bid, double sprice, int quan)
 	{
-		System.out.println(sid);
-		System.out.println(bid);
-		System.out.println(sprice);
-		int id = Integer.parseInt(sid);
-		int price = Integer.parseInt(sprice);
-		PurchaseOrderItemBean tmp = new PurchaseOrderItemBean(id, bid, price);
-		if (data.containsKey(id))
+		PurchaseOrderItemBean tmp = new PurchaseOrderItemBean(sid, bid, sprice, quan);
+		if (data.containsKey(sid))
 		{
-			List<PurchaseOrderItemBean> val = data.get(id);
+			List<PurchaseOrderItemBean> val = data.get(sid);
 			val.add(tmp);
 		}
 		else
 		{
 			LinkedList<PurchaseOrderItemBean> tlist = new LinkedList<PurchaseOrderItemBean>();
 			tlist.add(tmp);
-			data.put(id, tlist);
+			data.put(sid, tlist);
 		}
-		return id + "," + id + " " + bid + " " + price;
+		return sid + "," + sid + " " + bid + " " + sprice + " " + quan;
 	}
 }

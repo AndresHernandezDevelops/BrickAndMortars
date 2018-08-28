@@ -26,6 +26,13 @@
 		        </xsd:restriction>
 	        </xsd:simpleType>
   		</xsd:element>
+  		<xsd:element name="quan">
+  			<xsd:simpleType>
+		        <xsd:restriction base="xsd:integer">
+		           <xsd:minInclusive value="0"/>
+		        </xsd:restriction>
+	        </xsd:simpleType>
+  		</xsd:element>
   	</xsd:sequence>
   </xsd:complexType>
 </xsd:schema>

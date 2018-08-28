@@ -17,6 +17,7 @@ import javax.sql.DataSource;
 import Bean.BookBean;
 import Bean.CartBean;
 import Bean.PurchaseOrderItemBean;
+import Model.ProductRetrievalREST;
 
 public class PurchaseOrderItemDAO {
 	
@@ -33,7 +34,7 @@ public class PurchaseOrderItemDAO {
 
 	public HashMap<Integer, PurchaseOrderItemBean>RetrievePurchaseOrderItemsByPart (int part) throws SQLException
 	{
-		String query = String.format("select * from POItem where id=%d", part);
+		String query = String.format("select * from POItem where count=%d", part);
 		
 		HashMap<Integer, PurchaseOrderItemBean> rv = new HashMap<Integer, PurchaseOrderItemBean>();
 		Connection con = this.ds.getConnection();
@@ -42,9 +43,10 @@ public class PurchaseOrderItemDAO {
 		while(r.next())
 		{
 			String bid = r.getString("BID");
-			int id = r.getInt("ID");
+			int id = r.getInt("COUNT");
 			int price = r.getInt("PRICE");
-			rv.put(id,new PurchaseOrderItemBean(id, bid, price));
+			int quan = r.getInt("QUANTITY");
+			rv.put(id,new PurchaseOrderItemBean(id, bid, price, quan));
 		}
 		r.close();
 		p.close();
@@ -63,17 +65,18 @@ public class PurchaseOrderItemDAO {
 		while(r.next())
 		{
 			String bid = r.getString("BID");
-			int id = r.getInt("ID");
+			int id = r.getInt("COUNT");
 			int price = r.getInt("PRICE");
+			int quan = r.getInt("QUANTITY");
 			if (rv.containsKey(id))
 			{
 				List<PurchaseOrderItemBean> tmp = rv.get(id);
-				tmp.add(new PurchaseOrderItemBean(id, bid, price));
+				tmp.add(new PurchaseOrderItemBean(id, bid, price, quan));
 			}
 			else
 			{
 				LinkedList<PurchaseOrderItemBean> tmp = new LinkedList<PurchaseOrderItemBean>();
-				tmp.add(new PurchaseOrderItemBean(id, bid, price));
+				tmp.add(new PurchaseOrderItemBean(id, bid, price, quan));
 				rv.put(id, tmp);
 			}
 		}
@@ -121,6 +124,7 @@ public class PurchaseOrderItemDAO {
 			String bid = book.getbID();
 			double price = book.getPrice();
 			insertPOItem += " ('" + username + "', '" + bid + "', "+ qty + ", " + price + ", " + count + "),";
+			ProductRetrievalREST.getInstance().addEntry(count, bid, price, qty);
 		}
 		insertPOItem = insertPOItem.substring(0, insertPOItem.length() - 1);
 		Connection con = this.ds.getConnection();

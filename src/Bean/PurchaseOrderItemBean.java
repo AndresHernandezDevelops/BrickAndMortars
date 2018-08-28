@@ -3,7 +3,7 @@ package Bean;
 import javax.xml.bind.annotation.XmlType;
 
 //@XmlRootElement(name="PurchaseOrderItem")
-@XmlType(propOrder={"bid", "id", "price"})
+@XmlType(propOrder={"bid", "id", "price", "quan"})
 public class PurchaseOrderItemBean {
 
 	/* Items on order
@@ -14,18 +14,20 @@ public class PurchaseOrderItemBean {
 	
 	private int id;
 	private String bid;
-	private int price;
+	private double price;
+	private int quan;
 	
-	public PurchaseOrderItemBean(int id, String bid, int price) {
+	public PurchaseOrderItemBean(int id, String bid, double sprice, int quan) {
 		super();
 		this.id = id;
 		this.bid = bid;
-		this.price = price;
+		this.price = sprice;
+		this.quan = quan;
 	}
 	
 	public PurchaseOrderItemBean()
 	{
-		this(0, "", 0);
+		this(0, "", 0, 0);
 	}
 	
 	//@XmlElement(name="id")
@@ -47,12 +49,20 @@ public class PurchaseOrderItemBean {
 	}
 
 	//@XmlElement(name="price")
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public int getQuan() {
+		return quan;
+	}
+
+	public void setQuan(int quan) {
+		this.quan = quan;
 	}
 	
 	

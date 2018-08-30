@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bean.SetOfCartsBean;
 import DAO.LoginDAO;
 
 /**
@@ -56,13 +57,14 @@ public class Register extends HttpServlet {
 						phoneParameter);
 				if (status) {
 					request.getSession().setAttribute("username", usernameParameter);
-					
 					//This is the code that shows the popup boxes
 					response.setContentType("text/html");
 					out.println("<script type=\"text/javascript\">");
 					out.println("alert('successfully registered');");
 					out.println("location='MainPage';");
 					out.println("</script>");
+					
+					SetOfCartsBean.getInstance().updateByLogin(usernameParameter, request.getSession().getId());
 					
 				} else {
 					response.setContentType("text/html");

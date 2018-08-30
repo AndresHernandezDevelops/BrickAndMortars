@@ -55,7 +55,7 @@ function showCart(cart)
 		row.appendChild(tdata);
 		
 		tdata = document.createElement("td");
-		tdata.innerHTML = cart[i].bID;
+		tdata.innerHTML = "1";
 		row.appendChild(tdata);
 		
 		tdata = document.createElement("td");

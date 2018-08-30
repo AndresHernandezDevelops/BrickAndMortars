@@ -33,9 +33,7 @@ function handler(request){
 	 }
 	}
 
-function getSum(total,num){
-	return total+num;
-}
+
 function showCart(cart)
 {
 	var i = 0;
@@ -43,8 +41,7 @@ function showCart(cart)
 	table.setAttribute("class", "cartTable");
 	var row = document.createElement("TR");
 	var tdata = document.createElement("TD");
-	tdata.innterHTML = "Book title";
-	row.appendChild(tdata);
+	
 
 	for (i = 0; i < cart.length; i++)
 	{
@@ -58,7 +55,7 @@ function showCart(cart)
 		row.appendChild(tdata);
 		
 		tdata = document.createElement("td");
-		tdata.innerHTML = "1";
+		tdata.innerHTML = cart[i].bID;
 		row.appendChild(tdata);
 		
 		tdata = document.createElement("td");
@@ -68,6 +65,10 @@ function showCart(cart)
 			p = cart[j].price;
 			total += p;
 		}		
+		
+		/*tdata = document.createElement("td");
+		tdata.innerHTML = "<button id=\"remove\"> X </button>";
+		row.appendChild(tdata);*/
 		
 		table.appendChild(row);
 		

@@ -19,6 +19,7 @@ function addtocart(address, bid)
 	 request.open("POST", address, true);
 	 request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	 request.send(data); 
+	 alert("Item successfully added to cart.");
 	
 }
 

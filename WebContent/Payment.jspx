@@ -12,6 +12,18 @@
 <link rel="StyleSheet" href="res/style.css" type="text/css" title="eecs4413" media="screen, print"/>
 <title>Payment Confirmation</title>
 </head>
+<script>
+var click=1;
+function clicks(){
+if(click % 3 == 0){
+	alert("Credit Card Authorization Failed.");
+}
+else{
+	alert("Order Successfully Completed.");
+}
+click++;
+}
+</script>
 <body>
 <div class="topnav">
 			  <a class="active" href="http://localhost:8080/BrickAndMortars/MainPage.jspx">Home</a>
@@ -81,8 +93,9 @@
 		<option>2021</option>
 	</SELECT>
 	<br />
-	<INPUT type="submit" onclick="clicks('${pageContext.request.contextPath}/Payment');return false;" value="Confirm" id="submit"/>
-	
+	<button type="button" onclick="clicks();"  id="submit">
+	Confirm
+	</button>
 </body>
 </html>
 </jsp:root>

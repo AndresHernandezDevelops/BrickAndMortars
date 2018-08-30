@@ -1,7 +1,7 @@
 /**
  * 
  */
-var click=0;
+
 
 function getPost(address)
 {
@@ -28,15 +28,5 @@ function handlerUserStats(request){
 	 }
 }
 
-function clicks(address){
-	click+=1;
-	if(click % 3 == 0){
-		alert("Credit Card Authorization Failed.");
-	}
-	else{
-		getPost(address);
-		alert("Order Successfully Completed." + "\nPO #:" + result);
 
-	}
-}
 /*can add more functions if necessary*/

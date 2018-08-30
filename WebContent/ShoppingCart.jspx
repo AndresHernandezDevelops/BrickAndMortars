@@ -71,12 +71,15 @@ function onload()
 				<tr>
 					<th>Book title</th>
 					<th>Quantity</th>
-					<th>Price</th>	
+					<th>Price</th>
+						
 				</tr>
 			</table>
 		</div>
-		<a class="link-btn" href="Payment">Checkout</a>
 		</form>
+		<a class="link-btn" href="Payment">Checkout</a>
+		<button id="empty" onclick="emptyCart(JSON.parse('${requestScope.cart}'))">Empty</button>
+		
 		</FIELDSET>
 		
 </body>

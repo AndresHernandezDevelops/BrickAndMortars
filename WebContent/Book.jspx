@@ -97,8 +97,6 @@ function onload()
 					<ul id="myTab" class="nav nav-tabs nav_tabs">
 						
 						<li class="active"><a href="#service-one" data-toggle="tab">REVIEWS</a></li>
-						<!--<li><a href="#service-two" data-toggle="tab1">PRODUCT INFO</a></li>-->
-						<!--<li><a href="#service-three" data-toggle="tab2">REVIEWS</a></li>-->
 						
 					</ul>
 				<div id="myTabContent" class="tab-content">
@@ -107,14 +105,11 @@ function onload()
 							<div id="reviews"></div>
 										  
 						</div>
-					<div class="tab-pane fade" id="service-two">
-						
-						<section class="container">
-								<p>this is currently empty</p>
-						</section>
-						
-					</div>
 					
+						<section class="container">
+								
+						</section>
+				
 				</div>
 				<hr></hr>
 				<h2>Submit a Review</h2>

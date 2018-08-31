@@ -117,7 +117,7 @@ INSERT INTO PO (username, lname, fname, status) VALUES ('saad', 'Andy', 'Green',
 * bid: unique identifier of Book
 * price: unit price
 */
-DROP TABLE POItem;
+
 CREATE TABLE POItem (
 username VARCHAR(30) NOT NULL,
 bid VARCHAR(20) NOT NULL,

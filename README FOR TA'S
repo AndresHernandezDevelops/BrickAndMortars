@@ -1,0 +1,21 @@
+TA INSTRUCTIONS
+
+1. import the project war file into the eclipse environment
+
+2. the database engine used is derby, create a new derby dataabase connection
+
+3.run the createBookStoreDB script (located under the main project folder) on an SQL scrapbook
+
+4. run the MainPage.java on the apache 8.5 server and test out the various functions of the website 
+
+To test the SOAP and REST do the following:
+
+1. import the RestClientTest and SOAPClientTest war files onto the eclipse interface
+
+2. to run them run on the server
+
+3. for the SOAP client run the SOAPClientPage.java in the package ctrl and insert the book ID
+
+4. for the REST client run the RestClient.java in the package ctrl and insert a receipt number given after payment 
+	(1 to 3 are in the database by default to test)
+

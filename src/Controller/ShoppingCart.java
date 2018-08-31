@@ -56,13 +56,17 @@ public class ShoppingCart extends HttpServlet {
 		if (usr == null)
 		{
 			cartbean = SetOfCartsBean.getInstance().retrieveCart(request.getSession().getId());
+			if(cartbean == null)
+			{
+				cartbean = SetOfCartsBean.getInstance().addCart(request.getSession().getId());
+			}
 		}
 		else
 		{
 			cartbean = SetOfCartsBean.getInstance().getCartByUsername(usr);
 		}
 		String cart = gson.toJson(cartbean.getbooks().keySet());
-		String cartvalues = gson.toJson(cartbean.getbooks().entrySet());
+		String cartvalues = gson.toJson(cartbean.getbooks().values());
 		request.setAttribute("cart", cart);
 		request.setAttribute("cartvalues", cartvalues);
 		String target = "/ShoppingCart.jspx";

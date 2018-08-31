@@ -120,7 +120,10 @@ function buildTable(result){
     row.appendChild(data);
     
     data = document.createElement("TD");
-    data.innerHTML = result[i].title;
+    var link = document.createElement("a");
+    link.setAttribute("href", "Book?bID=" + result[i].bID);
+    link.innerHTML = result[i].title;
+    data.appendChild(link);
     row.appendChild(data);
     
     data = document.createElement("TD");
@@ -132,7 +135,9 @@ function buildTable(result){
     row.appendChild(data);
     
     data = document.createElement("TD");
-    data.innerHTML = "<img src= " + result[i].thumbnail + "/>";
+    var thumb = document.createElement("img");
+    thumb.setAttribute("src", result[i].thumbnail);
+    data.appendChild(thumb);
     row.appendChild(data);
     
     table.appendChild(row);

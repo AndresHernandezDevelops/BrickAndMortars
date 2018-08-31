@@ -25,7 +25,7 @@ public class ProductRetrievalREST {
 
 	
 	private static HashMap<Integer, List<PurchaseOrderItemBean>> data;
-	private static ProductRetrievalREST instance;
+	private static ProductRetrievalREST instance = new ProductRetrievalREST();
 	
 	//do not call constructor call getInstance() to get the instance same as the REST
 	public ProductRetrievalREST()

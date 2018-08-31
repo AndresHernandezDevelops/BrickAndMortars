@@ -16,9 +16,8 @@
 function onload()
 {
 	var cart = JSON.parse('${requestScope.cart}');
-	showCart(cart);
-	var cartvalues = JSON.parse('$requestScope.cartvalues}');
-	showCart(cartvalues);
+	var cartvalues = JSON.parse('${requestScope.cartvalues}');
+	showCart(cart, cartvalues);
 	if(isEmpty(cart)){
 		alert("cart is empty");
 	}

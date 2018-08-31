@@ -89,8 +89,8 @@ public class PurchaseOrderItemDAO {
 	public int updatePO(String username, String firstname, String lastname, String status) throws SQLException{
 		int count = 1;
 		String insertPO = String.format("insert into PO (username, lname, fname, status) "
-				+ "values ('" + username + "', '" + lastname + "' + '" + firstname + "' + '" + status + "')");
-		String query = String.format("select count from PO ORDER BY DESC");
+				+ "values ('" + username + "', '" + lastname + "' , '" + firstname + "' , '" + status + "')");
+		String query = String.format("select count from PO ORDER BY count desc");
 		System.out.println("this is what was inserted" + insertPO);
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(insertPO);

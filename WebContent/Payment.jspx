@@ -8,7 +8,7 @@
 		omit-xml-declaration="true" />
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <head>
-<SCRIPT type="text/javascript" src="res/payment.js">;</SCRIPT>
+<script type="text/javascript" src="${pageContext.request.contextPath}/res/payment.js">;</script>
 <link rel="StyleSheet" href="res/style.css" type="text/css" title="eecs4413" media="screen, print"/>
 <title>Payment Confirmation</title>
 </head>
@@ -19,7 +19,17 @@ if(click % 3 == 0){
 	alert("Credit Card Authorization Failed.");
 }
 else{
-	alert("Order Successfully Completed.");
+	var holder = document.getElementById("name").value;
+	if(test(holder))
+	{
+		getPost('${pageContext.request.contextPath}/Payment');
+	}
+	else
+	{
+		alert("Invalid Cardholder Name. Requires firstname and lastname");
+	}
+	//getPost('${pageContext.request.contextPath}/Payment');
+	//alert("Order Successfully Completed.");
 }
 click++;
 }
@@ -75,13 +85,13 @@ click++;
 		
 	
 	
-	Card Holder Name:<input type="text" placeholder="John Doe..." required="required"></input>
+	Card Holder Name:<input type="text" placeholder="John Doe..." required="required" id="name"></input>
 	<br />
-	Card Number:<input type="text" placeholder="5555555555554444" required="required"></input>
+	Card Number:<input type="text" placeholder="5555555555554444" required="required" id="cardnum"></input>
 	<br />
-	Card Security Code:<input type="text" placeholder="123" required="required"></input>
+	Card Security Code:<input type="text" placeholder="123" required="required" id="cardseccode"></input>
 	<br />
-	Card Expiry Date:<input type="text" placeholder="Month..."></input> / 
+	Card Expiry Date:<input type="text" placeholder="Month..." id="cardexp"></input> / 
 	<SELECT>
 		<option>2014</option>
 		<option>2015</option>
@@ -96,6 +106,7 @@ click++;
 	<button type="button" onclick="clicks();"  id="submit">
 	Confirm
 	</button>
+	
 </body>
 </html>
 </jsp:root>

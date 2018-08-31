@@ -31,13 +31,16 @@ public class Payment extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public Payment() {
-        super();
+    	super();
+    	po = new PurchaseOrderItemDAO();
     }
 
 	public void processParameters(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
-		String username = request.getSession().getAttribute("username").toString();
-		String fname = request.getAttribute("fname").toString(); //fix lname and fname once the jspx has a form to submit
-		String lname = request.getAttribute("lname").toString();
+		String username = (String) request.getSession().getAttribute("username");
+		String name = request.getParameter("name");
+		int i = name.indexOf(" ");
+		String fname = name.substring(0, i); //fix lname and fname once the jspx has a form to submit
+		String lname = name.substring(i + 1);
 		CartBean currentCart;
 		String usrnme;
 		PrintWriter out = response.getWriter();
@@ -52,7 +55,7 @@ public class Payment extends HttpServlet {
 			currentCart = SetOfCartsBean.getInstance().retrieveCart(request.getSession().getId());
 			usrnme = "****";
 		}
-			int count = po.updatePO(usrnme, fname, lname, "APPROVED");
+			int count = po.updatePO(usrnme, fname, lname, "ORDERED");
 			if (count == -1) {
 				out.println("<script type=\"text/javascript\">");
 				   out.println("alert('cart empty!');");
@@ -60,7 +63,8 @@ public class Payment extends HttpServlet {
 			}
 			po.updatePOItem(usrnme, currentCart, count);
 			currentCart.clearCart();
-			response.getWriter().print(count);
+			response.getWriter().println(count);
+			System.out.print(count);
 	}
 	
 	

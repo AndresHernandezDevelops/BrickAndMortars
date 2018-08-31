@@ -34,7 +34,7 @@ function handler(request){
 	}
 
 
-function showCart(cart)
+function showCart(cart, cartvalues)
 {
 	var i = 0;
 	var table = document.createElement("TABLE");
@@ -55,14 +55,14 @@ function showCart(cart)
 		row.appendChild(tdata);
 		
 		tdata = document.createElement("td");
-		tdata.innerHTML = "1";
+		tdata.innerHTML = cartvalues[i];
 		row.appendChild(tdata);
 		
 		tdata = document.createElement("td");
-		tdata.innerHTML = "$" + cart[i].price;
+		tdata.innerHTML = "$" + (cart[i].price * cartvalues[i]);
 		row.appendChild(tdata);
 		for(j=0; j<cart.length; j++){
-			p = cart[j].price;
+			p = cart[j].price * cartvalues[j];
 			total += p;
 		}		
 		

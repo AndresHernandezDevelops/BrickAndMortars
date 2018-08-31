@@ -65,5 +65,10 @@ public class CartBean {
 		return this.getSubtotal() * 1.13;
 	}
 	
+	public void clearCart()
+	{
+		this.books = new HashMap<BookBean, Integer>();
+	}
+	
 	
 }

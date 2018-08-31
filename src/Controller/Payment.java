@@ -59,7 +59,7 @@ public class Payment extends HttpServlet {
 				   out.println("</script>");
 			}
 			po.updatePOItem(usrnme, currentCart, count);
-	
+			currentCart.clearCart();
 			response.getWriter().print(count);
 	}
 	
